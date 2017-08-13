@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace LittleWarGame
 {
@@ -12,6 +13,7 @@ namespace LittleWarGame
         protected int HP;
         protected int power;
         protected int attackDistance;
+        public System.Windows.Forms.PictureBox myPictureBox;
 
         public Warrior(int HP=0,int power=0)
         {
@@ -19,6 +21,10 @@ namespace LittleWarGame
             this.HP = HP;
             this.power = power;
             this.attackDistance = 0;
+
+            //test picturebox
+            this.myPictureBox = new System.Windows.Forms.PictureBox();
+            myPictureBox.Image = Image.FromFile(@"./Sword.png");
         }
 
         public int getSpeed() { return speed; }
@@ -67,6 +73,8 @@ namespace LittleWarGame
                 if (target.getValue() < this.value)
                     this.value = target.getValue();
             }
+            //picturebox
+            myPictureBox.Left = value;
         }
 
         public void beKill()
@@ -75,6 +83,7 @@ namespace LittleWarGame
             power = 0;
             attackDistance = 0;
             speed = 0;
+            myPictureBox.Image = null;
         }
 
         public void beAttack(int harm)
@@ -91,6 +100,13 @@ namespace LittleWarGame
                 obj.beAttack(this.power);
             }
         }
-
+        //for picturebox
+        public void addPictureBoxTo(System.Windows.Forms.Form form)
+        {
+            form.Controls.Add(myPictureBox);
+            myPictureBox.Width = 50;
+            myPictureBox.BackColor = Color.Transparent;
+            myPictureBox.Left = value;
+        }
     }
 }
