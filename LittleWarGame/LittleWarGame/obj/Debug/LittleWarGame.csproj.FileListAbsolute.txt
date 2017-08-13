@@ -1,0 +1,9 @@
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\LittleWarGame.exe.config
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\LittleWarGame.exe
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\LittleWarGame.pdb
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.csprojResolveAssemblyReference.cache
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.Form1.resources
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.Properties.Resources.resources
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.csproj.GenerateResource.Cache
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.exe
+d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.pdb
