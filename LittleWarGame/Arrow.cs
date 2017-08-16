@@ -11,9 +11,9 @@ namespace LittleWarGame
     {
         public Arrow()
         {
-            setSpeed(5);
+            setSpeed(50);
             setHP(100);
-            setPower(10);
+            setPower(100);
             setAttackDistance(100);
             myPictureBox.Image = Image.FromFile(@"./Arrow.png");
         }

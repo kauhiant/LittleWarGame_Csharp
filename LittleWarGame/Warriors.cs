@@ -10,16 +10,22 @@ namespace LittleWarGame
     {
         private Point Field;
         private List<Warrior> group;
+        private System.Windows.Forms.Form mainForm;
+        private bool isReverse;
 
-        public Warriors(Point field)
+        public Warriors(Point field,System.Windows.Forms.Form mainForm,bool isReverse=false)
         {
+            this.group = new List<Warrior>();
             this.Field = field;
+            this.mainForm = mainForm;
+            this.isReverse = isReverse;
         }
 
         public void add(Warrior obj)
         {
             obj.setValue(Field.getValue());
             group.Add(obj);
+            obj.addPictureBoxTo(mainForm);
         }
 
         public int size()
@@ -70,18 +76,15 @@ namespace LittleWarGame
             {
                 if (group[i].getHP() == 0)
                 {
+                    group[i].beKill();
                     group.RemoveAt(i);
                     --i;
                 }
             }
         }
-
-        /* void output()
-         {
-             std::cout << std::endl;
-             for (Warrior * &tmp : group)
-                 std::cout << " value=" << tmp->getValue() << "\tHP=" << tmp->getHP() << '\n';
-             std::cout << std::endl;
-         }*/
+        public bool isLose()
+        {
+            return group.Count == 0;
+        }
     }
 }

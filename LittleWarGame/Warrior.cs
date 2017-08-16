@@ -13,6 +13,7 @@ namespace LittleWarGame
         protected int HP;
         protected int power;
         protected int attackDistance;
+        protected System.Windows.Forms.Form mainForm;
         public System.Windows.Forms.PictureBox myPictureBox;
 
         public Warrior(int HP=0,int power=0)
@@ -84,6 +85,7 @@ namespace LittleWarGame
             attackDistance = 0;
             speed = 0;
             myPictureBox.Image = null;
+            mainForm.Controls.RemoveAt(mainForm.Controls.IndexOf(myPictureBox));
         }
 
         public void beAttack(int harm)
@@ -104,9 +106,15 @@ namespace LittleWarGame
         public void addPictureBoxTo(System.Windows.Forms.Form form)
         {
             form.Controls.Add(myPictureBox);
+            myPictureBox.Margin = new System.Windows.Forms.Padding(0,0,0,0);
             myPictureBox.Width = 50;
             myPictureBox.BackColor = Color.Transparent;
             myPictureBox.Left = value;
+            mainForm = form;
+        }
+        public void setPictureBoxParent(Warrior p)
+        {
+            myPictureBox.Parent = p.myPictureBox;
         }
     }
 }

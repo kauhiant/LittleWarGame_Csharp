@@ -13,12 +13,13 @@ namespace LittleWarGame
         private Warriors A;
         private Warriors B;
 
-        public BattleLine(int ACastleLevel, int BCastleLevel)
+        public BattleLine(int ACastleLevel, int BCastleLevel,System.Windows.Forms.Form mainForm)
         {
-            AField = new Point(0);
+
+            AField = new Point(100);
             BField = new Point(500);
-            A = new Warriors(AField);
-            B = new Warriors(BField);
+            A = new Warriors(AField,mainForm);
+            B = new Warriors(BField,mainForm);
 
             A.add(new Castle(ACastleLevel));
             B.add(new Castle(BCastleLevel));
@@ -40,11 +41,13 @@ namespace LittleWarGame
 
         public void AFieldPushWarrior(Warrior obj)
         {
-            A.add(obj);
+            if(!A.isLose())
+                A.add(obj);
         }
         public void BFieldPushWarrior(Warrior obj)
         {
-            B.add(obj);
+            if(!B.isLose())
+                B.add(obj);
         }
 
     }
