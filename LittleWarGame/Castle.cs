@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace LittleWarGame
 {
@@ -16,6 +17,7 @@ namespace LittleWarGame
             setHP(500 * level);
             //setPower(0);
             //setAttackDistance(0);
+            myPictureBox.Image = Image.FromFile(@"./castle.png");
         }
     }
 }

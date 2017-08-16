@@ -41,5 +41,10 @@ namespace LittleWarGame
         {
             mainLine.BFieldPushWarrior(new Arrow());
         }
+
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            mainLine.nextStep();
+        }
     }
 }

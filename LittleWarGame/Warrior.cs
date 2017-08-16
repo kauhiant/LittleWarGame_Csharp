@@ -26,6 +26,7 @@ namespace LittleWarGame
             //test picturebox
             this.myPictureBox = new System.Windows.Forms.PictureBox();
             myPictureBox.Image = Image.FromFile(@"./Sword.png");
+           // myPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         }
 
         public int getSpeed() { return speed; }
@@ -84,8 +85,16 @@ namespace LittleWarGame
             power = 0;
             attackDistance = 0;
             speed = 0;
-            myPictureBox.Image = null;
-            mainForm.Controls.RemoveAt(mainForm.Controls.IndexOf(myPictureBox));
+            try
+            {
+                mainForm.Controls.RemoveAt(mainForm.Controls.IndexOf(myPictureBox));
+                //*
+                mainForm.Text = mainForm.Controls.Count.ToString();
+            }
+            catch (Exception )
+            {
+                mainForm.Text = "error";
+            }
         }
 
         public void beAttack(int harm)
@@ -111,6 +120,8 @@ namespace LittleWarGame
             myPictureBox.BackColor = Color.Transparent;
             myPictureBox.Left = value;
             mainForm = form;
+            //*
+            mainForm.Text = mainForm.Controls.Count.ToString();
         }
         public void setPictureBoxParent(Warrior p)
         {
