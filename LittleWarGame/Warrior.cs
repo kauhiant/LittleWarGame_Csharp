@@ -76,8 +76,6 @@ namespace LittleWarGame
                 if (target.getValue() < this.value)
                     this.value = target.getValue();
             }
-            //NEED TO FIX : add new property
-            // myPictureBox.Left = value;
             myPictureBox.Left = value - leftFix;
         }
 
@@ -90,7 +88,6 @@ namespace LittleWarGame
             try
             {
                 mainForm.Controls.Remove(myPictureBox);
-              //  Const.mainForm.Controls.RemoveAt(Const.mainForm.Controls.IndexOf(myPictureBox));
                 //*for error test
                 mainForm.Text = mainForm.Controls.Count.ToString();
             }
@@ -121,7 +118,7 @@ namespace LittleWarGame
             this.mainForm.Controls.Add(myPictureBox);
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
-            myPictureBox.Left = value - leftFix;//NEED TO FIX : add new proporty
+            myPictureBox.Left = value - leftFix;
             //*for error test
             mainForm.Text = mainForm.Controls.Count.ToString();
         }

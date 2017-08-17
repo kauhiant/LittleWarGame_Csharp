@@ -8,6 +8,7 @@ namespace LittleWarGame
 {
     class Warriors
     {
+        private bool Lose;
         private System.Windows.Forms.Form mainForm;
         private bool isReverse;
         private Point Field;    //start point of this group
@@ -15,6 +16,7 @@ namespace LittleWarGame
 
         public Warriors(Point field,System.Windows.Forms.Form mainForm,bool isReverse=false)
         {
+            this.Lose = false;
             this.mainForm = mainForm;
             this.isReverse = isReverse;
             this.Field = field;
@@ -23,12 +25,14 @@ namespace LittleWarGame
 
         public void add(Warrior obj)
         {
-            obj.setValue(Field.getValue());
-            group.Add(obj);
-            obj.addPictureBoxTo(mainForm);
-            if (isReverse)
+            if (!Lose)
             {
-                obj.setReverse();
+                if (isReverse)
+                    obj.setReverse();
+
+                obj.setValue(Field.getValue());
+                group.Add(obj);
+                obj.addPictureBoxTo(mainForm);
             }
         }
 
@@ -78,6 +82,14 @@ namespace LittleWarGame
             {
                 if (group[i].getHP() == 0)
                 {
+                    if (i == 0) {
+                        for (int k = 0; k < group.Count(); ++k)
+                            group[k].beKill();
+                        group.Clear();
+                        Lose = true;
+                        mainForm.Text = "GameOver";
+                        break;
+                    } 
                     group[i].beKill();
                     group.RemoveAt(i);
                     --i;
@@ -87,7 +99,7 @@ namespace LittleWarGame
 
         public bool isLose()
         {
-            return group.Count == 0;
+            return Lose;
         }
 
         public Warrior At(int index)

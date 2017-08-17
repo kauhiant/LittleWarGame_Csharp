@@ -8,6 +8,7 @@ namespace LittleWarGame
 {
     class BattleLine
     {
+        private bool haveWinner;
         private Point AField;
         private Point BField;
         private Warriors A;
@@ -15,6 +16,8 @@ namespace LittleWarGame
 
         public BattleLine(int ACastleLevel, int BCastleLevel,System.Windows.Forms.Form mainForm)
         {
+            haveWinner = false;
+
             AField = new Point(Const.AStartPoint);
             BField = new Point(Const.BStartPoint);
             A = new Warriors(AField,mainForm,true);
@@ -28,26 +31,35 @@ namespace LittleWarGame
 
         public void nextStep()
         {
-            //移動到對方的最前線
-            A.moveTo(B.frontLine());
-            B.moveTo(A.frontLine());
-            //攻擊對方的最前線
-            A.attackTo(B.frontLine());
-            B.attackTo(A.frontLine());
-            //把陣亡的戰士移除
-            A.killDeadedWarrior();
-            B.killDeadedWarrior();
+            if (!haveWinner)
+            {
+                //移動到對方的最前線
+                A.moveTo(B.frontLine());
+                B.moveTo(A.frontLine());
+                //攻擊對方的最前線
+                A.attackTo(B.frontLine());
+                B.attackTo(A.frontLine());
+                //把陣亡的戰士移除
+                A.killDeadedWarrior();
+                B.killDeadedWarrior();
+                //have loser?
+                if (A.isLose() || B.isLose())
+                {
+                    haveWinner = true;
+                }
+                    
+            }
         }
 
         public void AFieldPushWarrior(Warrior obj)
         {
-            if(!A.isLose())
+            if(!haveWinner)
                 A.add(obj);
         }
 
         public void BFieldPushWarrior(Warrior obj)
         {
-            if(!B.isLose())
+            if(!haveWinner)
                 B.add(obj);
         }
 
