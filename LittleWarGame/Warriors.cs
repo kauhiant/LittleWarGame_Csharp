@@ -26,6 +26,10 @@ namespace LittleWarGame
             obj.setValue(Field.getValue());
             group.Add(obj);
             obj.addPictureBoxTo(mainForm);
+            if (isReverse)
+            {
+                obj.setReverse();
+            }
         }
 
         public int size()

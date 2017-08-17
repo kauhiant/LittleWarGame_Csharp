@@ -13,6 +13,8 @@ namespace LittleWarGame
         protected int HP;
         protected int power;
         protected int attackDistance;
+
+        protected int leftFix = 0;
         
         public System.Windows.Forms.Form mainForm;
         public System.Windows.Forms.PictureBox myPictureBox;
@@ -75,7 +77,8 @@ namespace LittleWarGame
                     this.value = target.getValue();
             }
             //NEED TO FIX : add new property
-            myPictureBox.Left = value;
+            // myPictureBox.Left = value;
+            myPictureBox.Left = value - leftFix;
         }
 
         public void beKill()
@@ -118,7 +121,7 @@ namespace LittleWarGame
             this.mainForm.Controls.Add(myPictureBox);
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
-            myPictureBox.Left = value;//NEED TO FIX : add new proporty
+            myPictureBox.Left = value - leftFix;//NEED TO FIX : add new proporty
             //*for error test
             mainForm.Text = mainForm.Controls.Count.ToString();
         }
@@ -126,6 +129,14 @@ namespace LittleWarGame
         public void setPictureBoxTop(int y)
         {
             myPictureBox.Top = y;
+        }
+
+        public void setReverse()
+        {
+            if (leftFix == 0)
+                leftFix = Const.pictureWidth;
+            else
+                leftFix = 0;
         }
     }
 }
