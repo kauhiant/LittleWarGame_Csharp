@@ -16,7 +16,6 @@ namespace LittleWarGame
 
         static public int AStartPoint = 100;
         static public int BStartPoint = 500;
-
-        static public System.Windows.Forms.Form mainForm = Program.form1;
+        
     }
 }
