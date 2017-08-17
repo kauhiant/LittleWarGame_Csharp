@@ -18,6 +18,8 @@ namespace LittleWarGame
             //setPower(0);
             //setAttackDistance(0);
             myPictureBox.Image = Image.FromFile(@"./castle.png");
+            myPictureBox.Height = Const.castleHeight;
+            myPictureBox.Top = Const.mainLineHeight - Const.castleHeight;
         }
     }
 }

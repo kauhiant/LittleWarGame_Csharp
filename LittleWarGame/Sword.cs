@@ -16,6 +16,7 @@ namespace LittleWarGame
             setPower(10);
             //setAttackDistance(0);
             myPictureBox.Image = Image.FromFile(@"./Sword.png");
+            myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }
     }
 }

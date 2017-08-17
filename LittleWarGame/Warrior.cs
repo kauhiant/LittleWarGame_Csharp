@@ -13,7 +13,8 @@ namespace LittleWarGame
         protected int HP;
         protected int power;
         protected int attackDistance;
-        protected System.Windows.Forms.Form mainForm;
+        
+        public System.Windows.Forms.Form mainForm;
         public System.Windows.Forms.PictureBox myPictureBox;
 
         public Warrior(int HP=0,int power=0)
@@ -23,10 +24,8 @@ namespace LittleWarGame
             this.power = power;
             this.attackDistance = 0;
 
-            //test picturebox
+            //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
-            myPictureBox.Image = Image.FromFile(@"./Sword.png");
-           // myPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         }
 
         public int getSpeed() { return speed; }
@@ -60,7 +59,7 @@ namespace LittleWarGame
 
         public void moveTo(Point target)
         {
-            if (distance(target) <= attackDistance)
+            if (this.distance(target) <= this.attackDistance)
                 return;
 
             if (target.getValue() < this.value)
@@ -75,7 +74,7 @@ namespace LittleWarGame
                 if (target.getValue() < this.value)
                     this.value = target.getValue();
             }
-            //picturebox
+            //NEED TO FIX : add new property
             myPictureBox.Left = value;
         }
 
@@ -87,8 +86,9 @@ namespace LittleWarGame
             speed = 0;
             try
             {
-                mainForm.Controls.RemoveAt(mainForm.Controls.IndexOf(myPictureBox));
-                //*
+                mainForm.Controls.Remove(myPictureBox);
+              //  Const.mainForm.Controls.RemoveAt(Const.mainForm.Controls.IndexOf(myPictureBox));
+                //*for error test
                 mainForm.Text = mainForm.Controls.Count.ToString();
             }
             catch (Exception )
@@ -100,32 +100,32 @@ namespace LittleWarGame
         public void beAttack(int harm)
         {
             HP -= harm;
-            if (HP < 0)
+            if (HP <= 0)
                 this.beKill();
         }
 
         public void attack(Warrior obj)
         {
-            if (this.distance(obj) <= attackDistance)
+            if (this.distance(obj) <= this.attackDistance)
             {
                 obj.beAttack(this.power);
             }
         }
-        //for picturebox
-        public void addPictureBoxTo(System.Windows.Forms.Form form)
+        
+        public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
         {
-            form.Controls.Add(myPictureBox);
-            myPictureBox.Margin = new System.Windows.Forms.Padding(0,0,0,0);
-            myPictureBox.Width = 50;
+            this.mainForm = mainForm;
+            this.mainForm.Controls.Add(myPictureBox);
+            myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
-            myPictureBox.Left = value;
-            mainForm = form;
-            //*
+            myPictureBox.Left = value;//NEED TO FIX : add new proporty
+            //*for error test
             mainForm.Text = mainForm.Controls.Count.ToString();
         }
-        public void setPictureBoxParent(Warrior p)
+
+        public void setPictureBoxTop(int y)
         {
-            myPictureBox.Parent = p.myPictureBox;
+            myPictureBox.Top = y;
         }
     }
 }

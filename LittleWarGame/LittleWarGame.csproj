@@ -49,6 +49,7 @@
     <Compile Include="Arrow.cs" />
     <Compile Include="BattleLine.cs" />
     <Compile Include="Castle.cs" />
+    <Compile Include="Const.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

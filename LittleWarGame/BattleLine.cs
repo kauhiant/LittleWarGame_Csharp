@@ -15,25 +15,25 @@ namespace LittleWarGame
 
         public BattleLine(int ACastleLevel, int BCastleLevel,System.Windows.Forms.Form mainForm)
         {
-
-            AField = new Point(100);
-            BField = new Point(500);
-            A = new Warriors(AField,mainForm);
+            AField = new Point(Const.AStartPoint);
+            BField = new Point(Const.BStartPoint);
+            A = new Warriors(AField,mainForm,true);
             B = new Warriors(BField,mainForm);
 
             A.add(new Castle(ACastleLevel));
             B.add(new Castle(BCastleLevel));
-            
+            A.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
+            B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
         }
 
         public void nextStep()
         {
             //移動到對方的最前線
-            A.moveTo(B.frontBy(BField));
-            B.moveTo(A.frontBy(AField));
+            A.moveTo(B.frontLine());
+            B.moveTo(A.frontLine());
             //攻擊對方的最前線
-            A.attackTo(B.frontBy(BField));
-            B.attackTo(A.frontBy(AField));
+            A.attackTo(B.frontLine());
+            B.attackTo(A.frontLine());
             //把陣亡的戰士移除
             A.killDeadedWarrior();
             B.killDeadedWarrior();
@@ -44,6 +44,7 @@ namespace LittleWarGame
             if(!A.isLose())
                 A.add(obj);
         }
+
         public void BFieldPushWarrior(Warrior obj)
         {
             if(!B.isLose())

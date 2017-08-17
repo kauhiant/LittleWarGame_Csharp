@@ -10,27 +10,22 @@ namespace LittleWarGame
     {
         protected int value;
 
-        public Point(int val=0)
+        public Point(int val=0) 
         {
             if (val < 0) val = 0;
             value = val;
         }
 
         public int getValue()
-        {
-            return value;
-        }
+        {   return value;   }
 
         public void setValue(int val)
         {
-            if (val < 0)
-                val = 0;
+            if (val < 0) val = 0;
             value = val;
         }
 
         public int distance(Point other)
-        {
-            return Math.Abs(this.value - other.getValue());
-        }
+        {   return Math.Abs(this.value - other.getValue()); }
     }
 }
