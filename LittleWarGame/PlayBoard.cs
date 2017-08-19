@@ -8,44 +8,49 @@ namespace LittleWarGame
 {
     class PlayBoard
     {
+        private EnergyBar energyBar;
+
         private bool isPlayer;
-        private CoolDownTime SwordCD;
-        private CoolDownTime ArrowCD;
         private BattleLine mainLine;
 
-        public PlayBoard(ref BattleLine mainLine, bool isPlayer=false)
+        public PlayBoard(EnergyBar energyBar , ref BattleLine mainLine, bool isPlayer=false)
         {
+            this.energyBar = energyBar;
             this.isPlayer = isPlayer;
-            SwordCD = new CoolDownTime(Const.SwordCD);
-            ArrowCD = new CoolDownTime(Const.ArrowCD);
             this.mainLine = mainLine;
+        }
+
+        public void addEnergy(int value)
+        {
+            energyBar.addEnergy(value);
         }
 
         public void addSword()
         {
-            if (SwordCD.isNotCoolDown())
+            if (energyBar.getValue() >= Const.SwordCD)
             {
                 if (isPlayer)
                     mainLine.BFieldPushWarrior(new Sword());
                 else
                     mainLine.AFieldPushWarrior(new Sword());
 
-                SwordCD.record();
+                addEnergy(-Const.SwordCD);
             }
                 
         }
 
         public void addArrow()
         {
-            if (ArrowCD.isNotCoolDown())
+            if (energyBar.getValue() >= Const.ArrowCD)
             {
                 if (isPlayer)
                     mainLine.BFieldPushWarrior(new Arrow());
                 else
                     mainLine.AFieldPushWarrior(new Arrow());
 
-                ArrowCD.record();
+                addEnergy(-Const.ArrowCD);
             }
         }
+
     }
 }

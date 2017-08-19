@@ -12,6 +12,10 @@ namespace LittleWarGame
 {
     public partial class Form1 : Form
     {
+        private Random rand;
+
+        private EnergyBar myEnergyBar;
+        private EnergyBar aiEnergyBar;
         private bool GameHaveWinner = false;
         private BattleLine mainLine;
         private PlayBoard AI;
@@ -19,11 +23,16 @@ namespace LittleWarGame
 
         public Form1()
         {
+            rand = new Random();
+
             InitializeComponent();
             Const.ImageListInit();
+            myEnergyBar = new EnergyBar(10);
+            aiEnergyBar = new EnergyBar(10);
             mainLine = new BattleLine(1,1,this);
-            AI = new PlayBoard(ref mainLine);
-            Player = new PlayBoard(ref mainLine, true);
+            AI = new PlayBoard(aiEnergyBar , ref mainLine);
+            Player = new PlayBoard(myEnergyBar , ref mainLine, true);
+            myEnergyBar.setLabel(ref textBox1);
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -56,9 +65,14 @@ namespace LittleWarGame
         {
             if (!GameHaveWinner)
             {
+                Player.addEnergy(1);
+                AI.addEnergy(1);
+                
                 mainLine.nextStep();
-                AI.addSword();
-                AI.addArrow();
+                if(rand.Next(1,20) == 1 )
+                    AI.addSword();
+                else
+                    AI.addArrow();
             }
         }
     }

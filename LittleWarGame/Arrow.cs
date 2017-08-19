@@ -14,7 +14,7 @@ namespace LittleWarGame
             myStatus = Const.imageList[Const.Warrior.Arrow];
             myRealStatus = myStatus[Const.Part.A];
             setSpeed(5);
-            setHP(100);
+            setHP(50);
             setPower(10);
             setAttackDistance(100);
             myPictureBox.Image = myRealStatus[Const.Status.move];

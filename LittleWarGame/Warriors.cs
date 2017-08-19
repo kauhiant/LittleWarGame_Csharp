@@ -8,7 +8,6 @@ namespace LittleWarGame
 {
     class Warriors
     {
-        private int energyBar;
         private bool Lose;
         private System.Windows.Forms.Form mainForm;
         private bool isReverse;
@@ -17,23 +16,11 @@ namespace LittleWarGame
 
         public Warriors(Point field , System.Windows.Forms.Form mainForm , bool isReverse=false)
         {
-            this.energyBar = 0;
             this.Lose = false;
             this.mainForm = mainForm;
             this.isReverse = isReverse;
             this.Field = field;
             this.group = new List<Warrior>();
-        }
-
-        public int getEnergyBar()
-        {
-            return energyBar;
-        }
-        public void addEnergy(int value)
-        {
-            energyBar += value;
-            if (energyBar < 0)
-                energyBar = 0;
         }
 
         public void add(Warrior obj)

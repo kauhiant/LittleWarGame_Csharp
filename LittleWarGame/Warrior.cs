@@ -96,8 +96,6 @@ namespace LittleWarGame
             try
             {
                 mainForm.Controls.Remove(myPictureBox);
-                //*for error test
-                mainForm.Text = mainForm.Controls.Count.ToString();
             }
             catch (Exception )
             {
@@ -129,9 +127,6 @@ namespace LittleWarGame
 
             this.mainForm = mainForm;
             this.mainForm.Controls.Add(myPictureBox);
-
-            //*for error test
-            mainForm.Text = mainForm.Controls.Count.ToString();
         }
 
         public void setPictureBoxTop(int y)

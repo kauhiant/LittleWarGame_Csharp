@@ -36,8 +36,8 @@ namespace LittleWarGame
         static public int AStartPoint = 100;
         static public int BStartPoint = 500;
 
-        static public int SwordCD = 5;
-        static public int ArrowCD = 8;
+        static public int SwordCD = 10;
+        static public int ArrowCD = 20;
 
         static public void ImageListInit()
         {
