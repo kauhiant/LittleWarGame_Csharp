@@ -10,14 +10,19 @@ namespace LittleWarGame
     class Castle:Warrior
     {
         private int level;
+
         public Castle(int level)
         {
+            myStatus = Const.imageList[Const.Warrior.Castle];
+            myRealStatus = myStatus[Const.Part.A];
+
             this.level = level;
             //setSpeed(0);
             setHP(500 * level);
             //setPower(0);
-            //setAttackDistance(0);
-            myPictureBox.Image = Image.FromFile(@"./castle.png");
+            setAttackDistance(-1);//can't attack
+
+            myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Height = Const.castleHeight;
             myPictureBox.Top = Const.mainLineHeight - Const.castleHeight;
         }

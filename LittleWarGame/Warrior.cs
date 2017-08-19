@@ -9,21 +9,24 @@ namespace LittleWarGame
 {
     class Warrior:Point
     {
+        protected List<List<Image>> myStatus;
+        protected List<Image> myRealStatus;
+
         protected int speed;
         protected int HP;
         protected int power;
         protected int attackDistance;
 
-        protected int leftFix = 0;
+        protected int leftFix = Const.pictureWidth;
         
         public System.Windows.Forms.Form mainForm;
         public System.Windows.Forms.PictureBox myPictureBox;
 
-        public Warrior(int HP=0,int power=0)
+        public Warrior()
         {
             this.speed = 0;
-            this.HP = HP;
-            this.power = power;
+            this.HP = 0;
+            this.power = 0;
             this.attackDistance = 0;
 
             //just creat a picturebox not add to mainForm
@@ -35,47 +38,52 @@ namespace LittleWarGame
         public int getPower() { return power; }
         public int getAttackDistance() { return attackDistance; }
 
-        public void setSpeed(int val)
+        protected void setSpeed(int val)
         {
             if (val < 0) val = 0;
             speed = val;
         }
 
-        public void setHP(int val)
+        protected void setHP(int val)
         {
             if (val < 0) val = 0;
             HP = val;
         }
 
-        public void setPower(int val)
+        protected void setPower(int val)
         {
             if (val < 0) val = 0;
             power = val;
         }
 
-        public void setAttackDistance(int val)
+        protected void setAttackDistance(int val)
         {
-            if (val < 0) val = 0;
+            if (val < -1) val = -1;
             attackDistance = val;
         }
 
         public void moveTo(Point target)
         {
-            if (this.distance(target) <= this.attackDistance)
+            if (this.distance(target) <= this.attackDistance)   //target in your attack range
                 return;
-
-            if (target.getValue() < this.value)
+            
+            if (target.getValue() < this.value) //target in your left
             {
+                myPictureBox.Image = myRealStatus[Const.Status.move];
                 this.value -= speed;
+
                 if (target.getValue() > this.value)
                     this.value = target.getValue();
             }
-            else if (target.getValue() > this.value)
+            else if (target.getValue() > this.value)    //target in your right
             {
+                myPictureBox.Image = myRealStatus[Const.Status.move];
                 this.value += speed;
+
                 if (target.getValue() < this.value)
                     this.value = target.getValue();
             }
+
             myPictureBox.Left = value - leftFix;
         }
 
@@ -93,14 +101,14 @@ namespace LittleWarGame
             }
             catch (Exception )
             {
-                mainForm.Text = "error";
+                mainForm.Text = "have error when remove picturebox";
             }
         }
 
         public void beAttack(int harm)
         {
             HP -= harm;
-            if (HP <= 0)
+            if (HP <= 0) 
                 this.beKill();
         }
 
@@ -108,17 +116,20 @@ namespace LittleWarGame
         {
             if (this.distance(obj) <= this.attackDistance)
             {
+                myPictureBox.Image = myRealStatus[Const.Status.attack];
                 obj.beAttack(this.power);
             }
         }
         
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
         {
-            this.mainForm = mainForm;
-            this.mainForm.Controls.Add(myPictureBox);
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
             myPictureBox.Left = value - leftFix;
+
+            this.mainForm = mainForm;
+            this.mainForm.Controls.Add(myPictureBox);
+
             //*for error test
             mainForm.Text = mainForm.Controls.Count.ToString();
         }
@@ -130,10 +141,21 @@ namespace LittleWarGame
 
         public void setReverse()
         {
-            if (leftFix == 0)
-                leftFix = Const.pictureWidth;
-            else
+            if (leftFix == Const.pictureWidth)
+            {
                 leftFix = 0;
+                myRealStatus = myStatus[Const.Part.B];
+            }
+            else
+            {
+                leftFix = Const.pictureWidth;
+                myRealStatus = myStatus[Const.Part.A];
+            }
+        }
+        
+        public void changeStatus(Image img)
+        {
+            myPictureBox.Image = img;
         }
     }
 }

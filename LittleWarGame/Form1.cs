@@ -20,6 +20,7 @@ namespace LittleWarGame
         public Form1()
         {
             InitializeComponent();
+            Const.ImageListInit();
             mainLine = new BattleLine(1,1,this);
             AI = new PlayBoard(ref mainLine);
             Player = new PlayBoard(ref mainLine, true);
@@ -27,6 +28,7 @@ namespace LittleWarGame
         
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
         private void show(ref Warrior obj1,ref Warrior obj2)
         {

@@ -11,11 +11,13 @@ namespace LittleWarGame
     {
         public Arrow()
         {
+            myStatus = Const.imageList[Const.Warrior.Arrow];
+            myRealStatus = myStatus[Const.Part.A];
             setSpeed(5);
             setHP(100);
             setPower(10);
             setAttackDistance(100);
-            myPictureBox.Image = Image.FromFile(@"./Arrow.png");
+            myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }
     }

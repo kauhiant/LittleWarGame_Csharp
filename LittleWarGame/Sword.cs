@@ -11,11 +11,15 @@ namespace LittleWarGame
     {
         public Sword()
         {
+            myStatus = Const.imageList[Const.Warrior.Sword];
+            myRealStatus = myStatus[Const.Part.A];
+
             setSpeed(10);
             setHP(100);
             setPower(10);
             //setAttackDistance(0);
-            myPictureBox.Image = Image.FromFile(@"./Sword.png");
+
+            myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }
     }

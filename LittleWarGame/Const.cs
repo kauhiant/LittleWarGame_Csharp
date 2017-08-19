@@ -3,11 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace LittleWarGame
 {
     static class Const
     {
+        static public class Warrior
+        {
+            static public int Castle = 0;
+            static public int Sword = 1;
+            static public int Arrow = 2;
+        }
+        static public class Part
+        {
+            static public int A = 0;
+            static public int B = 1;
+        }
+        static public class Status
+        {
+            static public int move = 0;
+            static public int attack = 1;
+        }
+        static public List< List< List<Image> > > imageList;
+
         static public int pictureWidth = 50;
         static public int mainLineHeight = 150;
         
@@ -19,5 +38,37 @@ namespace LittleWarGame
 
         static public int SwordCD = 5;
         static public int ArrowCD = 8;
+
+        static public void ImageListInit()
+        {
+            int sizeOfWarriors = 3;
+
+            imageList = new List<List<List<Image>>>();
+            for(int c=0; c<sizeOfWarriors; ++c)
+            {
+                imageList.Add(new List<List<Image>>());
+                for(int i=0; i<2; ++i)
+                {
+                    imageList[c].Add(new List<Image>());
+                    for(int j=0; j<2; ++j)
+                    {
+                        imageList[c][i].Add(null);
+                    }
+                }
+            }
+
+            imageList[Warrior.Castle][Part.A][Status.move] = Image.FromFile(@"./img/castle-L.png");
+            imageList[Warrior.Castle][Part.B][Status.move] = Image.FromFile(@"./img/castle-R.png");
+
+            imageList[Warrior.Sword][Part.A][Status.move] = Image.FromFile(@"./img/Sword-L0.png");
+            imageList[Warrior.Sword][Part.B][Status.move] = Image.FromFile(@"./img/Sword-R0.png");
+            imageList[Warrior.Sword][Part.A][Status.attack] = Image.FromFile(@"./img/Sword-L1.png");
+            imageList[Warrior.Sword][Part.B][Status.attack] = Image.FromFile(@"./img/Sword-R1.png");
+
+            imageList[Warrior.Arrow][Part.A][Status.move] = Image.FromFile(@"./img/Arrow-L0.png");
+            imageList[Warrior.Arrow][Part.B][Status.move] = Image.FromFile(@"./img/Arrow-R0.png");
+            imageList[Warrior.Arrow][Part.A][Status.attack] = Image.FromFile(@"./img/Arrow-L1.png");
+            imageList[Warrior.Arrow][Part.B][Status.attack] = Image.FromFile(@"./img/Arrow-R1.png");
+        }
     }
 }

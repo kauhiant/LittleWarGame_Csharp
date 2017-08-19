@@ -20,13 +20,15 @@ namespace LittleWarGame
 
             AField = new Point(Const.AStartPoint);
             BField = new Point(Const.BStartPoint);
-            A = new Warriors(AField,mainForm,true);
-            B = new Warriors(BField,mainForm);
+            A = new Warriors(AField , mainForm);
+            B = new Warriors(BField , mainForm , true);
 
             A.add(new Castle(ACastleLevel));
             B.add(new Castle(BCastleLevel));
             A.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
             B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
+
+            nextStep();
         }
 
         public void nextStep()
