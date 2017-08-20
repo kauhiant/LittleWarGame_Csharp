@@ -69,11 +69,25 @@ namespace LittleWarGame
                 AI.addEnergy(1);
                 
                 mainLine.nextStep();
-                if(rand.Next(1,20) == 1 )
+                if (rand.Next(1, 10) == 1)
                     AI.addSword();
-                else
+                else if (rand.Next(1, 5) == 1)
                     AI.addArrow();
+                else
+                    AI.addShield();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+                Player.addShield();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+                Player.addRRocket();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace LittleWarGame
             static public int Castle = 0;
             static public int Sword = 1;
             static public int Arrow = 2;
+            static public int Shield = 3;
+            static public int Rocket = 4;
         }
         static public class Part
         {
@@ -37,11 +39,13 @@ namespace LittleWarGame
         static public int BStartPoint = 500;
 
         static public int SwordCD = 10;
-        static public int ArrowCD = 20;
+        static public int ArrowCD = 15;
+        static public int ShieldCD = 20;
+        static public int RocketCD = 30;
 
         static public void ImageListInit()
         {
-            int sizeOfWarriors = 3;
+            int sizeOfWarriors = 5;
 
             imageList = new List<List<List<Image>>>();
             for(int c=0; c<sizeOfWarriors; ++c)
@@ -69,6 +73,13 @@ namespace LittleWarGame
             imageList[Warrior.Arrow][Part.B][Status.move] = Image.FromFile(@"./img/Arrow-R0.png");
             imageList[Warrior.Arrow][Part.A][Status.attack] = Image.FromFile(@"./img/Arrow-L1.png");
             imageList[Warrior.Arrow][Part.B][Status.attack] = Image.FromFile(@"./img/Arrow-R1.png");
+
+            imageList[Warrior.Shield][Part.A][Status.move] = Image.FromFile(@"./img/Shield-L.png");
+            imageList[Warrior.Shield][Part.B][Status.move] = Image.FromFile(@"./img/Shield-R.png");
+
+            imageList[Warrior.Rocket][Part.A][Status.move] = Image.FromFile(@"./img/Rocket-L.png");
+            imageList[Warrior.Rocket][Part.B][Status.move] = Image.FromFile(@"./img/Rocket-R.png");
+
         }
     }
 }

@@ -52,5 +52,31 @@ namespace LittleWarGame
             }
         }
 
+        public void addShield()
+        {
+            if (energyBar.getValue() >= Const.ShieldCD)
+            {
+                if (isPlayer)
+                    mainLine.BFieldPushWarrior(new Shield());
+                else
+                    mainLine.AFieldPushWarrior(new Shield());
+
+                addEnergy(-Const.ShieldCD);
+            }
+        }
+
+        public void addRRocket()
+        {
+            if (energyBar.getValue() >= Const.RocketCD)
+            {
+                if (isPlayer)
+                    mainLine.BFieldPushWarrior(new Rocket());
+                else
+                    mainLine.AFieldPushWarrior(new Rocket());
+
+                addEnergy(-Const.RocketCD);
+            }
+        }
+
     }
 }
