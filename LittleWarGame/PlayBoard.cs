@@ -25,7 +25,7 @@ namespace LittleWarGame
             energyBar.addEnergy(value);
         }
 
-        public void addSword()
+        public bool addSword()
         {
             if (energyBar.getValue() >= Const.SwordCD)
             {
@@ -35,11 +35,12 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Sword());
 
                 addEnergy(-Const.SwordCD);
+                return true;
             }
-                
+            return false;    
         }
 
-        public void addArrow()
+        public bool addArrow()
         {
             if (energyBar.getValue() >= Const.ArrowCD)
             {
@@ -49,10 +50,12 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Arrow());
 
                 addEnergy(-Const.ArrowCD);
+                return true;
             }
+            return false;
         }
 
-        public void addShield()
+        public bool addShield()
         {
             if (energyBar.getValue() >= Const.ShieldCD)
             {
@@ -62,10 +65,12 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Shield());
 
                 addEnergy(-Const.ShieldCD);
+                return true;
             }
+            return false;
         }
 
-        public void addRRocket()
+        public bool addRocket()
         {
             if (energyBar.getValue() >= Const.RocketCD)
             {
@@ -75,7 +80,9 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Rocket());
 
                 addEnergy(-Const.RocketCD);
+                return true;
             }
+            return false;
         }
 
     }

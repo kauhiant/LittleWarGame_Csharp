@@ -41,7 +41,7 @@ namespace LittleWarGame
         static public int SwordCD = 10;
         static public int ArrowCD = 15;
         static public int ShieldCD = 20;
-        static public int RocketCD = 30;
+        static public int RocketCD = 50;
 
         static public void ImageListInit()
         {

@@ -103,20 +103,11 @@ namespace LittleWarGame
             }
         }
 
-        public void beAttack(int harm)
+        public virtual void beAttackFrom(Warrior other)
         {
-            HP -= harm;
+            HP -= other.getPower();
             if (HP <= 0) 
                 this.beKill();
-        }
-
-        public void attack(Warrior obj)
-        {
-            if (this.distance(obj) <= this.attackDistance)
-            {
-                myPictureBox.Image = myRealStatus[Const.Status.attack];
-                obj.beAttack(this.power);
-            }
         }
         
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
@@ -151,6 +142,18 @@ namespace LittleWarGame
         public void changeStatus(Image img)
         {
             myPictureBox.Image = img;
+        }
+
+        public virtual void attackTo(List<Warrior> group)
+        {
+            if (group.Count == 0)
+                return;
+                
+            if(this.distance(group[0]) <= this.getAttackDistance())
+            {
+                myPictureBox.Image = myRealStatus[Const.Status.attack];
+                group.Last().beAttackFrom(this);
+            }
         }
     }
 }

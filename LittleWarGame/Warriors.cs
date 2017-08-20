@@ -49,21 +49,22 @@ namespace LittleWarGame
             for (int i=0; i<size(); ++i)
                 group[i].moveTo(target);
         }
-
-        public void attackTo(Warrior target)
+        
+        public void attackTo(List<Warrior> group)
         {
-            if (target == null)
+            if (group == null)
                 return;
 
-            for (int i=0; i<size(); ++i)
-                group[i].attack(target);
+            for (int i = 0; i < size(); ++i)
+                this.group[i].attackTo(group);
         }
 
+
         //最前線
-        public Warrior frontLine()
+        public Point frontLineValue()
         {
             int max = int.MinValue;
-            Warrior front = null;
+            Point front = null;
             for (int i=0; i<size(); ++i)
             {
                 if (group[i].distance(Field) > max)
@@ -72,6 +73,21 @@ namespace LittleWarGame
                     max = group[i].distance(Field);
                 }
             }
+            return front;
+        }
+        //最前線
+        public List<Warrior> frontLineGroup()
+        {
+            int target = frontLineValue().getValue();
+            List<Warrior> front = new List<Warrior>();
+            for (int i = 0; i < size(); ++i)
+            {
+                if (group[i].getValue() == target)
+                {
+                    front.Add(group[i]);
+                }
+            }
+            mainForm.Text = front.Count.ToString();
             return front;
         }
 

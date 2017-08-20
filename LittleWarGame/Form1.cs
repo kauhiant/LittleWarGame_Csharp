@@ -60,7 +60,8 @@ namespace LittleWarGame
             if(!GameHaveWinner)
                 Player.addArrow();
         }
-
+        private int AINextIndex = 0;
+        private bool AIDirect = true;
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
@@ -69,12 +70,22 @@ namespace LittleWarGame
                 AI.addEnergy(1);
                 
                 mainLine.nextStep();
-                if (rand.Next(1, 10) == 1)
-                    AI.addSword();
-                else if (rand.Next(1, 5) == 1)
-                    AI.addArrow();
+                if(AIDirect == true)
+                {
+                    AINextIndex = rand.Next(1, 101);
+                    AIDirect = false;
+                }
                 else
-                    AI.addShield();
+                {
+                    if (AINextIndex < 30)
+                        AIDirect = AI.addSword();
+                    else if (AINextIndex < 60)
+                        AIDirect = AI.addArrow();
+                    else if (AINextIndex < 90)
+                        AIDirect = AI.addShield();
+                    else
+                        AIDirect = AI.addRocket();
+                }
             }
         }
 
@@ -87,7 +98,7 @@ namespace LittleWarGame
         private void button5_Click(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addRRocket();
+                Player.addRocket();
         }
     }
 }
