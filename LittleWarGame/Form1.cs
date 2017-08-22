@@ -100,5 +100,17 @@ namespace LittleWarGame
             if (!GameHaveWinner)
                 Player.addRocket();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+                Player.addHatchet();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+                Player.addWall();
+        }
     }
 }

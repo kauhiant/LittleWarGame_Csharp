@@ -44,6 +44,8 @@ namespace LittleWarGame
                 //把陣亡的戰士移除
                 A.killDeadedWarrior();
                 B.killDeadedWarrior();
+                //輔助
+                
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {

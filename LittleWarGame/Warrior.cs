@@ -62,7 +62,7 @@ namespace LittleWarGame
             attackDistance = val;
         }
 
-        public void moveTo(Point target)
+        public virtual void moveTo(Point target)
         {
             if (this.distance(target) <= this.attackDistance)   //target in your attack range
                 return;
@@ -102,7 +102,17 @@ namespace LittleWarGame
                 mainForm.Text = "have error when remove picturebox";
             }
         }
+        public virtual void attackTo(List<Warrior> group)
+        {
+            if (group.Count == 0)
+                return;
 
+            if (this.distance(group[0]) <= this.getAttackDistance())
+            {
+                myPictureBox.Image = myRealStatus[Const.Status.attack];
+                group.Last().beAttackFrom(this);
+            }
+        }
         public virtual void beAttackFrom(Warrior other)
         {
             HP -= other.getPower();
@@ -144,16 +154,9 @@ namespace LittleWarGame
             myPictureBox.Image = img;
         }
 
-        public virtual void attackTo(List<Warrior> group)
+        public virtual void helpTo(Warrior partner)
         {
-            if (group.Count == 0)
-                return;
-                
-            if(this.distance(group[0]) <= this.getAttackDistance())
-            {
-                myPictureBox.Image = myRealStatus[Const.Status.attack];
-                group.Last().beAttackFrom(this);
-            }
+            ;
         }
     }
 }

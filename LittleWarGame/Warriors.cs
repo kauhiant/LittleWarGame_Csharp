@@ -59,6 +59,11 @@ namespace LittleWarGame
                 this.group[i].attackTo(group);
         }
 
+        public void helpTo(Warriors we)
+        {
+
+        }
+
 
         //最前線
         public Point frontLineValue()

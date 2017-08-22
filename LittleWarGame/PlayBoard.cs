@@ -85,5 +85,35 @@ namespace LittleWarGame
             return false;
         }
 
+        public bool addHatchet()
+        {
+            if (energyBar.getValue() >= Const.HatchetCD)
+            {
+                if (isPlayer)
+                    mainLine.BFieldPushWarrior(new Hatchet());
+                else
+                    mainLine.AFieldPushWarrior(new Hatchet());
+
+                addEnergy(-Const.HatchetCD);
+                return true;
+            }
+            return false;
+        }
+
+        public bool addWall()
+        {
+            if (energyBar.getValue() >= Const.WallCD)
+            {
+                if (isPlayer)
+                    mainLine.BFieldPushWarrior(new Wall());
+                else
+                    mainLine.AFieldPushWarrior(new Warrior());
+
+                addEnergy(-Const.WallCD);
+                return true;
+            }
+            return false;
+        }
+
     }
 }

@@ -18,7 +18,7 @@ namespace LittleWarGame
 
             this.level = level;
             //setSpeed(0);
-            setHP(500 * level);
+            setHP(1000 * level);
             //setPower(0);
             setAttackDistance(-1);//can't attack
 

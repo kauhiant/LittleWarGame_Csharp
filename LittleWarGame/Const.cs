@@ -16,6 +16,8 @@ namespace LittleWarGame
             static public int Arrow = 2;
             static public int Shield = 3;
             static public int Rocket = 4;
+            static public int Hatchet = 5;
+            static public int Wall = 6;
         }
         static public class Part
         {
@@ -42,6 +44,8 @@ namespace LittleWarGame
         static public int ArrowCD = 15;
         static public int ShieldCD = 20;
         static public int RocketCD = 50;
+        static public int HatchetCD = 30;
+        static public int WallCD = 50;
 
         static public void ImageListInit()
         {
