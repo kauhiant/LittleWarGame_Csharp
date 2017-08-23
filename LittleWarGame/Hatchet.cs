@@ -21,18 +21,22 @@ namespace LittleWarGame
             myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }
-        public override void attackTo(List<Warrior> group)
+        public override void attackTo(Warriors they)
         {
-            if (group.Count == 0)
+            if (they.size() == 0)
                 return;
-            
-            for (int i = 0; i < group.Count; ++i)
+
+            if (this.distance(they.frontLineValue()) <= this.getAttackDistance())
             {
-                if (this.distance(group[i]) <= this.getAttackDistance())
-                {
-                    myPictureBox.Image = myRealStatus[Const.Status.attack];
-                    group[i].beAttackFrom(this);
-                }
+                myPictureBox.Image = myRealStatus[Const.Status.attack];
+                attackGroup(they.frontLineGroup());
+            }
+        }
+        private void attackGroup(List<Warrior> group)
+        {
+            foreach(Warrior each in group)
+            {
+                each.beAttackFrom(this);
             }
         }
     }

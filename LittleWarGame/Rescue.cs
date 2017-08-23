@@ -21,10 +21,10 @@ namespace LittleWarGame
             myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }
-        public override void helpTo(Warrior partner)
+        public override void helpTo(Warriors we)
         {
-            if(this.distance(partner) < 10)
-                partner.addHP(20);
+            if(this.distance(we.frontLineValue()) < 10)
+                we.frontLineGroup()[0].addHP(20);
         }
         
     }

@@ -50,22 +50,21 @@ namespace LittleWarGame
                 group[i].moveTo(target);
         }
         
-        public void attackTo(List<Warrior> group)
+        public void attackTo(Warriors they)
         {
-            if (group == null)
+            if (they.size() == 0)
                 return;
 
             for (int i = 0; i < size(); ++i)
-                this.group[i].attackTo(group);
+                this.group[i].attackTo(they);
         }
 
         public void helpTo(Warriors we)
         {
             for (int i = 0; i < size(); ++i)
-                this.group[i].helpTo(we.frontLineGroup()[0]);
+                this.group[i].helpTo(we);
         }
-
-
+        
         //最前線
         public Point frontLineValue()
         {

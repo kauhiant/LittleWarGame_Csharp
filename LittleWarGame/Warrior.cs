@@ -27,108 +27,107 @@ namespace LittleWarGame
         {
             this.speed = 0;
             this.HP = 0;
-            this.HPupper = 0;
             this.power = 0;
             this.attackDistance = 0;
 
             //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
         }
-
+//get functions
         public int getSpeed() { return speed; }
         public int getHP() { return HP; }
         public int getPower() { return power; }
         public int getAttackDistance() { return attackDistance; }
-
+//set functions just be used by subClass constructor 
         protected void setSpeed(int val)
         {
             if (val < 0) val = 0;
             speed = val;
         }
-
         protected void setHP(int val)
         {
             if (val < 0) val = 0;
             HP = val;
             HPupper = val;
         }
-
         protected void setPower(int val)
         {
             if (val < 0) val = 0;
             power = val;
         }
-
         protected void setAttackDistance(int val)
         {
             if (val < -1) val = -1;
             attackDistance = val;
         }
-
+//skill functions 
+//move
         public virtual void moveTo(Point target)
         {
-            if (this.distance(target) <= this.attackDistance)   //target in your attack range
-                return;
+            if (this.distance(target) <= this.attackDistance)   
+                return;//if target in your attack range , you shouldn't move
             
             if (target.getValue() < this.value) //target in your left
             {
-                myPictureBox.Image = myRealStatus[Const.Status.move];
-                this.value -= speed;
+                this.value -= speed;    //move to left
 
-                if (target.getValue() > this.value)
+                if (target.getValue() > this.value) //when you move too over to left of target
                     this.value = target.getValue();
             }
             else if (target.getValue() > this.value)    //target in your right
             {
-                myPictureBox.Image = myRealStatus[Const.Status.move];
-                this.value += speed;
+                this.value += speed;    //move to right
 
-                if (target.getValue() < this.value)
+                if (target.getValue() < this.value) //when you move too over to right of target
                     this.value = target.getValue();
             }
 
+            //change your picture status and move it
+            changeStatusTo(Const.Status.move);
             myPictureBox.Left = value - leftFix;
         }
-
+//beKill
         public void beKill()
         {
             HP = 0;
             power = 0;
             attackDistance = 0;
             speed = 0;
-            try
-            {
-                mainForm.Controls.Remove(myPictureBox);
-            }
-            catch (Exception )
-            {
-                mainForm.Text = "have error when remove picturebox";
-            }
+            mainForm.Controls.Remove(myPictureBox);
         }
-        public virtual void attackTo(List<Warrior> group)
+//attack to warriors
+        public virtual void attackTo(Warriors they)
         {
-            if (group.Count == 0)
+            if (they.size() == 0)
                 return;
 
-            if (this.distance(group[0]) <= this.getAttackDistance())
+            if (this.distance(they.frontLineValue()) <= this.getAttackDistance())
             {
                 myPictureBox.Image = myRealStatus[Const.Status.attack];
-                group.Last().beAttackFrom(this);
+                they.frontLineGroup()[0].beAttackFrom(this);
             }
         }
+//be attack from warrior
         public virtual void beAttackFrom(Warrior other)
         {
-            HP -= other.getPower();
-            if (HP <= 0) 
+            this.HP -= other.getPower();
+            if (this.HP <= 0) 
                 this.beKill();
         }
+//add HP
         public void addHP(int value)
         {
-            HP += value;
-            if (HP > HPupper)
-                HP = HPupper;
+            this.HP += value;
+            if (this.HP > HPupper)
+                this.HP = HPupper;
         }
-        
+//help to partner
+        public virtual void helpTo(Warriors we)
+        {
+            ;
+        }
+//about pictureBox
+//add pictureBox to mainForm
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
         {
             myPictureBox.Width = Const.pictureWidth;
@@ -138,12 +137,12 @@ namespace LittleWarGame
             this.mainForm = mainForm;
             this.mainForm.Controls.Add(myPictureBox);
         }
-
+//set pictureBox location
         public void setPictureBoxTop(int y)
         {
             myPictureBox.Top = y;
         }
-
+//let pictureBox's left change to right
         public void setReverse()
         {
             if (leftFix == Const.pictureWidth)
@@ -157,15 +156,10 @@ namespace LittleWarGame
                 myRealStatus = myStatus[Const.Part.A];
             }
         }
-        
-        public void changeStatus(Image img)
+//chane image
+        private void changeStatusTo(int status)
         {
-            myPictureBox.Image = img;
-        }
-
-        public virtual void helpTo(Warrior partner)
-        {
-            ;
+            myPictureBox.Image = myRealStatus[status];
         }
     }
 }

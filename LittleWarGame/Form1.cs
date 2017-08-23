@@ -83,7 +83,7 @@ namespace LittleWarGame
                 }
                 else
                 {
-                    if (AINextIndex < 30)
+                    if (AINextIndex < 100)
                         AIDirect = AI.addSword();
                     else if (AINextIndex < 60)
                         AIDirect = AI.addArrow();

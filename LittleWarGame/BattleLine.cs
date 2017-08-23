@@ -39,8 +39,8 @@ namespace LittleWarGame
                 A.moveTo(B.frontLineValue());
                 B.moveTo(A.frontLineValue());
                 //攻擊對方的最前線
-                A.attackTo(B.frontLineGroup());
-                B.attackTo(A.frontLineGroup());
+                A.attackTo(B);
+                B.attackTo(A);
                 //把陣亡的戰士移除
                 A.killDeadedWarrior();
                 B.killDeadedWarrior();
@@ -52,7 +52,6 @@ namespace LittleWarGame
                 {
                     haveWinner = true;
                 }
-                    
             }
         }
 
