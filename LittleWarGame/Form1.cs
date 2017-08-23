@@ -37,7 +37,13 @@ namespace LittleWarGame
         
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            _sword.Text += Const.SwordCD.ToString();
+            _arrow.Text += Const.ArrowCD.ToString();
+            _shield.Text += Const.ShieldCD.ToString();
+            _hatchet.Text += Const.HatchetCD.ToString();
+            _rescue.Text += Const.RescueCD.ToString();
+            _rocket.Text += Const.RocketCD.ToString();
+            _wall.Text += Const.WallCD.ToString();
         }
         private void show(ref Warrior obj1,ref Warrior obj2)
         {
@@ -46,7 +52,7 @@ namespace LittleWarGame
         private void button1_Click(object sender, EventArgs e)
         {
             gameTimer.Enabled = true;
-            button1.Hide();
+            _start.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -111,6 +117,12 @@ namespace LittleWarGame
         {
             if (!GameHaveWinner)
                 Player.addWall();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+                Player.addRescue();
         }
     }
 }

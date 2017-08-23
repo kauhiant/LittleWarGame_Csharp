@@ -30,47 +30,48 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this._start = new System.Windows.Forms.Button();
+            this._sword = new System.Windows.Forms.Button();
+            this._arrow = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this._shield = new System.Windows.Forms.Button();
+            this._rocket = new System.Windows.Forms.Button();
+            this._hatchet = new System.Windows.Forms.Button();
+            this._wall = new System.Windows.Forms.Button();
+            this._rescue = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // _start
             // 
-            this.button1.Location = new System.Drawing.Point(123, 183);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "開始";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this._start.Location = new System.Drawing.Point(123, 183);
+            this._start.Name = "_start";
+            this._start.Size = new System.Drawing.Size(75, 23);
+            this._start.TabIndex = 0;
+            this._start.Text = "開始";
+            this._start.UseVisualStyleBackColor = true;
+            this._start.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // _sword
             // 
-            this.button2.Location = new System.Drawing.Point(17, 211);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "劍兵";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this._sword.Location = new System.Drawing.Point(17, 211);
+            this._sword.Name = "_sword";
+            this._sword.Size = new System.Drawing.Size(75, 23);
+            this._sword.TabIndex = 1;
+            this._sword.Text = "劍兵";
+            this._sword.UseVisualStyleBackColor = true;
+            this._sword.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // _arrow
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(98, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "弓兵";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this._arrow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._arrow.Location = new System.Drawing.Point(98, 212);
+            this._arrow.Name = "_arrow";
+            this._arrow.Size = new System.Drawing.Size(75, 23);
+            this._arrow.TabIndex = 2;
+            this._arrow.Text = "弓兵";
+            this._arrow.UseVisualStyleBackColor = true;
+            this._arrow.Click += new System.EventHandler(this.button3_Click);
             // 
             // gameTimer
             // 
@@ -87,64 +88,76 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.TabStop = false;
             // 
-            // button4
+            // _shield
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(179, 212);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "盾牌";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this._shield.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._shield.Location = new System.Drawing.Point(179, 212);
+            this._shield.Name = "_shield";
+            this._shield.Size = new System.Drawing.Size(75, 23);
+            this._shield.TabIndex = 4;
+            this._shield.Text = "盾牌";
+            this._shield.UseVisualStyleBackColor = true;
+            this._shield.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // _rocket
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button5.Location = new System.Drawing.Point(422, 211);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "火箭";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this._rocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._rocket.Location = new System.Drawing.Point(422, 211);
+            this._rocket.Name = "_rocket";
+            this._rocket.Size = new System.Drawing.Size(75, 23);
+            this._rocket.TabIndex = 5;
+            this._rocket.Text = "火箭";
+            this._rocket.UseVisualStyleBackColor = true;
+            this._rocket.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // _hatchet
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.Location = new System.Drawing.Point(260, 211);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "斧手";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this._hatchet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._hatchet.Location = new System.Drawing.Point(260, 211);
+            this._hatchet.Name = "_hatchet";
+            this._hatchet.Size = new System.Drawing.Size(75, 23);
+            this._hatchet.TabIndex = 6;
+            this._hatchet.Text = "斧手";
+            this._hatchet.UseVisualStyleBackColor = true;
+            this._hatchet.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // _wall
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button7.Location = new System.Drawing.Point(341, 211);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "鐵壁";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this._wall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._wall.Location = new System.Drawing.Point(341, 211);
+            this._wall.Name = "_wall";
+            this._wall.Size = new System.Drawing.Size(75, 23);
+            this._wall.TabIndex = 7;
+            this._wall.Text = "鐵壁";
+            this._wall.UseVisualStyleBackColor = true;
+            this._wall.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // _rescue
+            // 
+            this._rescue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._rescue.Location = new System.Drawing.Point(503, 211);
+            this._rescue.Name = "_rescue";
+            this._rescue.Size = new System.Drawing.Size(75, 23);
+            this._rescue.TabIndex = 8;
+            this._rescue.Text = "醫護";
+            this._rescue.UseVisualStyleBackColor = true;
+            this._rescue.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(579, 253);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(588, 253);
+            this.Controls.Add(this._rescue);
+            this.Controls.Add(this._wall);
+            this.Controls.Add(this._hatchet);
+            this.Controls.Add(this._rocket);
+            this.Controls.Add(this._shield);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this._arrow);
+            this.Controls.Add(this._sword);
+            this.Controls.Add(this._start);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -155,15 +168,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button _start;
+        private System.Windows.Forms.Button _sword;
+        private System.Windows.Forms.Button _arrow;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button _shield;
+        private System.Windows.Forms.Button _rocket;
+        private System.Windows.Forms.Button _hatchet;
+        private System.Windows.Forms.Button _wall;
+        private System.Windows.Forms.Button _rescue;
     }
 }
 

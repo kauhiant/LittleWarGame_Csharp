@@ -10,7 +10,7 @@ namespace LittleWarGame
     {
         public Hatchet()
         {
-            myStatus = Const.imageList[Const.Warrior.Sword];
+            myStatus = Const.imageList[Const.Warrior.Hatchet];
             myRealStatus = myStatus[Const.Part.A];
 
             setSpeed(8);

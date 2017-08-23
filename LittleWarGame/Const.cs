@@ -15,9 +15,10 @@ namespace LittleWarGame
             static public int Sword = 1;
             static public int Arrow = 2;
             static public int Shield = 3;
-            static public int Rocket = 4;
-            static public int Hatchet = 5;
-            static public int Wall = 6;
+            static public int Hatchet = 4;
+            static public int Wall = 5;
+            static public int Rocket = 6;
+            static public int Rescue = 7;
         }
         static public class Part
         {
@@ -46,10 +47,11 @@ namespace LittleWarGame
         static public int RocketCD = 50;
         static public int HatchetCD = 30;
         static public int WallCD = 50;
+        static public int RescueCD = 30;
 
         static public void ImageListInit()
         {
-            int sizeOfWarriors = 5;
+            int sizeOfWarriors = 8;
 
             imageList = new List<List<List<Image>>>();
             for(int c=0; c<sizeOfWarriors; ++c)
@@ -83,6 +85,17 @@ namespace LittleWarGame
 
             imageList[Warrior.Rocket][Part.A][Status.move] = Image.FromFile(@"./img/Rocket-L.png");
             imageList[Warrior.Rocket][Part.B][Status.move] = Image.FromFile(@"./img/Rocket-R.png");
+
+            imageList[Warrior.Wall][Part.A][Status.move] = Image.FromFile(@"./img/Wall-L.png");
+            imageList[Warrior.Wall][Part.B][Status.move] = Image.FromFile(@"./img/Wall-R.png");
+
+            imageList[Warrior.Hatchet][Part.A][Status.move] = Image.FromFile(@"./img/Hatchet-L0.png");
+            imageList[Warrior.Hatchet][Part.B][Status.move] = Image.FromFile(@"./img/Hatchet-R0.png");
+            imageList[Warrior.Hatchet][Part.A][Status.attack] = Image.FromFile(@"./img/Hatchet-L1.png");
+            imageList[Warrior.Hatchet][Part.B][Status.attack] = Image.FromFile(@"./img/Hatchet-R1.png");
+
+            imageList[Warrior.Rescue][Part.A][Status.move] = Image.FromFile(@"./img/Rescue.png");
+            imageList[Warrior.Rescue][Part.B][Status.move] = Image.FromFile(@"./img/Rescue.png");
 
         }
     }

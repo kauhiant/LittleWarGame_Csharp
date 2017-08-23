@@ -14,6 +14,7 @@ namespace LittleWarGame
 
         protected int speed;
         protected int HP;
+        protected int HPupper;
         protected int power;
         protected int attackDistance;
 
@@ -26,6 +27,7 @@ namespace LittleWarGame
         {
             this.speed = 0;
             this.HP = 0;
+            this.HPupper = 0;
             this.power = 0;
             this.attackDistance = 0;
 
@@ -48,6 +50,7 @@ namespace LittleWarGame
         {
             if (val < 0) val = 0;
             HP = val;
+            HPupper = val;
         }
 
         protected void setPower(int val)
@@ -118,6 +121,12 @@ namespace LittleWarGame
             HP -= other.getPower();
             if (HP <= 0) 
                 this.beKill();
+        }
+        public void addHP(int value)
+        {
+            HP += value;
+            if (HP > HPupper)
+                HP = HPupper;
         }
         
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)

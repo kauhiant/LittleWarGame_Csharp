@@ -11,7 +11,7 @@ namespace LittleWarGame
         private int energy = 100;
         public Wall()
         {
-            myStatus = Const.imageList[Const.Warrior.Shield];
+            myStatus = Const.imageList[Const.Warrior.Wall];
             myRealStatus = myStatus[Const.Part.A];
 
             setSpeed(10);

@@ -61,7 +61,8 @@ namespace LittleWarGame
 
         public void helpTo(Warriors we)
         {
-
+            for (int i = 0; i < size(); ++i)
+                this.group[i].helpTo(we.frontLineGroup()[0]);
         }
 
 

@@ -115,5 +115,20 @@ namespace LittleWarGame
             return false;
         }
 
+        public bool addRescue()
+        {
+            if (energyBar.getValue() >= Const.RescueCD)
+            {
+                if (isPlayer)
+                    mainLine.BFieldPushWarrior(new Rescue());
+                else
+                    mainLine.AFieldPushWarrior(new Rescue());
+
+                addEnergy(-Const.RescueCD);
+                return true;
+            }
+            return false;
+        }
+
     }
 }

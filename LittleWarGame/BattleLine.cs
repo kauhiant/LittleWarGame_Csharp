@@ -45,7 +45,8 @@ namespace LittleWarGame
                 A.killDeadedWarrior();
                 B.killDeadedWarrior();
                 //輔助
-                
+                A.helpTo(A);
+                B.helpTo(B);
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {
