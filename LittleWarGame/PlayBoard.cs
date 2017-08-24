@@ -116,7 +116,7 @@ namespace LittleWarGame
                 if (isPlayer)
                     mainLine.BFieldPushWarrior(new Wall());
                 else
-                    mainLine.AFieldPushWarrior(new Warrior());
+                    mainLine.AFieldPushWarrior(new Wall());
 
                 addEnergy(-Const.WallCD);
                 click.Play();

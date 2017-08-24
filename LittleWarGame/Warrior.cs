@@ -108,7 +108,7 @@ namespace LittleWarGame
 
             if (this.distance(they.frontLineValue()) <= this.getAttackDistance())
             {
-                myPictureBox.Image = myRealStatus[Const.Status.attack];
+                changeStatusTo(Const.Status.attack);
                 they.frontLineGroup()[0].beAttackFrom(this);
                 _attack.Play();
             }
@@ -163,7 +163,7 @@ namespace LittleWarGame
             }
         }
 //chane image
-        private void changeStatusTo(int status)
+        protected void changeStatusTo(int status)
         {
             myPictureBox.Image = myRealStatus[status];
         }

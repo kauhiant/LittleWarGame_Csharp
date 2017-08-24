@@ -78,17 +78,23 @@ namespace LittleWarGame
                 mainLine.nextStep();
                 if(AIDirect == true)
                 {
-                    AINextIndex = rand.Next(1, 101);
+                    AINextIndex = rand.Next(0, 200);
                     AIDirect = false;
                 }
                 else
                 {
-                    if (AINextIndex < 100)
+                    if (AINextIndex < 30)
                         AIDirect = AI.addSword();
                     else if (AINextIndex < 60)
                         AIDirect = AI.addArrow();
                     else if (AINextIndex < 90)
                         AIDirect = AI.addShield();
+                    else if (AINextIndex < 120)
+                        AIDirect = AI.addHatchet();
+                    else if (AINextIndex < 150)
+                        AIDirect = AI.addRescue();
+                    else if (AINextIndex < 180)
+                        AIDirect = AI.addWall();
                     else
                         AIDirect = AI.addRocket();
                 }
