@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Media;
 
 namespace LittleWarGame
 {
     class Warrior:Point
     {
+        private SoundPlayer _attack = new SoundPlayer();
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
@@ -32,6 +34,9 @@ namespace LittleWarGame
 
             //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
+
+            //audio
+            _attack.SoundLocation = @"./audio/attack.wav";
         }
 //get functions
         public int getSpeed() { return speed; }
@@ -105,6 +110,7 @@ namespace LittleWarGame
             {
                 myPictureBox.Image = myRealStatus[Const.Status.attack];
                 they.frontLineGroup()[0].beAttackFrom(this);
+                _attack.Play();
             }
         }
 //be attack from warrior
