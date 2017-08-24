@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Media;
 
 namespace LittleWarGame
 {
     static class Const
     {
+        static public class Sound
+        {
+            static public SoundPlayer _click = new SoundPlayer(@"./audio/click.wav");
+            static public SoundPlayer _attack = new SoundPlayer(@"./audio/attack.wav");
+        }
+
         static public class Warrior
         {
             static public int Castle = 0;

@@ -45,9 +45,6 @@ namespace LittleWarGame
             _rocket.Text += Const.RocketCD.ToString();
             _wall.Text += Const.WallCD.ToString();
         }
-        private void show(ref Warrior obj1,ref Warrior obj2)
-        {
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {

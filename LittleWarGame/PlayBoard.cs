@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Media;
 
 namespace LittleWarGame
 {
     class PlayBoard
     {
-        private SoundPlayer click = new SoundPlayer();
         private EnergyBar energyBar;
 
         private bool isPlayer;
@@ -20,8 +18,6 @@ namespace LittleWarGame
             this.energyBar = energyBar;
             this.isPlayer = isPlayer;
             this.mainLine = mainLine;
-
-            click.SoundLocation = @"./audio/click.wav";
         }
 
         public void addEnergy(int value)
@@ -39,7 +35,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Sword());
 
                 addEnergy(-Const.SwordCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;    
@@ -55,7 +51,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Arrow());
 
                 addEnergy(-Const.ArrowCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -71,7 +67,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Shield());
 
                 addEnergy(-Const.ShieldCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -87,7 +83,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Rocket());
 
                 addEnergy(-Const.RocketCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -103,7 +99,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Hatchet());
 
                 addEnergy(-Const.HatchetCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -119,7 +115,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Wall());
 
                 addEnergy(-Const.WallCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -135,7 +131,7 @@ namespace LittleWarGame
                     mainLine.AFieldPushWarrior(new Rescue());
 
                 addEnergy(-Const.RescueCD);
-                click.Play();
+                Const.Sound._click.Play();
                 return true;
             }
             return false;

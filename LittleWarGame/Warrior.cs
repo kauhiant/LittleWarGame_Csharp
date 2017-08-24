@@ -10,7 +10,6 @@ namespace LittleWarGame
 {
     class Warrior:Point
     {
-        private SoundPlayer _attack = new SoundPlayer();
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
@@ -19,11 +18,10 @@ namespace LittleWarGame
         protected int HPupper;
         protected int power;
         protected int attackDistance;
-
-        protected int leftFix = Const.pictureWidth;
         
-        public System.Windows.Forms.Form mainForm;
-        public System.Windows.Forms.PictureBox myPictureBox;
+        protected System.Windows.Forms.Form mainForm;
+        protected int leftFix = Const.pictureWidth;
+        protected System.Windows.Forms.PictureBox myPictureBox;
 
         public Warrior()
         {
@@ -34,9 +32,7 @@ namespace LittleWarGame
 
             //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
-
-            //audio
-            _attack.SoundLocation = @"./audio/attack.wav";
+            
         }
 //get functions
         public int getSpeed() { return speed; }
@@ -110,7 +106,7 @@ namespace LittleWarGame
             {
                 changeStatusTo(Const.Status.attack);
                 they.frontLineGroup()[0].beAttackFrom(this);
-                _attack.Play();
+                Const.Sound._attack.Play();
             }
         }
 //be attack from warrior
