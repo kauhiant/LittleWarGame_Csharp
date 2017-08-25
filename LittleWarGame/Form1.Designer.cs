@@ -40,6 +40,7 @@
             this._hatchet = new System.Windows.Forms.Button();
             this._wall = new System.Windows.Forms.Button();
             this._rescue = new System.Windows.Forms.Button();
+            this._restart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _start
@@ -143,12 +144,23 @@
             this._rescue.UseVisualStyleBackColor = true;
             this._rescue.Click += new System.EventHandler(this.button8_Click);
             // 
+            // _restart
+            // 
+            this._restart.Location = new System.Drawing.Point(204, 181);
+            this._restart.Name = "_restart";
+            this._restart.Size = new System.Drawing.Size(75, 25);
+            this._restart.TabIndex = 9;
+            this._restart.Text = "重新開始";
+            this._restart.UseVisualStyleBackColor = true;
+            this._restart.Click += new System.EventHandler(this._restart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(588, 253);
+            this.Controls.Add(this._restart);
             this.Controls.Add(this._rescue);
             this.Controls.Add(this._wall);
             this.Controls.Add(this._hatchet);
@@ -159,6 +171,7 @@
             this.Controls.Add(this._sword);
             this.Controls.Add(this._start);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -178,6 +191,7 @@
         private System.Windows.Forms.Button _hatchet;
         private System.Windows.Forms.Button _wall;
         private System.Windows.Forms.Button _rescue;
+        private System.Windows.Forms.Button _restart;
     }
 }
 

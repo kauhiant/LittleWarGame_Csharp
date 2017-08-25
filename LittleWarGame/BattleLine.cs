@@ -67,5 +67,10 @@ namespace LittleWarGame
                 B.add(obj);
         }
 
+        public bool isGameOver()
+        {
+            return haveWinner;
+        }
+
     }
 }

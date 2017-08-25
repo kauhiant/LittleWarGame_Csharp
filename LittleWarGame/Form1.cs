@@ -44,6 +44,9 @@ namespace LittleWarGame
             _rescue.Text += Const.RescueCD.ToString();
             _rocket.Text += Const.RocketCD.ToString();
             _wall.Text += Const.WallCD.ToString();
+
+              _restart.Hide();
+            Program.isRestart = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,6 +76,7 @@ namespace LittleWarGame
                 AI.addEnergy(1);
                 
                 mainLine.nextStep();
+
                 if(AIDirect == true)
                 {
                     AINextIndex = rand.Next(0, 200);
@@ -95,6 +99,12 @@ namespace LittleWarGame
                     else
                         AIDirect = AI.addRocket();
                 }
+            }
+            if (mainLine.isGameOver())
+            {
+                gameTimer.Enabled = false;
+                GameHaveWinner = true;
+                _restart.Show();
             }
         }
 
@@ -126,6 +136,12 @@ namespace LittleWarGame
         {
             if (!GameHaveWinner)
                 Player.addRescue();
+        }
+
+        private void _restart_Click(object sender, EventArgs e)
+        {
+            Program.isRestart = true;
+            this.Close();
         }
     }
 }
