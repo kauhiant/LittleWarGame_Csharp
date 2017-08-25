@@ -170,6 +170,7 @@
             this.Controls.Add(this._arrow);
             this.Controls.Add(this._sword);
             this.Controls.Add(this._start);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
