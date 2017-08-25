@@ -24,6 +24,7 @@ namespace LittleWarGame
         {
             energyBar.addEnergy(value);
         }
+        public int getEnergy() { return energyBar.getValue(); }
 
         public bool addSword()
         {

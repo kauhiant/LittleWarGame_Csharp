@@ -79,7 +79,7 @@ namespace LittleWarGame
 
                 if(AIDirect == true)
                 {
-                    AINextIndex = rand.Next(0, 200);
+                    AINextIndex = rand.Next(0, 180);
                     AIDirect = false;
                 }
                 else
@@ -92,12 +92,15 @@ namespace LittleWarGame
                         AIDirect = AI.addShield();
                     else if (AINextIndex < 120)
                         AIDirect = AI.addHatchet();
-                    else if (AINextIndex < 150)
-                        AIDirect = AI.addRescue();
-                    else if (AINextIndex < 180)
+                    else if (AINextIndex < 140)
+                        AIDirect = AI.addRocket();
+                    else if (AINextIndex < 160)
                         AIDirect = AI.addWall();
                     else
-                        AIDirect = AI.addRocket();
+                        AIDirect = AI.addRescue();
+
+                    if (AI.getEnergy() > 40)
+                        AIDirect = false;
                 }
             }
             if (mainLine.isGameOver())
