@@ -54,7 +54,7 @@ namespace LittleWarGame
         static public int RocketCD = 50;
         static public int HatchetCD = 30;
         static public int WallCD = 50;
-        static public int RescueCD = 30;
+        static public int RescueCD = 25;
 
         static public void ImageListInit()
         {

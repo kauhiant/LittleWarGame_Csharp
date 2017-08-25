@@ -8,6 +8,7 @@ namespace LittleWarGame
 {
     class Rescue:Warrior
     {
+        private Warrior lastHelpWarrior = null;
         public Rescue()
         {
             myStatus = Const.imageList[Const.Warrior.Rescue];
@@ -23,9 +24,16 @@ namespace LittleWarGame
         }
         public override void helpTo(Warriors we)
         {
-            if(this.distance(we.frontLineValue()) < 10)
+            lastHelpWarrior = we.frontLineGroup()[0];
+            if (this.distance(we.frontLineValue()) < 10)
                 we.frontLineGroup()[0].addHP(20);
+            
+
         }
-        
+        public override void moveTo(Point target)
+        {
+            if(lastHelpWarrior != null && lastHelpWarrior.getValue() != this.getValue() )
+                base.moveTo(target);
+        }
     }
 }
