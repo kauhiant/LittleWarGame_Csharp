@@ -92,7 +92,6 @@ namespace LittleWarGame
                     front.Add(group[i]);
                 }
             }
-            mainForm.Text = front.Count.ToString();
             return front;
         }
 
