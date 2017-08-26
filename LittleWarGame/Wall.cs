@@ -29,7 +29,6 @@ namespace LittleWarGame
 
             if (target.getValue() < this.value) //target in your left
             {
-                myPictureBox.Image = myRealStatus[Const.Status.move];
                 this.value -= speed;
                 this.energy -= this.speed;
 
@@ -38,15 +37,16 @@ namespace LittleWarGame
             }
             else if (target.getValue() > this.value)    //target in your right
             {
-                myPictureBox.Image = myRealStatus[Const.Status.move];
                 this.value += speed;
                 this.energy -= this.speed;
 
                 if (target.getValue() < this.value)
                     this.value = target.getValue();
             }
-
+            
+            changeStatusTo(Const.Status.move);
             myPictureBox.Left = value - leftFix;
+            HP.fixPositionLeft(value - leftFix);
         }
     }
 }

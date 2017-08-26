@@ -14,29 +14,28 @@ namespace LittleWarGame
         protected List<Image> myRealStatus;
 
         protected int speed;
-        protected int HP;
-        protected int HPupper;
         protected int power;
         protected int attackDistance;
         
         protected System.Windows.Forms.Form mainForm;
+
         protected int leftFix = Const.pictureWidth;
+        protected ValueBar HP;
         protected System.Windows.Forms.PictureBox myPictureBox;
 
         public Warrior()
         {
             this.speed = 0;
-            this.HP = 0;
             this.power = 0;
             this.attackDistance = 0;
 
             //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
-            
         }
 //get functions
+        public bool isDead() { return HP.isZero(); }
         public int getSpeed() { return speed; }
-        public int getHP() { return HP; }
+        public int getHP() { return HP.getValue(); }
         public int getPower() { return power; }
         public int getAttackDistance() { return attackDistance; }
 //set functions just be used by subClass constructor 
@@ -47,9 +46,7 @@ namespace LittleWarGame
         }
         protected void setHP(int val)
         {
-            if (val < 0) val = 0;
-            HP = val;
-            HPupper = val;
+            HP = new ValueBar(val,val);
         }
         protected void setPower(int val)
         {
@@ -86,15 +83,17 @@ namespace LittleWarGame
             //change your picture status and move it
             changeStatusTo(Const.Status.move);
             myPictureBox.Left = value - leftFix;
+            HP.fixPositionLeft(value - leftFix);
         }
 //beKill
         public void beKill()
         {
-            HP = 0;
+            HP.reset();
             power = 0;
             attackDistance = 0;
             speed = 0;
             mainForm.Controls.Remove(myPictureBox);
+            mainForm.Controls.Remove(HP.getBarPictureBox());
         }
 //attack to warriors
         public virtual void attackTo(Warriors they)
@@ -112,16 +111,14 @@ namespace LittleWarGame
 //be attack from warrior
         public virtual void beAttackFrom(Warrior other)
         {
-            this.HP -= other.getPower();
-            if (this.HP <= 0) 
+            this.HP.addValue(-other.getPower());
+            if (this.HP.isZero()) 
                 this.beKill();
         }
 //add HP
         public void addHP(int value)
         {
-            this.HP += value;
-            if (this.HP > HPupper)
-                this.HP = HPupper;
+            this.HP.addValue(value);
         }
 //help to partner
         public virtual void helpTo(Warriors we)
@@ -135,14 +132,17 @@ namespace LittleWarGame
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
             myPictureBox.Left = value - leftFix;
+            HP.fixPositionLeft(value - leftFix);
 
             this.mainForm = mainForm;
             this.mainForm.Controls.Add(myPictureBox);
+            this.mainForm.Controls.Add(HP.getBarPictureBox());
         }
 //set pictureBox location
         public void setPictureBoxTop(int y)
         {
             myPictureBox.Top = y;
+            HP.setTop(y-10);
         }
 //let pictureBox's left change to right
         public void setReverse()

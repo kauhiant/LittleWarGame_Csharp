@@ -101,7 +101,7 @@ namespace LittleWarGame
         {
             for (int i = 0; i < group.Count(); ++i)
             {
-                if (group[i].getHP() == 0)
+                if (group[i].isDead())
                 {
                     if (i == 0) {
                         for (int k = 0; k < group.Count(); ++k)
