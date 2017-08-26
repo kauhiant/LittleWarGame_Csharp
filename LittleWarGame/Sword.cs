@@ -14,7 +14,7 @@ namespace LittleWarGame
             myStatus = Const.imageList[Const.Warrior.Sword];
             myRealStatus = myStatus[Const.Part.A];
 
-            setSpeed(10);
+            setSpeed(15);
             setHP(100);
             setPower(10);
             //setAttackDistance(0);

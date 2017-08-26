@@ -28,6 +28,7 @@ namespace LittleWarGame
             A.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
             B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
 
+            B.At(0).changeStatusTo(0);
             nextStep();
         }
 

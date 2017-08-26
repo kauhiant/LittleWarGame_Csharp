@@ -62,7 +62,7 @@ namespace LittleWarGame
 //move
         public virtual void moveTo(Point target)
         {
-            if (this.distance(target) <= this.attackDistance)   
+            if (this.distance(target) <= this.attackDistance || this.speed == 0)   
                 return;//if target in your attack range , you shouldn't move
             
             if (target.getValue() < this.value) //target in your left
@@ -159,7 +159,7 @@ namespace LittleWarGame
             }
         }
 //chane image
-        protected void changeStatusTo(int status)
+        public void changeStatusTo(int status)
         {
             myPictureBox.Image = myRealStatus[status];
         }

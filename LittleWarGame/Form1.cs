@@ -29,7 +29,7 @@ namespace LittleWarGame
             Const.ImageListInit();
             myEnergyBar = new EnergyBar(10);
             aiEnergyBar = new EnergyBar(10);
-            mainLine = new BattleLine(1,1,this);
+            mainLine = new BattleLine(2,2,this);
             AI = new PlayBoard(aiEnergyBar , ref mainLine);
             Player = new PlayBoard(myEnergyBar , ref mainLine, true);
             myEnergyBar.setLabel(ref textBox1);

@@ -27,8 +27,6 @@ namespace LittleWarGame
             lastHelpWarrior = we.frontLineGroup()[0];
             if (this.distance(we.frontLineValue()) < 10)
                 we.frontLineGroup()[0].addHP(20);
-            
-
         }
         public override void moveTo(Point target)
         {

@@ -61,49 +61,69 @@ namespace LittleWarGame
             int sizeOfWarriors = 8;
 
             imageList = new List<List<List<Image>>>();
-            for(int c=0; c<sizeOfWarriors; ++c)
+            for (int c = 0; c < sizeOfWarriors; ++c)
             {
                 imageList.Add(new List<List<Image>>());
-                for(int i=0; i<2; ++i)
+                for (int i = 0; i < 2; ++i)
                 {
                     imageList[c].Add(new List<Image>());
-                    for(int j=0; j<2; ++j)
-                    {
-                        imageList[c][i].Add(null);
-                    }
                 }
             }
 
-            imageList[Warrior.Castle][Part.A][Status.move] = Image.FromFile(@"./img/castle-L.png");
-            imageList[Warrior.Castle][Part.B][Status.move] = Image.FromFile(@"./img/castle-R.png");
 
-            imageList[Warrior.Sword][Part.A][Status.move] = Image.FromFile(@"./img/Sword-L0.png");
-            imageList[Warrior.Sword][Part.B][Status.move] = Image.FromFile(@"./img/Sword-R0.png");
-            imageList[Warrior.Sword][Part.A][Status.attack] = Image.FromFile(@"./img/Sword-L1.png");
-            imageList[Warrior.Sword][Part.B][Status.attack] = Image.FromFile(@"./img/Sword-R1.png");
 
-            imageList[Warrior.Arrow][Part.A][Status.move] = Image.FromFile(@"./img/Arrow-L0.png");
-            imageList[Warrior.Arrow][Part.B][Status.move] = Image.FromFile(@"./img/Arrow-R0.png");
-            imageList[Warrior.Arrow][Part.A][Status.attack] = Image.FromFile(@"./img/Arrow-L1.png");
-            imageList[Warrior.Arrow][Part.B][Status.attack] = Image.FromFile(@"./img/Arrow-R1.png");
+            imageList[Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L.png"));
+            imageList[Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L1.png"));
+            imageList[Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L2.png"));
+            imageList[Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L3.png"));
+            imageList[Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L4.png"));
 
-            imageList[Warrior.Shield][Part.A][Status.move] = Image.FromFile(@"./img/Shield-L.png");
-            imageList[Warrior.Shield][Part.B][Status.move] = Image.FromFile(@"./img/Shield-R.png");
+            imageList[Warrior.Castle][Part.B].Add(Image.FromFile(@"./img/castle-R.png"));
+            imageList[Warrior.Castle][Part.B].Add(Image.FromFile(@"./img/castle-R1.png"));
+            imageList[Warrior.Castle][Part.B].Add(Image.FromFile(@"./img/castle-R2.png"));
+            imageList[Warrior.Castle][Part.B].Add(Image.FromFile(@"./img/castle-R3.png"));
+            imageList[Warrior.Castle][Part.B].Add(Image.FromFile(@"./img/castle-R4.png"));
 
-            imageList[Warrior.Rocket][Part.A][Status.move] = Image.FromFile(@"./img/Rocket-L.png");
-            imageList[Warrior.Rocket][Part.B][Status.move] = Image.FromFile(@"./img/Rocket-R.png");
 
-            imageList[Warrior.Wall][Part.A][Status.move] = Image.FromFile(@"./img/Wall-L.png");
-            imageList[Warrior.Wall][Part.B][Status.move] = Image.FromFile(@"./img/Wall-R.png");
+            imageList[Warrior.Sword][Part.A].Add(Image.FromFile(@"./img/Sword-L0.png"));
+            imageList[Warrior.Sword][Part.A].Add(Image.FromFile(@"./img/Sword-L1.png"));
+            imageList[Warrior.Sword][Part.B].Add(Image.FromFile(@"./img/Sword-R0.png"));
+            imageList[Warrior.Sword][Part.B].Add(Image.FromFile(@"./img/Sword-R1.png"));
 
-            imageList[Warrior.Hatchet][Part.A][Status.move] = Image.FromFile(@"./img/Hatchet-L0.png");
-            imageList[Warrior.Hatchet][Part.B][Status.move] = Image.FromFile(@"./img/Hatchet-R0.png");
-            imageList[Warrior.Hatchet][Part.A][Status.attack] = Image.FromFile(@"./img/Hatchet-L1.png");
-            imageList[Warrior.Hatchet][Part.B][Status.attack] = Image.FromFile(@"./img/Hatchet-R1.png");
+            imageList[Warrior.Arrow][Part.A].Add(Image.FromFile(@"./img/Arrow-L0.png"));
+            imageList[Warrior.Arrow][Part.A].Add(Image.FromFile(@"./img/Arrow-L1.png"));
+            imageList[Warrior.Arrow][Part.B].Add(Image.FromFile(@"./img/Arrow-R0.png"));
+            imageList[Warrior.Arrow][Part.B].Add(Image.FromFile(@"./img/Arrow-R1.png"));
 
-            imageList[Warrior.Rescue][Part.A][Status.move] = Image.FromFile(@"./img/Rescue.png");
-            imageList[Warrior.Rescue][Part.B][Status.move] = Image.FromFile(@"./img/Rescue.png");
+            imageList[Warrior.Shield][Part.A].Add(Image.FromFile(@"./img/Shield-L.png"));
+            imageList[Warrior.Shield][Part.A].Add(null);
+            imageList[Warrior.Shield][Part.B].Add(Image.FromFile(@"./img/Shield-R.png"));
+            imageList[Warrior.Shield][Part.B].Add(null);
+
+            imageList[Warrior.Rocket][Part.A].Add(Image.FromFile(@"./img/Rocket-L.png"));
+            imageList[Warrior.Rocket][Part.A].Add(null);
+            imageList[Warrior.Rocket][Part.B].Add(Image.FromFile(@"./img/Rocket-R.png"));
+            imageList[Warrior.Rocket][Part.B].Add(null);
+
+            imageList[Warrior.Wall][Part.A].Add(Image.FromFile(@"./img/Wall-L.png"));
+            imageList[Warrior.Wall][Part.A].Add(null);
+            imageList[Warrior.Wall][Part.B].Add(Image.FromFile(@"./img/Wall-R.png"));
+            imageList[Warrior.Wall][Part.B].Add(null);
+
+            imageList[Warrior.Hatchet][Part.A].Add(Image.FromFile(@"./img/Hatchet-L0.png"));
+            imageList[Warrior.Hatchet][Part.A].Add(Image.FromFile(@"./img/Hatchet-L1.png"));
+            imageList[Warrior.Hatchet][Part.B].Add(Image.FromFile(@"./img/Hatchet-R0.png"));
+            imageList[Warrior.Hatchet][Part.B].Add(Image.FromFile(@"./img/Hatchet-R1.png"));
+
+            imageList[Warrior.Rescue][Part.A].Add(Image.FromFile(@"./img/Rescue.png"));
+            imageList[Warrior.Rescue][Part.A].Add(null);
+            imageList[Warrior.Rescue][Part.B].Add(Image.FromFile(@"./img/Rescue.png"));
+            imageList[Warrior.Rescue][Part.B].Add(null);
 
         }
+        
+
+
+        
     }
 }

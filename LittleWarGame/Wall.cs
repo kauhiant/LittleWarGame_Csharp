@@ -21,6 +21,7 @@ namespace LittleWarGame
 
             myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
+
         }
         public override void moveTo(Point target)
         {
