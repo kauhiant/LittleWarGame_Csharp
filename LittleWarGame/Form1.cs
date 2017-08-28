@@ -25,6 +25,9 @@ namespace LittleWarGame
         {
             rand = new Random();
 
+            this.DoubleBuffered = true;//圖形移動不閃爍
+           // this.Opacity = 0.7;//透明度
+
             InitializeComponent();
             Const.ImageListInit();
             myEnergyBar = new EnergyBar(10);
