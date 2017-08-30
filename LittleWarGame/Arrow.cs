@@ -17,7 +17,8 @@ namespace LittleWarGame
             setSpeed(5);
             setHP(50);
             setPower(10);
-            setAttackDistance(100);
+            setAttackDistance(80);
+
             myPictureBox.Image = myRealStatus[Const.Status.move];
             myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
         }

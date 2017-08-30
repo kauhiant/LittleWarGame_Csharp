@@ -14,7 +14,7 @@ namespace LittleWarGame
             myStatus = Const.imageList[Const.Warrior.Rescue];
             myRealStatus = myStatus[Const.Part.A];
             //setBonus(0);
-            setSpeed(10);
+            setSpeed(15);
             setHP(100);
             setPower(0);
             setAttackDistance(-1);
@@ -25,7 +25,7 @@ namespace LittleWarGame
         public override void helpTo(Warriors we)
         {
             lastHelpWarrior = we.frontLineGroup()[0];
-            if (this.distance(we.frontLineValue()) < 10)
+            if (this.distance(we.frontLineValue()) < 50)
                 we.frontLineGroup()[0].addHP(20);
         }
         public override void moveTo(Point target)

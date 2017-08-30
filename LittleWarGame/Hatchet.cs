@@ -13,9 +13,9 @@ namespace LittleWarGame
             myStatus = Const.imageList[Const.Warrior.Hatchet];
             myRealStatus = myStatus[Const.Part.A];
             setBonus(10);
-            setSpeed(8);
-            setHP(200);
-            setPower(50);
+            setSpeed(10);
+            setHP(150);
+            setPower(30);
             //setAttackDistance(0);
 
             myPictureBox.Image = myRealStatus[Const.Status.move];
