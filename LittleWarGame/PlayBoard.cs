@@ -19,7 +19,7 @@ namespace LittleWarGame
             this.isPlayer = isPlayer;
             this.mainLine = mainLine;
         }
-
+        
         public void addEnergy(int value)
         {
             energyBar.addEnergy(value);

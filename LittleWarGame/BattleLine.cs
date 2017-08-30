@@ -8,6 +8,11 @@ namespace LittleWarGame
 {
     class BattleLine
     {
+        private PlayBoard ABoard;
+        private PlayBoard BBoard;
+        private EnergyBar AEnergy;
+        private EnergyBar BEnergy;
+
         private bool haveWinner;
         private Point AField;
         private Point BField;
@@ -29,7 +34,7 @@ namespace LittleWarGame
             B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
 
             B.At(0).changeStatusTo(0);
-            nextStep();
+           // nextStep();
         }
 
         public void nextStep()
@@ -48,6 +53,9 @@ namespace LittleWarGame
                 //輔助
                 A.helpTo(A);
                 B.helpTo(B);
+                //殺敵獎勵
+                  ABoard.addEnergy(5);
+                  BBoard.addEnergy(10);
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {
@@ -64,7 +72,7 @@ namespace LittleWarGame
 
         public void BFieldPushWarrior(Warrior obj)
         {
-            if(!haveWinner)
+            if (!haveWinner)
                 B.add(obj);
         }
 
@@ -73,5 +81,14 @@ namespace LittleWarGame
             return haveWinner;
         }
 
+        public void linkPlayBoardA(PlayBoard A)
+        {
+            this.ABoard = A;
+        }
+
+        public void linkPlayBoardB(PlayBoard B)
+        {
+            this.BBoard = B;
+        }
     }
 }

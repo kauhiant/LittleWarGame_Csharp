@@ -129,7 +129,7 @@ namespace LittleWarGame
 //add pictureBox to mainForm
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
         {
-            //myPictureBox;
+            
 
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;

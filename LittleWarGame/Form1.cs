@@ -26,7 +26,7 @@ namespace LittleWarGame
             rand = new Random();
 
             this.DoubleBuffered = true;//圖形移動不閃爍
-           // this.Opacity = 0.7;//透明度
+            this.Opacity = 0.9;//透明度
 
             InitializeComponent();
             Const.ImageListInit();
@@ -35,6 +35,10 @@ namespace LittleWarGame
             mainLine = new BattleLine(2,2,this);
             AI = new PlayBoard(aiEnergyBar , ref mainLine);
             Player = new PlayBoard(myEnergyBar , ref mainLine, true);
+
+            mainLine.linkPlayBoardA(AI);
+            mainLine.linkPlayBoardB(Player);
+
             myEnergyBar.setLabel(ref textBox1);
         }
         
@@ -82,28 +86,26 @@ namespace LittleWarGame
 
                 if(AIDirect == true)
                 {
-                    AINextIndex = rand.Next(0, 180);
+                    AINextIndex = rand.Next(0, 200);
                     AIDirect = false;
                 }
                 else
                 {
-                    if (AINextIndex < 30)
+                    if (AINextIndex < 10)
                         AIDirect = AI.addSword();
-                    else if (AINextIndex < 60)
+                    else if (AINextIndex < 110)
                         AIDirect = AI.addArrow();
-                    else if (AINextIndex < 90)
-                        AIDirect = AI.addShield();
                     else if (AINextIndex < 120)
-                        AIDirect = AI.addHatchet();
+                        AIDirect = AI.addShield();
                     else if (AINextIndex < 140)
-                        AIDirect = AI.addRocket();
+                        AIDirect = AI.addHatchet();
                     else if (AINextIndex < 160)
+                        AIDirect = AI.addRocket();
+                    else if (AINextIndex < 180)
                         AIDirect = AI.addWall();
                     else
                         AIDirect = AI.addRescue();
-
-                    if (AI.getEnergy() > 40)
-                        AIDirect = false;
+                    
                 }
             }
             if (mainLine.isGameOver())
