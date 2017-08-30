@@ -11,6 +11,7 @@ namespace LittleWarGame
         public Rocket(){
             myStatus = Const.imageList[Const.Warrior.Rocket];
             myRealStatus = myStatus[Const.Part.A];
+            setBonus(25);
             setSpeed(50);
             setHP(100);
             setPower(500);
@@ -33,6 +34,7 @@ namespace LittleWarGame
                 }
                 Const.Sound._attack.Play();
                 this.beKill();
+                this.bonus = 0;
             }
         }
     }

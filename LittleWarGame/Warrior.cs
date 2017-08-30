@@ -13,6 +13,7 @@ namespace LittleWarGame
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
+        protected int bonus;
         protected int speed;
         protected int power;
         protected int attackDistance;
@@ -25,6 +26,7 @@ namespace LittleWarGame
 
         public Warrior()
         {
+            this.bonus = 0;
             this.speed = 0;
             this.power = 0;
             this.attackDistance = 0;
@@ -38,7 +40,13 @@ namespace LittleWarGame
         public int getHP() { return HP.getValue(); }
         public int getPower() { return power; }
         public int getAttackDistance() { return attackDistance; }
+        public int getBonus() { return bonus;  }
 //set functions just be used by subClass constructor 
+        protected void setBonus(int val)
+        {
+            if (val < 0) val = 0;
+            this.bonus = val;
+        }
         protected void setSpeed(int val)
         {
             if (val < 0) val = 0;
@@ -129,8 +137,6 @@ namespace LittleWarGame
 //add pictureBox to mainForm
         public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
         {
-            
-
             myPictureBox.Width = Const.pictureWidth;
             myPictureBox.BackColor = Color.Transparent;
             myPictureBox.Left = value - leftFix;

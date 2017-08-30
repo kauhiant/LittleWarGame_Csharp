@@ -10,8 +10,6 @@ namespace LittleWarGame
     {
         private PlayBoard ABoard;
         private PlayBoard BBoard;
-        private EnergyBar AEnergy;
-        private EnergyBar BEnergy;
 
         private bool haveWinner;
         private Point AField;
@@ -34,28 +32,28 @@ namespace LittleWarGame
             B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
 
             B.At(0).changeStatusTo(0);
-           // nextStep();
         }
 
         public void nextStep()
         {
             if (!haveWinner)
             {
+                int bonus;
+
                 //移動到對方的最前線
                 A.moveTo(B.frontLineValue());
                 B.moveTo(A.frontLineValue());
                 //攻擊對方的最前線
                 A.attackTo(B);
                 B.attackTo(A);
-                //把陣亡的戰士移除
-                A.killDeadedWarrior();
-                B.killDeadedWarrior();
+                //把陣亡的戰士移除//殺敵獎勵
+                bonus =  A.killDeadedWarrior();
+                BBoard.addEnergy(bonus);
+                bonus =  B.killDeadedWarrior();
+                ABoard.addEnergy(bonus);
                 //輔助
                 A.helpTo(A);
                 B.helpTo(B);
-                //殺敵獎勵
-                  ABoard.addEnergy(5);
-                  BBoard.addEnergy(10);
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {

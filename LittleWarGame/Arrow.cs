@@ -13,6 +13,7 @@ namespace LittleWarGame
         {
             myStatus = Const.imageList[Const.Warrior.Arrow];
             myRealStatus = myStatus[Const.Part.A];
+            setBonus(5);
             setSpeed(5);
             setHP(50);
             setPower(10);

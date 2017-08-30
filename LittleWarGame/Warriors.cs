@@ -96,8 +96,9 @@ namespace LittleWarGame
         }
 
         //把死掉的移除掉
-        public void killDeadedWarrior()
+        public int killDeadedWarrior()
         {
+            int bonus = 0;
             for (int i = 0; i < group.Count(); ++i)
             {
                 if (group[i].isDead())
@@ -111,10 +112,12 @@ namespace LittleWarGame
                         break;
                     } 
                     group[i].beKill();
+                    bonus += group[i].getBonus();
                     group.RemoveAt(i);
                     --i;
                 }
             }
+            return bonus;
         }
 
         public bool isLose()
