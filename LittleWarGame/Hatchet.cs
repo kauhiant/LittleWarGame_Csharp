@@ -30,7 +30,10 @@ namespace LittleWarGame
             {
                 myPictureBox.Image = myRealStatus[Const.Status.attack];
                 Const.Sound._attack.Play();
-                attackGroup(they.frontLineGroup());
+                if (they.frontLineGroup()[0].isShield())
+                    they.frontLineGroup()[0].beAttackFrom(this);
+                else
+                    attackGroup(they.frontLineGroup());
             }
         }
         private void attackGroup(List<Warrior> group)

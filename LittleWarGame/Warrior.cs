@@ -13,6 +13,7 @@ namespace LittleWarGame
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
+        protected bool shield;
         protected int bonus;
         protected int speed;
         protected int power;
@@ -26,6 +27,7 @@ namespace LittleWarGame
 
         public Warrior()
         {
+            this.shield = false;
             this.bonus = 0;
             this.speed = 0;
             this.power = 0;
@@ -35,6 +37,7 @@ namespace LittleWarGame
             this.myPictureBox = new System.Windows.Forms.PictureBox();
         }
 //get functions
+        public bool isShield() { return shield; }
         public bool isDead() { return HP.isZero(); }
         public int getSpeed() { return speed; }
         public int getHP() { return HP.getValue(); }

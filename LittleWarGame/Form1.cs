@@ -30,8 +30,8 @@ namespace LittleWarGame
 
             InitializeComponent();
             Const.ImageListInit();
-            myEnergyBar = new EnergyBar(10);
-            aiEnergyBar = new EnergyBar(10);
+            myEnergyBar = new EnergyBar();
+            aiEnergyBar = new EnergyBar();
             mainLine = new BattleLine(2,2,this);
             AI = new PlayBoard(aiEnergyBar , ref mainLine);
             Player = new PlayBoard(myEnergyBar , ref mainLine, true);
@@ -39,7 +39,7 @@ namespace LittleWarGame
             mainLine.linkPlayBoardA(AI);
             mainLine.linkPlayBoardB(Player);
 
-            myEnergyBar.setLabel(ref textBox1);
+            myEnergyBar.setLabel(ref _energyBar);
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -60,6 +60,8 @@ namespace LittleWarGame
         {
             gameTimer.Enabled = true;
             _start.Hide();
+            myEnergyBar.addEnergy(10);
+            aiEnergyBar.addEnergy(10);
         }
 
         private void button2_Click(object sender, EventArgs e)

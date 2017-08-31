@@ -34,7 +34,7 @@
             this._sword = new System.Windows.Forms.Button();
             this._arrow = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._energyBar = new System.Windows.Forms.TextBox();
             this._shield = new System.Windows.Forms.Button();
             this._rocket = new System.Windows.Forms.Button();
             this._hatchet = new System.Windows.Forms.Button();
@@ -79,15 +79,15 @@
             this.gameTimer.Interval = 500;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
-            // textBox1
+            // _energyBar
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Green;
-            this.textBox1.Location = new System.Drawing.Point(17, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TabStop = false;
+            this._energyBar.BackColor = System.Drawing.Color.Green;
+            this._energyBar.Location = new System.Drawing.Point(17, 183);
+            this._energyBar.Name = "_energyBar";
+            this._energyBar.ReadOnly = true;
+            this._energyBar.Size = new System.Drawing.Size(100, 22);
+            this._energyBar.TabIndex = 3;
+            this._energyBar.TabStop = false;
             // 
             // _shield
             // 
@@ -166,7 +166,7 @@
             this.Controls.Add(this._hatchet);
             this.Controls.Add(this._rocket);
             this.Controls.Add(this._shield);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._energyBar);
             this.Controls.Add(this._arrow);
             this.Controls.Add(this._sword);
             this.Controls.Add(this._start);
@@ -186,7 +186,7 @@
         private System.Windows.Forms.Button _sword;
         private System.Windows.Forms.Button _arrow;
         private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _energyBar;
         private System.Windows.Forms.Button _shield;
         private System.Windows.Forms.Button _rocket;
         private System.Windows.Forms.Button _hatchet;

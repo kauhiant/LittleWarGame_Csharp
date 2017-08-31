@@ -12,6 +12,8 @@ namespace LittleWarGame
         {
             myStatus = Const.imageList[Const.Warrior.Shield];
             myRealStatus = myStatus[Const.Part.A];
+
+            this.shield = true;
             setBonus(5);
             setSpeed(6);
             setHP(500);

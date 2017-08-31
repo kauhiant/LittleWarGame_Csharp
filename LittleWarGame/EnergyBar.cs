@@ -12,7 +12,7 @@ namespace LittleWarGame
         private System.Windows.Forms.TextBox bar;
         private int value;
 
-        public EnergyBar(int value)
+        public EnergyBar(int value = 0)
         {
             bar = new System.Windows.Forms.TextBox();
             this.value = value;
