@@ -8,10 +8,17 @@ namespace LittleWarGame
 {
     class Warriors
     {
+        private Warriors enemy;
+
+        private Point shieldLine;
+        private Point rescueLine;
+        private Point baseLine;    //start point of this group
+        
         private bool Lose;
-        private System.Windows.Forms.Form mainForm;
         private bool isReverse;
-        private Point Field;    //start point of this group
+
+        private System.Windows.Forms.Form mainForm;
+        
         private List<Warrior> group;
 
         public Warriors(Point field , System.Windows.Forms.Form mainForm , bool isReverse=false)
@@ -19,19 +26,22 @@ namespace LittleWarGame
             this.Lose = false;
             this.mainForm = mainForm;
             this.isReverse = isReverse;
-            this.Field = field;
+            this.baseLine = field;
             this.group = new List<Warrior>();
+
+            this.shieldLine = baseLine;
+            this.rescueLine = baseLine;
         }
 
         public void add(Warrior obj)
         {
             if (!Lose)
             {
+                group.Add(obj);
                 if (isReverse)
                     obj.setReverse();
 
-                obj.setValue(Field.getValue());
-                group.Add(obj);
+                obj.setValue(baseLine.getValue());
                 obj.addPictureBoxTo(mainForm);
             }
         }
@@ -41,49 +51,42 @@ namespace LittleWarGame
             return group.Count();
         }
 
-        public void moveTo(Point target)
+        public void setEnemy(Warriors value)
         {
-            if (target == null)
-                return;
-
-            for (int i=0; i<size(); ++i)
-                group[i].moveTo(target);
-        }
-        
-        public void attackTo(Warriors they)
-        {
-            if (they.size() == 0)
-                return;
-
-            for (int i = 0; i < size(); ++i)
-                this.group[i].attackTo(they);
+            this.enemy = value;
         }
 
-        public void helpTo(Warriors we)
+        public void setShieldLine(Point value)
         {
-            for (int i = 0; i < size(); ++i)
-                this.group[i].helpTo(we);
+            //need to fix range
+            this.shieldLine = value;
+        }
+
+        public void setRescueLine(Point value)
+        {
+            //need to fix range
+            this.rescueLine = value;
         }
         
         //最前線
-        public Point frontLineValue()
+        public Point frontLine()
         {
             int max = int.MinValue;
             Point front = null;
-            for (int i=0; i<size(); ++i)
+            for (int i = 0; i < size(); ++i)
             {
-                if (group[i].distance(Field) > max)
+                if (group[i].distance(baseLine) > max)
                 {
                     front = group[i];
-                    max = group[i].distance(Field);
+                    max = group[i].distance(baseLine);
                 }
             }
             return front;
         }
         //最前線
-        public List<Warrior> frontLineGroup()
+        public List<Warrior> frontGroup()
         {
-            int target = frontLineValue().getValue();
+            int target = frontLine().getValue();
             List<Warrior> front = new List<Warrior>();
             for (int i = 0; i < size(); ++i)
             {
@@ -94,6 +97,34 @@ namespace LittleWarGame
             }
             return front;
         }
+
+        public void action()
+        {
+            if (enemy == null)
+                return;//need to fix enemy and 2 line should initial
+
+            foreach(Warrior each in group)
+            {
+                switch (each.Type())
+                {
+                    case Const.WarriorType.attacker:
+                        each.moveTo(enemy.frontLine());
+                        each.attackTo(enemy);
+                        break;
+
+                    case Const.WarriorType.shielder:
+                        each.moveTo(this.shieldLine);
+                        break;
+
+                    case Const.WarriorType.helper:
+                        each.moveTo(this.rescueLine);
+                        each.helpTo(this);
+                        break;
+                }
+            }
+        }
+
+        
 
         //把死掉的移除掉
         public int killDeadedWarrior()

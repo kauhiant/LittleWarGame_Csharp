@@ -8,7 +8,10 @@ namespace LittleWarGame
 {
     class Rocket:Warrior
     {
-        public Rocket(){
+        public Rocket()
+        {
+            type = Const.WarriorType.attacker;
+
             myStatus = Const.imageList[Const.Warrior.Rocket];
             myRealStatus = myStatus[Const.Part.A];
             setBonus(25);
@@ -26,7 +29,7 @@ namespace LittleWarGame
             if (they.size() == 0)
                 return;
             
-            if(this.distance(they.frontLineValue()) <= this.attackDistance)
+            if(this.distance(they.frontLine()) <= this.attackDistance)
             {
                 for(int i=0; i<they.size(); ++i)
                 {

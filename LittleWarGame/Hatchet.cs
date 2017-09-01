@@ -10,6 +10,8 @@ namespace LittleWarGame
     {
         public Hatchet()
         {
+            type = Const.WarriorType.attacker;
+
             myStatus = Const.imageList[Const.Warrior.Hatchet];
             myRealStatus = myStatus[Const.Part.A];
             setBonus(10);
@@ -26,14 +28,14 @@ namespace LittleWarGame
             if (they.size() == 0)
                 return;
 
-            if (this.distance(they.frontLineValue()) <= this.getAttackDistance())
+            if (this.distance(they.frontLine()) <= this.getAttackDistance())
             {
                 myPictureBox.Image = myRealStatus[Const.Status.attack];
                 Const.Sound._attack.Play();
-                if (they.frontLineGroup()[0].isShield())
-                    they.frontLineGroup()[0].beAttackFrom(this);
+                if (they.frontGroup()[0].isShield())
+                    they.frontGroup()[0].beAttackFrom(this);
                 else
-                    attackGroup(they.frontLineGroup());
+                    attackGroup(they.frontGroup());
             }
         }
         private void attackGroup(List<Warrior> group)

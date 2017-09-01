@@ -11,6 +11,8 @@ namespace LittleWarGame
         private int energy = 100;
         public Wall()
         {
+            type = Const.WarriorType.shielder;
+
             myStatus = Const.imageList[Const.Warrior.Wall];
             myRealStatus = myStatus[Const.Part.A];
 

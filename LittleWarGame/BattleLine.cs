@@ -10,28 +10,31 @@ namespace LittleWarGame
     {
         private PlayBoard ABoard;
         private PlayBoard BBoard;
-
-        private bool haveWinner;
-        private Point AField;
-        private Point BField;
+        private EnergyBar AEnergy;
+        private EnergyBar BEnergy;
         private Warriors A;
         private Warriors B;
 
-        public BattleLine(int ACastleLevel, int BCastleLevel,System.Windows.Forms.Form mainForm)
+        private bool haveWinner;
+
+        public BattleLine(PlayBoard ABoard , PlayBoard BBoard , System.Windows.Forms.Form mainForm)
         {
             haveWinner = false;
 
-            AField = new Point(Const.AStartPoint);
-            BField = new Point(Const.BStartPoint);
-            A = new Warriors(AField , mainForm);
-            B = new Warriors(BField , mainForm , true);
+            ABoard.mainLine = this;
+            BBoard.mainLine = this;
 
-            A.add(new Castle(ACastleLevel));
-            B.add(new Castle(BCastleLevel));
-            A.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
-            B.Back().setPictureBoxTop(Const.mainLineHeight - Const.castleHeight);
+            this.ABoard = ABoard;
+            this.BBoard = BBoard;
+            this.AEnergy = ABoard.energy;
+            this.BEnergy = BBoard.energy;
+            this.A = ABoard.group;
+            this.B = BBoard.group;
 
-            B.At(0).changeStatusTo(0);
+            B.At(0).changeStatusTo(Const.Status.move);
+
+            A.setEnemy(B);
+            B.setEnemy(A);
         }
 
         public void nextStep()
@@ -40,20 +43,13 @@ namespace LittleWarGame
             {
                 int bonus;
 
-                //移動到對方的最前線
-                A.moveTo(B.frontLineValue());
-                B.moveTo(A.frontLineValue());
-                //攻擊對方的最前線
-                A.attackTo(B);
-                B.attackTo(A);
+                A.action();
+                B.action();
                 //把陣亡的戰士移除//殺敵獎勵
                 bonus =  A.killDeadedWarrior();
-                BBoard.addEnergy(bonus);
+                BEnergy.addEnergy(bonus);
                 bonus =  B.killDeadedWarrior();
-                ABoard.addEnergy(bonus);
-                //輔助
-                A.helpTo(A);
-                B.helpTo(B);
+                AEnergy.addEnergy(bonus);
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {

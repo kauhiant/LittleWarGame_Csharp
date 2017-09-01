@@ -13,6 +13,8 @@ namespace LittleWarGame
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
+        protected char type;
+
         protected bool shield;
         protected int bonus;
         protected int speed;
@@ -37,6 +39,7 @@ namespace LittleWarGame
             this.myPictureBox = new System.Windows.Forms.PictureBox();
         }
 //get functions
+        public char Type() { return type; }
         public bool isShield() { return shield; }
         public bool isDead() { return HP.isZero(); }
         public int getSpeed() { return speed; }
@@ -112,10 +115,10 @@ namespace LittleWarGame
             if (they.size() == 0)
                 return;
 
-            if (this.distance(they.frontLineValue()) <= this.getAttackDistance())
+            if (this.distance(they.frontLine()) <= this.getAttackDistance())
             {
                 changeStatusTo(Const.Status.attack);
-                they.frontLineGroup()[0].beAttackFrom(this);
+                they.frontGroup()[0].beAttackFrom(this);
                 Const.Sound._attack.Play();
             }
         }

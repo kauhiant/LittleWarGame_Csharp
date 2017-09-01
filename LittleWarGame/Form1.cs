@@ -20,6 +20,8 @@ namespace LittleWarGame
         private BattleLine mainLine;
         private PlayBoard AI;
         private PlayBoard Player;
+        private Warriors A;
+        private Warriors B;
 
         public Form1()
         {
@@ -30,11 +32,19 @@ namespace LittleWarGame
 
             InitializeComponent();
             Const.ImageListInit();
+            Const.SoundInit();
+
+            A = new Warriors(new Point(Const.AStartPoint), this);
+            B = new Warriors(new Point(Const.BStartPoint), this ,true);
             myEnergyBar = new EnergyBar();
             aiEnergyBar = new EnergyBar();
-            mainLine = new BattleLine(2,2,this);
-            AI = new PlayBoard(aiEnergyBar , ref mainLine);
-            Player = new PlayBoard(myEnergyBar , ref mainLine, true);
+            AI = new PlayBoard(aiEnergyBar, A, 2);
+            Player = new PlayBoard(myEnergyBar, B, 2);
+            mainLine = new BattleLine(AI,Player,this);
+            //*************
+            
+
+            
 
             mainLine.linkPlayBoardA(AI);
             mainLine.linkPlayBoardB(Player);
@@ -81,8 +91,8 @@ namespace LittleWarGame
         {
             if (!GameHaveWinner)
             {
-                Player.addEnergy(1);
-                AI.addEnergy(1);
+                aiEnergyBar.addEnergy(1);
+                myEnergyBar.addEnergy(1);
                 
                 mainLine.nextStep();
 
@@ -152,5 +162,6 @@ namespace LittleWarGame
             Program.isRestart = true;
             this.Close();
         }
+        
     }
 }

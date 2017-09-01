@@ -8,34 +8,38 @@ namespace LittleWarGame
 {
     class PlayBoard
     {
-        private EnergyBar energyBar;
+        private int level;
 
-        private bool isPlayer;
-        private BattleLine mainLine;
+        public EnergyBar energy;
+        public Warriors group;
+        public BattleLine mainLine;
 
-        public PlayBoard(EnergyBar energyBar , ref BattleLine mainLine, bool isPlayer=false)
+        public PlayBoard(EnergyBar energy , Warriors group,int level)
         {
-            this.energyBar = energyBar;
-            this.isPlayer = isPlayer;
-            this.mainLine = mainLine;
+            this.energy = energy;
+            this.group = group;
+            this.level = level;
+            this.group.add(new Castle(this.level));
         }
         
-        public void addEnergy(int value)
+        public int getEnergy() { return energy.getValue(); }
+
+        public void fixShieldLine(Point val)
         {
-            energyBar.addEnergy(value);
+            group.setShieldLine(val);
         }
-        public int getEnergy() { return energyBar.getValue(); }
+        public void fixRescueLine(Point value)
+        {
+            group.setRescueLine(value);
+        }
+
 
         public bool addSword()
         {
-            if (energyBar.getValue() >= Const.SwordCD)
+            if (energy.getValue() >= Const.SwordCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Sword());
-                else
-                    mainLine.AFieldPushWarrior(new Sword());
-
-                addEnergy(-Const.SwordCD);
+                group.add(new Sword());
+                energy.addEnergy(-Const.SwordCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -44,14 +48,10 @@ namespace LittleWarGame
 
         public bool addArrow()
         {
-            if (energyBar.getValue() >= Const.ArrowCD)
+            if (energy.getValue() >= Const.ArrowCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Arrow());
-                else
-                    mainLine.AFieldPushWarrior(new Arrow());
-
-                addEnergy(-Const.ArrowCD);
+                group.add(new Arrow());
+                energy.addEnergy(-Const.ArrowCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -60,14 +60,10 @@ namespace LittleWarGame
 
         public bool addShield()
         {
-            if (energyBar.getValue() >= Const.ShieldCD)
+            if (energy.getValue() >= Const.ShieldCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Shield());
-                else
-                    mainLine.AFieldPushWarrior(new Shield());
-
-                addEnergy(-Const.ShieldCD);
+                group.add(new Shield());
+                energy.addEnergy(-Const.ShieldCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -76,14 +72,10 @@ namespace LittleWarGame
 
         public bool addRocket()
         {
-            if (energyBar.getValue() >= Const.RocketCD)
+            if (energy.getValue() >= Const.RocketCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Rocket());
-                else
-                    mainLine.AFieldPushWarrior(new Rocket());
-
-                addEnergy(-Const.RocketCD);
+                group.add(new Rocket());
+                energy.addEnergy(-Const.RocketCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -92,14 +84,10 @@ namespace LittleWarGame
 
         public bool addHatchet()
         {
-            if (energyBar.getValue() >= Const.HatchetCD)
+            if (energy.getValue() >= Const.HatchetCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Hatchet());
-                else
-                    mainLine.AFieldPushWarrior(new Hatchet());
-
-                addEnergy(-Const.HatchetCD);
+                group.add(new Hatchet());
+                energy.addEnergy(-Const.HatchetCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -108,14 +96,10 @@ namespace LittleWarGame
 
         public bool addWall()
         {
-            if (energyBar.getValue() >= Const.WallCD)
+            if (energy.getValue() >= Const.WallCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Wall());
-                else
-                    mainLine.AFieldPushWarrior(new Wall());
-
-                addEnergy(-Const.WallCD);
+                group.add(new Wall());
+                energy.addEnergy(-Const.WallCD);
                 Const.Sound._click.Play();
                 return true;
             }
@@ -124,14 +108,10 @@ namespace LittleWarGame
 
         public bool addRescue()
         {
-            if (energyBar.getValue() >= Const.RescueCD)
+            if (energy.getValue() >= Const.RescueCD)
             {
-                if (isPlayer)
-                    mainLine.BFieldPushWarrior(new Rescue());
-                else
-                    mainLine.AFieldPushWarrior(new Rescue());
-
-                addEnergy(-Const.RescueCD);
+                group.add(new Rescue());
+                energy.addEnergy(-Const.RescueCD);
                 Const.Sound._click.Play();
                 return true;
             }
