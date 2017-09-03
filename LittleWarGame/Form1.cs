@@ -62,6 +62,9 @@ namespace LittleWarGame
             _rocket.Text += Const.RocketCD.ToString();
             _wall.Text += Const.WallCD.ToString();
 
+            _rescueLine.BackColor = Color.Transparent;
+            _rescueLine.Left = Const.AStartPoint;
+
               _restart.Hide();
             Program.isRestart = false;
         }
@@ -95,10 +98,19 @@ namespace LittleWarGame
                 myEnergyBar.addEnergy(1);
                 
                 mainLine.nextStep();
+/*
+                if(!GameHaveWinner && AI.group.frontGroup()[0] is Rescue)
+                {
+                    AI.fixRescueLine(Const.AStartPoint);
+                }
+                else
+                {
+                    AI.fixRescueLine(AI.group.frontLine().getValue());
+                }*/
 
                 if(AIDirect == true)
                 {
-                    AINextIndex = rand.Next(0, 70);
+                    AINextIndex = rand.Next(0, 60);
                     AIDirect = false;
                 }
                 else
@@ -162,6 +174,25 @@ namespace LittleWarGame
             Program.isRestart = true;
             this.Close();
         }
-        
+
+        private bool mouseDown = false;
+
+        private void _rescueLine_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(gameTimer.Enabled)
+                mouseDown = true;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(mouseDown && e.X > Const.AStartPoint && e.X < Const.BStartPoint)
+                _rescueLine.Left = e.X;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+            Player.fixRescueLine(_rescueLine.Left);
+        }
     }
 }

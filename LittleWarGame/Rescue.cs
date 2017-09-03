@@ -29,11 +29,11 @@ namespace LittleWarGame
             lastHelpWarrior = we.frontGroup()[0];
             if (this.distance(we.frontLine()) < 50)
                 we.frontGroup()[0].addHP(20);
-        }
+        }/*
         public override void moveTo(Point target)
         {
             if(lastHelpWarrior != null && lastHelpWarrior.getValue() != this.getValue() )
                 base.moveTo(target);
-        }
+        }*/
     }
 }

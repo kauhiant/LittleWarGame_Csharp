@@ -38,6 +38,7 @@ namespace LittleWarGame
 
         public void addValue(int val)
         {
+            if (value == 0) return;
             this.value += val;
 
             if (this.value > this.maxValue)

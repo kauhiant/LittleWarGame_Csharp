@@ -9,8 +9,7 @@ namespace LittleWarGame
     class Warriors
     {
         private Warriors enemy;
-
-        private Point shieldLine;
+        
         private Point rescueLine;
         private Point baseLine;    //start point of this group
         
@@ -28,8 +27,7 @@ namespace LittleWarGame
             this.isReverse = isReverse;
             this.baseLine = field;
             this.group = new List<Warrior>();
-
-            this.shieldLine = baseLine;
+            
             this.rescueLine = baseLine;
         }
 
@@ -55,16 +53,12 @@ namespace LittleWarGame
         {
             this.enemy = value;
         }
-
-        public void setShieldLine(Point value)
-        {
-            //need to fix range
-            this.shieldLine = value;
-        }
+        
 
         public void setRescueLine(Point value)
         {
             //need to fix range
+            if (value.inRange(enemy.frontLine(), this.baseLine) )
             this.rescueLine = value;
         }
         
@@ -103,7 +97,9 @@ namespace LittleWarGame
             if (enemy == null)
                 return;//need to fix enemy and 2 line should initial
 
-            foreach(Warrior each in group)
+            this.rescueLine.fixInRange(enemy.frontLine(), this.baseLine);
+
+            foreach (Warrior each in group)
             {
                 switch (each.Type())
                 {
@@ -113,11 +109,11 @@ namespace LittleWarGame
                         break;
 
                     case Const.WarriorType.shielder:
-                        each.moveTo(this.shieldLine);
+                        each.moveTo(enemy.frontLine());
                         break;
 
                     case Const.WarriorType.helper:
-                        each.moveTo(this.rescueLine);
+                        each.moveTo( rescueLine );
                         each.helpTo(this);
                         break;
                 }

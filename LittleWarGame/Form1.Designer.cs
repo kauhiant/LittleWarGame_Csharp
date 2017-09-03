@@ -41,6 +41,8 @@
             this._wall = new System.Windows.Forms.Button();
             this._rescue = new System.Windows.Forms.Button();
             this._restart = new System.Windows.Forms.Button();
+            this._rescueLine = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).BeginInit();
             this.SuspendLayout();
             // 
             // _start
@@ -76,7 +78,7 @@
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 500;
+            this.gameTimer.Interval = 200;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // _energyBar
@@ -154,12 +156,26 @@
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
             // 
+            // _rescueLine
+            // 
+            this._rescueLine.BackColor = System.Drawing.SystemColors.ControlDark;
+            this._rescueLine.Image = ((System.Drawing.Image)(resources.GetObject("_rescueLine.Image")));
+            this._rescueLine.Location = new System.Drawing.Point(0, 0);
+            this._rescueLine.Name = "_rescueLine";
+            this._rescueLine.Size = new System.Drawing.Size(20, 20);
+            this._rescueLine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._rescueLine.TabIndex = 10;
+            this._rescueLine.TabStop = false;
+            this._rescueLine.MouseDown += new System.Windows.Forms.MouseEventHandler(this._rescueLine_MouseDown);
+            // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(588, 253);
+            this.Controls.Add(this._rescueLine);
             this.Controls.Add(this._restart);
             this.Controls.Add(this._rescue);
             this.Controls.Add(this._wall);
@@ -175,6 +191,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Little War Game";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +212,7 @@
         private System.Windows.Forms.Button _wall;
         private System.Windows.Forms.Button _rescue;
         private System.Windows.Forms.Button _restart;
+        private System.Windows.Forms.PictureBox _rescueLine;
     }
 }
 

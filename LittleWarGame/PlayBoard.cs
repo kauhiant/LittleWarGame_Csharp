@@ -23,14 +23,10 @@ namespace LittleWarGame
         }
         
         public int getEnergy() { return energy.getValue(); }
-
-        public void fixShieldLine(Point val)
+        
+        public void fixRescueLine(int value)
         {
-            group.setShieldLine(val);
-        }
-        public void fixRescueLine(Point value)
-        {
-            group.setRescueLine(value);
+            group.setRescueLine(new Point(value));
         }
 
 

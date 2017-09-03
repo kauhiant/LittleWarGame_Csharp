@@ -16,6 +16,7 @@ namespace LittleWarGame
             value = val;
         }
 
+
         public int getValue()
         {   return value;   }
 
@@ -27,5 +28,26 @@ namespace LittleWarGame
 
         public int distance(Point other)
         {   return Math.Abs(this.value - other.getValue()); }
+
+        public bool inRange(Point a,Point b)
+        {
+            int aValue = a.getValue();
+            int bValue = b.getValue();
+            if(aValue > bValue)
+            {
+                int tmp = aValue;
+                aValue = bValue;
+                bValue = tmp;
+            }
+
+            return (this.value >= aValue && this.value <= bValue);
+        }
+
+        public void fixInRange(Point first , Point second)
+        {
+            if (this.inRange(first, second)) return;
+
+            this.value = first.getValue();
+        }
     }
 }
