@@ -188,6 +188,8 @@ namespace LittleWarGame
                     _rescueLine.BorderStyle = BorderStyle.Fixed3D;
                 else
                     _rescueLine.BorderStyle = BorderStyle.None;
+
+                Player.fixRescueLine(_rescueLine.Left);
             }
         }
 
@@ -196,7 +198,7 @@ namespace LittleWarGame
             if (gameTimer.Enabled)
             {
                 mouseDown = !mouseDown;
-                Player.fixRescueLine(_rescueLine.Left);
+              //  Player.fixRescueLine(_rescueLine.Left);
             }
         }
 
@@ -205,7 +207,7 @@ namespace LittleWarGame
             if (mouseDown && gameTimer.Enabled)
             {
                 mouseDown = false;
-                Player.fixRescueLine(_rescueLine.Left);
+              //  Player.fixRescueLine(_rescueLine.Left);
             }
         }
     }
