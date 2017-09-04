@@ -78,7 +78,7 @@
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 200;
+            this.gameTimer.Interval = 500;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // _energyBar
@@ -166,7 +166,7 @@
             this._rescueLine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this._rescueLine.TabIndex = 10;
             this._rescueLine.TabStop = false;
-            this._rescueLine.MouseDown += new System.Windows.Forms.MouseEventHandler(this._rescueLine_MouseDown);
+            this._rescueLine.Click += new System.EventHandler(this._rescueLine_Click);
             // 
             // Form1
             // 
@@ -191,8 +191,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Little War Game";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.Form1_Click);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

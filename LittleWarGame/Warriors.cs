@@ -58,8 +58,8 @@ namespace LittleWarGame
         public void setRescueLine(Point value)
         {
             //need to fix range
-            if (value.inRange(enemy.frontLine(), this.baseLine) )
-            this.rescueLine = value;
+            if (value.inRange(enemy.baseLine , this.baseLine) )
+                this.rescueLine = value;
         }
         
         //最前線
@@ -97,7 +97,8 @@ namespace LittleWarGame
             if (enemy == null)
                 return;//need to fix enemy and 2 line should initial
 
-            this.rescueLine.fixInRange(enemy.frontLine(), this.baseLine);
+            Point tmpRescueLine =
+                new Point( this.baseLine.chooseCloserFrom( this.rescueLine, enemy.frontLine() ) );
 
             foreach (Warrior each in group)
             {
@@ -113,7 +114,7 @@ namespace LittleWarGame
                         break;
 
                     case Const.WarriorType.helper:
-                        each.moveTo( rescueLine );
+                        each.moveTo( tmpRescueLine );
                         each.helpTo(this);
                         break;
                 }

@@ -177,22 +177,36 @@ namespace LittleWarGame
 
         private bool mouseDown = false;
 
-        private void _rescueLine_MouseDown(object sender, MouseEventArgs e)
-        {
-            if(gameTimer.Enabled)
-                mouseDown = true;
-        }
-
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(mouseDown && e.X > Const.AStartPoint && e.X < Const.BStartPoint)
-                _rescueLine.Left = e.X;
+            if(mouseDown)
+            {
+                if (e.X < Const.AStartPoint) _rescueLine.Left = Const.AStartPoint;
+                else if (e.X > Const.BStartPoint) _rescueLine.Left = Const.BStartPoint;
+                else _rescueLine.Left = e.X;
+                if (e.X >= Const.BStartPoint)
+                    _rescueLine.BorderStyle = BorderStyle.Fixed3D;
+                else
+                    _rescueLine.BorderStyle = BorderStyle.None;
+            }
         }
 
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        private void _rescueLine_Click(object sender, EventArgs e)
         {
-            mouseDown = false;
-            Player.fixRescueLine(_rescueLine.Left);
+            if (gameTimer.Enabled)
+            {
+                mouseDown = !mouseDown;
+                Player.fixRescueLine(_rescueLine.Left);
+            }
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            if (mouseDown && gameTimer.Enabled)
+            {
+                mouseDown = false;
+                Player.fixRescueLine(_rescueLine.Left);
+            }
         }
     }
 }

@@ -49,5 +49,13 @@ namespace LittleWarGame
 
             this.value = first.getValue();
         }
+
+        public int chooseCloserFrom(Point A , Point B)
+        {
+            if (this.distance(A) > this.distance(B))
+                return B.getValue();
+            else
+                return A.getValue();
+        }
     }
 }
