@@ -17,7 +17,7 @@ namespace LittleWarGame
 
             this.shield = true;
             setBonus(5);
-            setSpeed(6);
+            setSpeed(1);
             setHP(500);
             setPower(5);
             setAttackDistance(-1);

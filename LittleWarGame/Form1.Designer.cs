@@ -42,6 +42,7 @@
             this._rescue = new System.Windows.Forms.Button();
             this._restart = new System.Windows.Forms.Button();
             this._rescueLine = new System.Windows.Forms.PictureBox();
+            this._getResouce = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +79,6 @@
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 500;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // _energyBar
@@ -168,6 +168,11 @@
             this._rescueLine.TabStop = false;
             this._rescueLine.Click += new System.EventHandler(this._rescueLine_Click);
             // 
+            // _getResouce
+            // 
+            this._getResouce.Interval = 500;
+            this._getResouce.Tick += new System.EventHandler(this._getResouce_Tick);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -213,6 +218,7 @@
         private System.Windows.Forms.Button _rescue;
         private System.Windows.Forms.Button _restart;
         private System.Windows.Forms.PictureBox _rescueLine;
+        private System.Windows.Forms.Timer _getResouce;
     }
 }
 

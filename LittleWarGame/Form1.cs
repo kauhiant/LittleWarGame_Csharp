@@ -72,6 +72,7 @@ namespace LittleWarGame
         private void button1_Click(object sender, EventArgs e)
         {
             gameTimer.Enabled = true;
+            _getResouce.Enabled = true;
             _start.Hide();
             myEnergyBar.addEnergy(10);
             aiEnergyBar.addEnergy(10);
@@ -90,23 +91,22 @@ namespace LittleWarGame
         }
         private int AINextIndex = 0;
         private bool AIDirect = true;
-        private void gameTimer_Tick(object sender, EventArgs e)
+        private void _getResouce_Tick(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
             {
                 aiEnergyBar.addEnergy(1);
                 myEnergyBar.addEnergy(1);
+            }
+
+        }
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            if (!GameHaveWinner)
+            {
+                
                 
                 mainLine.nextStep();
-/*
-                if(!GameHaveWinner && AI.group.frontGroup()[0] is Rescue)
-                {
-                    AI.fixRescueLine(Const.AStartPoint);
-                }
-                else
-                {
-                    AI.fixRescueLine(AI.group.frontLine().getValue());
-                }*/
 
                 if(AIDirect == true)
                 {
@@ -134,6 +134,7 @@ namespace LittleWarGame
             if (mainLine.isGameOver())
             {
                 gameTimer.Enabled = false;
+                _getResouce.Enabled = false;
                 GameHaveWinner = true;
                 _restart.Show();
             }
@@ -210,5 +211,7 @@ namespace LittleWarGame
               //  Player.fixRescueLine(_rescueLine.Left);
             }
         }
+
+        
     }
 }

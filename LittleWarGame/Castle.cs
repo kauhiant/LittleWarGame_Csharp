@@ -30,9 +30,8 @@ namespace LittleWarGame
             myPictureBox.Top = Const.mainLineHeight - Const.castleHeight;
         }
 
-        public override void beAttackFrom(Warrior other)
+        public override void moveTo(Point target)
         {
-            base.beAttackFrom(other);
             if (this.getHP() < 800)
             {
                 if (this.getHP() > 600)

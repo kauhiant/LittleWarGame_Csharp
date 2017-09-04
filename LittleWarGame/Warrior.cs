@@ -14,6 +14,7 @@ namespace LittleWarGame
         protected List<Image> myRealStatus;
 
         protected char type;
+        protected CoolDownTime CDTime;
 
         protected bool shield;
         protected int bonus;
@@ -34,6 +35,8 @@ namespace LittleWarGame
             this.speed = 0;
             this.power = 0;
             this.attackDistance = 0;
+
+            this.CDTime = new CoolDownTime();
 
             //just creat a picturebox not add to mainForm
             this.myPictureBox = new System.Windows.Forms.PictureBox();
@@ -76,6 +79,7 @@ namespace LittleWarGame
 //move
         public virtual void moveTo(Point target)
         {
+            changeStatusTo(Const.Status.move);
             if (this.distance(target) <= this.attackDistance || this.speed == 0)   
                 return;//if target in your attack range , you shouldn't move
             
@@ -95,7 +99,6 @@ namespace LittleWarGame
             }
 
             //change your picture status and move it
-            changeStatusTo(Const.Status.move);
             myPictureBox.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
         }
@@ -112,7 +115,7 @@ namespace LittleWarGame
 //attack to warriors
         public virtual void attackTo(Warriors they)
         {
-            if (they.size() == 0)
+            if ( CDTime.isCoolDown() || they.size() == 0)
                 return;
 
             if (this.distance(they.frontLine()) <= this.getAttackDistance())
@@ -120,6 +123,7 @@ namespace LittleWarGame
                 changeStatusTo(Const.Status.attack);
                 they.frontGroup()[0].beAttackFrom(this);
                 Const.Sound._attack.Play();
+                CDTime.record();
             }
         }
 //be attack from warrior
