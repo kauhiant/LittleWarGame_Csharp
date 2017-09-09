@@ -46,6 +46,13 @@ namespace LittleWarGame
             else if (this.value < 0)
                 this.value = 0;
 
+            if (this.value > this.maxValue / 2)
+                this.bar.BackColor = Color.Green;
+            else if (this.value > this.maxValue / 4)
+                this.bar.BackColor = Color.Orange;
+            else
+                this.bar.BackColor = Color.Red;
+
             double tmpValue = this.value;
             double tmpMax = this.maxValue;
             bar.Width =Convert.ToInt32( Convert.ToDouble(Const.pictureWidth) * (tmpValue / tmpMax));

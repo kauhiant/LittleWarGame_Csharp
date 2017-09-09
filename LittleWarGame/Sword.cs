@@ -15,12 +15,12 @@ namespace LittleWarGame
 
             myStatus = Const.imageList[Const.Warrior.Sword];
             myRealStatus = myStatus[Const.Part.A];
-            //setBonus(0);
+
+            setBonus(1);
             setSpeed(3);
             setHP(100);
             setPower(10);
             //setAttackDistance(0);
-
             CDTime.setCoolDownTime(1);
 
             myPictureBox.Image = myRealStatus[Const.Status.move];

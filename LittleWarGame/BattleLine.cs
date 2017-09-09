@@ -31,6 +31,7 @@ namespace LittleWarGame
             this.A = ABoard.group;
             this.B = BBoard.group;
 
+            A.At(0).changeStatusTo(Const.Status.move);
             B.At(0).changeStatusTo(Const.Status.move);
 
             A.setEnemy(B);

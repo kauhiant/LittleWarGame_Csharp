@@ -105,7 +105,7 @@
             // _rocket
             // 
             this._rocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._rocket.Location = new System.Drawing.Point(422, 211);
+            this._rocket.Location = new System.Drawing.Point(341, 211);
             this._rocket.Name = "_rocket";
             this._rocket.Size = new System.Drawing.Size(75, 23);
             this._rocket.TabIndex = 5;
@@ -127,7 +127,7 @@
             // _wall
             // 
             this._wall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._wall.Location = new System.Drawing.Point(341, 211);
+            this._wall.Location = new System.Drawing.Point(422, 211);
             this._wall.Name = "_wall";
             this._wall.Size = new System.Drawing.Size(75, 23);
             this._wall.TabIndex = 7;
@@ -152,7 +152,7 @@
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
             this._restart.TabIndex = 9;
-            this._restart.Text = "重新開始";
+            this._restart.Text = "下一關";
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
             // 

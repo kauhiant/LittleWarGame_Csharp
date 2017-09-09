@@ -8,7 +8,6 @@ namespace LittleWarGame
 {
     class Rescue:Warrior
     {
-        private Warrior lastHelpWarrior = null;
         public Rescue()
         {
             type = Const.WarriorType.helper;
@@ -30,18 +29,21 @@ namespace LittleWarGame
         {
             if (CDTime.isCoolDown()) return;
 
-            lastHelpWarrior = we.frontGroup()[0];
-            if (this.distance(we.frontLine()) < 50)
+            Warrior target = this;
+            int min = 50;
+
+            for(int i=we.size()-1; i>=0; --i)
             {
-                we.frontGroup()[0].addHP(20);
-                CDTime.record();
+                if (we.At(i) is Rescue) continue;
+                if(this.distance(we.At(i)) <= min)
+                {
+                    min = this.distance(we.At(i));
+                    target = we.At(i);
+                }
             }
-                
-        }/*
-        public override void moveTo(Point target)
-        {
-            if(lastHelpWarrior != null && lastHelpWarrior.getValue() != this.getValue() )
-                base.moveTo(target);
-        }*/
+
+            target.addHP(20);
+            CDTime.record();
+        }
     }
 }

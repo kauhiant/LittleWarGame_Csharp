@@ -11,10 +11,10 @@ namespace LittleWarGame
         private Warriors enemy;
         
         private Point rescueLine;
-        private Point baseLine;    //start point of this group
+        private Point baseLine;   //start point of this group
         
         private bool Lose;
-        private bool isReverse;
+        private bool Reverse;
 
         private System.Windows.Forms.Form mainForm;
         
@@ -24,7 +24,7 @@ namespace LittleWarGame
         {
             this.Lose = false;
             this.mainForm = mainForm;
-            this.isReverse = isReverse;
+            this.Reverse = isReverse;
             this.baseLine = field;
             this.group = new List<Warrior>();
             
@@ -36,7 +36,7 @@ namespace LittleWarGame
             if (!Lose)
             {
                 group.Add(obj);
-                if (isReverse)
+                if (Reverse)
                     obj.setReverse();
 
                 obj.setValue(baseLine.getValue());
@@ -49,9 +49,19 @@ namespace LittleWarGame
             return group.Count();
         }
 
+        public Point getBaseLine()
+        {
+            return baseLine;
+        }
+
         public void setEnemy(Warriors value)
         {
             this.enemy = value;
+        }
+
+        public Warriors Enemy()
+        {
+            return enemy;
         }
         
 
@@ -161,6 +171,11 @@ namespace LittleWarGame
         public Warrior Back()
         {
             return group.Last();
+        }
+
+        public bool isReverse()
+        {
+            return Reverse;
         }
     }
 }

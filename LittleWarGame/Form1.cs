@@ -14,6 +14,8 @@ namespace LittleWarGame
     {
         private Random rand;
 
+        private List<Button> _warriorButtonList;
+
         private EnergyBar myEnergyBar;
         private EnergyBar aiEnergyBar;
         private bool GameHaveWinner = false;
@@ -23,7 +25,7 @@ namespace LittleWarGame
         private Warriors A;
         private Warriors B;
 
-        public Form1()
+        public Form1(int PlayerLevel)
         {
             rand = new Random();
 
@@ -38,14 +40,12 @@ namespace LittleWarGame
             B = new Warriors(new Point(Const.BStartPoint), this ,true);
             myEnergyBar = new EnergyBar();
             aiEnergyBar = new EnergyBar();
-            AI = new PlayBoard(aiEnergyBar, A, 2);
-            Player = new PlayBoard(myEnergyBar, B, 2);
+            AI = new PlayBoard(aiEnergyBar, B, PlayerLevel+1);
+            Player = new PlayBoard(myEnergyBar, A, PlayerLevel);
             mainLine = new BattleLine(AI,Player,this);
             //*************
+            _warriorButtonList = new List<Button>();
             
-
-            
-
             mainLine.linkPlayBoardA(AI);
             mainLine.linkPlayBoardB(Player);
 
@@ -65,7 +65,20 @@ namespace LittleWarGame
             _rescueLine.BackColor = Color.Transparent;
             _rescueLine.Left = Const.AStartPoint;
 
-              _restart.Hide();
+            _warriorButtonList.Add(_sword);
+            _warriorButtonList.Add(_arrow);
+            _warriorButtonList.Add(_shield);
+            _warriorButtonList.Add(_hatchet);
+            _warriorButtonList.Add(_rocket);
+            _warriorButtonList.Add(_wall);
+            _warriorButtonList.Add(_rescue);
+
+            for(int i=Player.Level(); i<_warriorButtonList.Count; ++i)
+            {
+                _warriorButtonList.ElementAt(i).Hide();
+            }
+
+            _restart.Hide();
             Program.isRestart = false;
         }
 
@@ -89,8 +102,7 @@ namespace LittleWarGame
             if(!GameHaveWinner)
                 Player.addArrow();
         }
-        private int AINextIndex = 0;
-        private bool AIDirect = true;
+
         private void _getResouce_Tick(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
@@ -100,44 +112,27 @@ namespace LittleWarGame
             }
 
         }
+
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
             {
-                
-                
                 mainLine.nextStep();
-
-                if(AIDirect == true)
+                if (mainLine.isGameOver())
                 {
-                    AINextIndex = rand.Next(0, 60);
-                    AIDirect = false;
+                    gameTimer.Enabled = false;
+                    _getResouce.Enabled = false;
+                    GameHaveWinner = true;
+                    if(!Player.group.isLose())
+                        _restart.Show();
                 }
                 else
                 {
-                    if (AINextIndex < 10)
-                        AIDirect = AI.addSword();
-                    else if (AINextIndex < 20)
-                        AIDirect = AI.addArrow();
-                    else if (AINextIndex < 30)
-                        AIDirect = AI.addShield();
-                    else if (AINextIndex < 40)
-                        AIDirect = AI.addHatchet();
-                    else if (AINextIndex < 50)
-                        AIDirect = AI.addRocket();
-                    else if (AINextIndex < 60)
-                        AIDirect = AI.addWall();
-                    else
-                        AIDirect = AI.addRescue();
+                    AI.auto();
                 }
+                
             }
-            if (mainLine.isGameOver())
-            {
-                gameTimer.Enabled = false;
-                _getResouce.Enabled = false;
-                GameHaveWinner = true;
-                _restart.Show();
-            }
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -182,15 +177,16 @@ namespace LittleWarGame
         {
             if(mouseDown)
             {
-                if (e.X < Const.AStartPoint) _rescueLine.Left = Const.AStartPoint;
-                else if (e.X > Const.BStartPoint) _rescueLine.Left = Const.BStartPoint;
-                else _rescueLine.Left = e.X;
-                if (e.X >= Const.BStartPoint)
+                if (e.X < Const.AStartPoint) _rescueLine.Left = Const.AStartPoint -20;
+                else if (e.X > Const.BStartPoint) _rescueLine.Left = Const.BStartPoint - 20;
+                else _rescueLine.Left = e.X - 20;
+
+                if (e.X >= Const.BStartPoint || e.X <= Const.AStartPoint)
                     _rescueLine.BorderStyle = BorderStyle.Fixed3D;
                 else
                     _rescueLine.BorderStyle = BorderStyle.None;
 
-                Player.fixRescueLine(_rescueLine.Left);
+                Player.fixRescueLine(_rescueLine.Left + 20);
             }
         }
 
