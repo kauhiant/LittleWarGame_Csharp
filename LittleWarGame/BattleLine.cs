@@ -17,7 +17,7 @@ namespace LittleWarGame
 
         private bool haveWinner;
 
-        public BattleLine(PlayBoard ABoard , PlayBoard BBoard , System.Windows.Forms.Form mainForm)
+        public BattleLine(PlayBoard ABoard , PlayBoard BBoard)
         {
             haveWinner = false;
 

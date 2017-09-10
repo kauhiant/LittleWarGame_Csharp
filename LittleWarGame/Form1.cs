@@ -42,7 +42,7 @@ namespace LittleWarGame
             aiEnergyBar = new EnergyBar();
             AI = new PlayBoard(aiEnergyBar, B, PlayerLevel+1);
             Player = new PlayBoard(myEnergyBar, A, PlayerLevel);
-            mainLine = new BattleLine(AI,Player,this);
+            mainLine = new BattleLine(AI,Player);
             //*************
             _warriorButtonList = new List<Button>();
             
@@ -54,6 +54,8 @@ namespace LittleWarGame
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = "Little War Level " + Program.level.ToString();
+
             _sword.Text += Const.SwordCD.ToString();
             _arrow.Text += Const.ArrowCD.ToString();
             _shield.Text += Const.ShieldCD.ToString();
@@ -78,6 +80,7 @@ namespace LittleWarGame
                 _warriorButtonList.ElementAt(i).Hide();
             }
 
+            if (Program.level == 7) _restart.Text = "結束";
             _restart.Hide();
             Program.isRestart = false;
         }
@@ -109,6 +112,14 @@ namespace LittleWarGame
             {
                 aiEnergyBar.addEnergy(1);
                 myEnergyBar.addEnergy(1);
+                if (Program.level == 7)
+                {
+                    double r = rand.NextDouble();
+                    if (r < 0.01)
+                        aiEnergyBar.addEnergy(9);
+                    else if (r < 0.1)
+                        aiEnergyBar.addEnergy(4);
+                }
             }
 
         }

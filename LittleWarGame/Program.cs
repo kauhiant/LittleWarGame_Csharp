@@ -9,7 +9,7 @@ namespace LittleWarGame
     static class Program
     {
         static public bool isRestart = false;
-        static private int level = 1;
+        static public int level = 1;
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
@@ -22,7 +22,7 @@ namespace LittleWarGame
             while (isRestart)
             {
                 ++level;
-                if (level > 7) level = 1;
+                if (level > 7) break;
                 Application.Run(new Form1(level));
             }
         }

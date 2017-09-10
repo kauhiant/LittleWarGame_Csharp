@@ -146,7 +146,6 @@ namespace LittleWarGame
                             group[k].beKill();
                         group.Clear();
                         Lose = true;
-                        mainForm.Text = "GameOver";
                         break;
                     } 
                     group[i].beKill();
