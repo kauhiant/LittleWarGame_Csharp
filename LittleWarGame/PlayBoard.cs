@@ -176,6 +176,7 @@ namespace LittleWarGame
                     isCreate = addRescue();
                     break;
                 default:
+                    isCreate = true;
                     break;
             }
 
