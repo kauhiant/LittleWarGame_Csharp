@@ -17,28 +17,27 @@ namespace LittleWarGame
 
             myStatus = Const.imageList[Const.Warrior.Castle];
             myRealStatus = myStatus[Const.Part.A];
-
-            this.shield = true;
+            
             this.level = level;
             //setSpeed(0);
             setHP(1000 * level);
             //setPower(0);
             setAttackDistance(-1);//can't attack
 
-            myPictureBox.Image = myRealStatus[Const.Status.move];
-            myPictureBox.Height = Const.castleHeight;
-            myPictureBox.Top = Const.mainLineHeight - Const.castleHeight;
+            img.Image = myRealStatus[Const.Status.move];
+          //  img.Height = Const.castleHeight;
+            img.Top = Const.mainLineHeight - Const.castleHeight;
         }
 
         public override void moveTo(Point target)
         {
-            if (this.getHP() < 800)
+            if (this.hp < 800)
             {
-                if (this.getHP() > 600)
+                if (this.hp > 600)
                     changeStatusTo(1);
-                else if (this.getHP() > 400)
+                else if (this.hp > 400)
                     changeStatusTo(2);
-                else if (this.getHP() > 200)
+                else if (this.hp > 200)
                     changeStatusTo(3);
                 else
                     changeStatusTo(4);

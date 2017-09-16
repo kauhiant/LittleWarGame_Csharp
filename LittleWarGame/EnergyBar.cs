@@ -32,7 +32,7 @@ namespace LittleWarGame
         {
             return value;
         }
-        public void setLabel(ref System.Windows.Forms.TextBox target)
+        public void setLabel(System.Windows.Forms.TextBox target)
         {
             this.bar = target;
         }

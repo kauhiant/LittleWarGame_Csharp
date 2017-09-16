@@ -139,10 +139,10 @@ namespace LittleWarGame
 
         private void autoFixLine()
         {
-            if (this.group.At(0).getHP() < 1000 || this.group.frontGroup()[0] is Rescue)
-                this.fixRescueLine(this.group.getBaseLine().getValue());
+            if (this.group.At(0).hp < 1000 || this.group.frontGroup()[0] is Rescue)
+                this.fixRescueLine(this.group.getBaseLine().value);
             else
-                this.fixRescueLine(this.group.frontLine().getValue() + fixValue);
+                this.fixRescueLine(this.group.frontLine().value + fixValue);
         }
 
         private bool isCreate = false;

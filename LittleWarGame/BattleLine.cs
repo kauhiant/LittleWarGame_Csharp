@@ -46,11 +46,15 @@ namespace LittleWarGame
 
                 A.action();
                 B.action();
+
                 //把陣亡的戰士移除//殺敵獎勵
                 bonus =  A.killDeadedWarrior();
                 BEnergy.addEnergy(bonus);
                 bonus =  B.killDeadedWarrior();
                 AEnergy.addEnergy(bonus);
+
+                A.show();
+                B.show();
                 //have loser?
                 if (A.isLose() || B.isLose())
                 {

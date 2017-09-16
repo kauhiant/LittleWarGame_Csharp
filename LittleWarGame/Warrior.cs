@@ -15,41 +15,36 @@ namespace LittleWarGame
 
         protected char type;
         protected CoolDownTime CDTime;
+        protected ValueBar HP;
 
-        protected bool shield;
-        protected int bonus;
-        protected int speed;
-        protected int power;
-        protected int attackDistance;
+        public int hp { get { return HP.getValue(); }  }
+        public int bonus { get; private set; }
+        public int speed { get; private set; }
+        public int power { get; private set; }
+        public int attackDistance { get; private set; }
         
-        protected System.Windows.Forms.Form mainForm;
+        protected Form1 mainForm;
+        
 
         protected int leftFix = Const.pictureWidth;
-        protected ValueBar HP;
-        protected System.Windows.Forms.PictureBox myPictureBox;
+        
+        protected myPictureBox img;
 
         public Warrior()
         {
-            this.shield = false;
             this.bonus = 0;
             this.speed = 0;
             this.power = 0;
             this.attackDistance = 0;
 
             this.CDTime = new CoolDownTime();
-
-            //just creat a picturebox not add to mainForm
-            this.myPictureBox = new System.Windows.Forms.PictureBox();
+            
+            this.img = new myPictureBox();
         }
 //get functions
-        public char Type() { return type; }
-        public bool isShield() { return shield; }
-        public bool isDead() { return HP.isZero(); }
-        public int getSpeed() { return speed; }
-        public int getHP() { return HP.getValue(); }
-        public int getPower() { return power; }
-        public int getAttackDistance() { return attackDistance; }
-        public int getBonus() { return bonus;  }
+        public char Type { get { return type; } }
+        public bool isShielder() { return type == Const.WarriorType.shielder; }
+        public bool isDead() { return hp == 0; }
 //set functions just be used by subClass constructor 
         protected void setBonus(int val)
         {
@@ -80,27 +75,29 @@ namespace LittleWarGame
         public virtual void moveTo(Point target)
         {
             changeStatusTo(Const.Status.move);
+
             if (this.distance(target) <= this.attackDistance || this.speed == 0)   
                 return;//if target in your attack range , you shouldn't move
             
-            if (target.getValue() < this.value) //target in your left
+            if (target.value < this.value) //target in your left
             {
                 this.value -= speed;    //move to left
 
-                if (target.getValue() > this.value) //when you move too over to left of target
-                    this.value = target.getValue();
+                if (target.value > this.value) //when you move too over to left of target
+                    this.value = target.value;
             }
-            else if (target.getValue() > this.value)    //target in your right
+            else if (target.value > this.value)    //target in your right
             {
                 this.value += speed;    //move to right
 
-                if (target.getValue() < this.value) //when you move too over to right of target
-                    this.value = target.getValue();
+                if (target.value < this.value) //when you move too over to right of target
+                    this.value = target.value;
             }
 
             //change your picture status and move it
-            myPictureBox.Left = value - leftFix;
+            img.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
+            
         }
 //beKill
         public void beKill()
@@ -109,7 +106,6 @@ namespace LittleWarGame
             power = 0;
             attackDistance = 0;
             speed = 0;
-            mainForm.Controls.Remove(myPictureBox);
             mainForm.Controls.Remove(HP.getBarPictureBox());
         }
 //attack to warriors
@@ -118,7 +114,7 @@ namespace LittleWarGame
             if ( CDTime.isCoolDown() || they.size() == 0)
                 return;
 
-            if (this.distance(they.frontLine()) <= this.getAttackDistance())
+            if (this.distance(they.frontLine()) <= this.attackDistance)
             {
                 changeStatusTo(Const.Status.attack);
                 they.frontGroup()[0].beAttackFrom(this);
@@ -129,7 +125,7 @@ namespace LittleWarGame
 //be attack from warrior
         public virtual void beAttackFrom(Warrior other)
         {
-            this.HP.addValue(-other.getPower());
+            this.HP.addValue(-other.power);
             if (this.HP.isZero()) 
                 this.beKill();
         }
@@ -145,23 +141,19 @@ namespace LittleWarGame
         }
 //about pictureBox
 //add pictureBox to mainForm
-        public void addPictureBoxTo(System.Windows.Forms.Form mainForm)
+        public void addPictureBoxTo(Form1 mainForm)
         {
-            myPictureBox.Width = Const.pictureWidth;
-            myPictureBox.BackColor = Color.Transparent;
-            myPictureBox.Left = value - leftFix;
+            img.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
 
             this.mainForm = mainForm;
-            this.mainForm.Controls.Add(myPictureBox);
-            this.mainForm.Controls.Add(HP.getBarPictureBox());
+            mainForm.Controls.Add(HP.getBarPictureBox());
         }
 //set pictureBox location
-        public void setPictureBoxTop(int y)
+     /*   public void setPictureBoxTop(int y)
         {
-            myPictureBox.Top = y;
-            HP.setTop(y-10);
-        }
+            img.Top = y;
+        }*/
 //let pictureBox's left change to right
         public void setReverse()
         {
@@ -176,10 +168,20 @@ namespace LittleWarGame
                 myRealStatus = myStatus[Const.Part.A];
             }
         }
-//chane image
+//change image
         public void changeStatusTo(int status)
         {
-            myPictureBox.Image = myRealStatus[status];
+            img.Image = myRealStatus[status];
         }
+
+        public void DrawImageOn(Graphics target)
+        {
+            target.DrawImage(this.img.Image, 
+                img.location.X,img.location.Y, 
+                img.Image.Width, img.Image.Height);
+            //不知道為何 用 DrawImage(Image,Point) 大小就會變 如下**
+            //target.DrawImage(img.Image, img.location);
+        }
+        
     }
 }

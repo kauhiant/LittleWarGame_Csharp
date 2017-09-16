@@ -22,8 +22,8 @@ namespace LittleWarGame
 
             CDTime.setCoolDownTime(1.5);
 
-            myPictureBox.Image = myRealStatus[Const.Status.move];
-            myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
+            img.Image = myRealStatus[Const.Status.move];
+            img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
         public override void helpTo(Warriors we)
         {

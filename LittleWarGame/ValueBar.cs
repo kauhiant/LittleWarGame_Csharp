@@ -26,7 +26,7 @@ namespace LittleWarGame
             this.bar.Height = 10;
             this.bar.Width = Const.pictureWidth;
 
-            this.bar.Top = Const.mainLineHeight;
+            this.bar.Top = Const.HPBarHeight;
         }
         public int getValue()   {   return value;   }
         public System.Windows.Forms.PictureBox getBarPictureBox() { return bar; }

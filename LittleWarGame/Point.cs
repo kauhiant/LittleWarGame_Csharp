@@ -8,31 +8,30 @@ namespace LittleWarGame
 {
     class Point
     {
-        protected int value;
+        private int _value;
+
+        public int value
+        {
+            get { return _value; }
+            set { if (value < 0) value = 0; _value = value; }
+        }
 
         public Point(int val=0) 
         {
             if (val < 0) val = 0;
-            value = val;
+            _value = val;
         }
 
+        
 
-        public int getValue()
-        {   return value;   }
-
-        public void setValue(int val)
-        {
-            if (val < 0) val = 0;
-            value = val;
-        }
 
         public int distance(Point other)
-        {   return Math.Abs(this.value - other.getValue()); }
+        {   return Math.Abs(this._value - other._value); }
 
         public bool inRange(Point a,Point b)
         {
-            int aValue = a.getValue();
-            int bValue = b.getValue();
+            int aValue = a._value;
+            int bValue = b._value;
             if(aValue > bValue)
             {
                 int tmp = aValue;
@@ -40,22 +39,22 @@ namespace LittleWarGame
                 bValue = tmp;
             }
 
-            return (this.value >= aValue && this.value <= bValue);
+            return (this._value >= aValue && this._value <= bValue);
         }
 
         public void fixInRange(Point first , Point second)
         {
             if (this.inRange(first, second)) return;
 
-            this.value = first.getValue();
+            this._value = first._value;
         }
 
         public int chooseCloserFrom(Point A , Point B)
         {
             if (this.distance(A) > this.distance(B))
-                return B.getValue();
+                return B._value;
             else
-                return A.getValue();
+                return A._value;
         }
     }
 }

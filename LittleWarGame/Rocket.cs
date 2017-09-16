@@ -21,8 +21,8 @@ namespace LittleWarGame
             setPower(1000);
             setAttackDistance(0);
 
-            myPictureBox.Image = myRealStatus[Const.Status.move];
-            myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
+            img.Image = myRealStatus[Const.Status.move];
+            img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
 
         public override void attackTo(Warriors they)
@@ -39,7 +39,7 @@ namespace LittleWarGame
                 }
                 Const.Sound._attack.Play();
                 this.beKill();
-                this.bonus = 0;
+                this.setBonus(0);
             }
         }
     }

@@ -11,6 +11,8 @@ namespace LittleWarGame
 {
     static class Const
     {
+        
+
         static public class WarriorType
         {
             public const char attacker = 'A';
@@ -59,7 +61,8 @@ namespace LittleWarGame
         static public List< List< List<Image> > > imageList;
 
         static public int pictureWidth = 50;
-        static public int mainLineHeight = 150;
+        static public int mainLineHeight = 100;
+        static public int HPBarHeight = 150;
         
         static public int warriorHeight = 50;
         static public int castleHeight = 100;

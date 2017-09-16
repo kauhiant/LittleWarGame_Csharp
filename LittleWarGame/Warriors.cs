@@ -16,11 +16,11 @@ namespace LittleWarGame
         private bool Lose;
         private bool Reverse;
 
-        private System.Windows.Forms.Form mainForm;
+        public Form1 mainForm;
         
         private List<Warrior> group;
 
-        public Warriors(Point field , System.Windows.Forms.Form mainForm , bool isReverse=false)
+        public Warriors(Point field , Form1 mainForm , bool isReverse=false)
         {
             this.Lose = false;
             this.mainForm = mainForm;
@@ -39,7 +39,7 @@ namespace LittleWarGame
                 if (Reverse)
                     obj.setReverse();
 
-                obj.setValue(baseLine.getValue());
+                obj.value = baseLine.value;
                 obj.addPictureBoxTo(mainForm);
             }
         }
@@ -90,11 +90,11 @@ namespace LittleWarGame
         //最前線
         public List<Warrior> frontGroup()
         {
-            int target = frontLine().getValue();
+            int target = frontLine().value;
             List<Warrior> front = new List<Warrior>();
             for (int i = 0; i < size(); ++i)
             {
-                if (group[i].getValue() == target)
+                if (group[i].value == target)
                 {
                     front.Add(group[i]);
                 }
@@ -112,7 +112,7 @@ namespace LittleWarGame
 
             foreach (Warrior each in group)
             {
-                switch (each.Type())
+                switch (each.Type)
                 {
                     case Const.WarriorType.attacker:
                         each.moveTo(enemy.frontLine());
@@ -128,10 +128,17 @@ namespace LittleWarGame
                         each.helpTo(this);
                         break;
                 }
+                
             }
         }
 
-        
+        public void show()
+        {
+            for(int i=group.Count-1; i>=0; --i)
+            {
+                group[i].DrawImageOn(mainForm.mainBattle);
+            }
+        }
 
         //把死掉的移除掉
         public int killDeadedWarrior()
@@ -149,7 +156,7 @@ namespace LittleWarGame
                         break;
                     } 
                     group[i].beKill();
-                    bonus += group[i].getBonus();
+                    bonus += group[i].bonus;
                     group.RemoveAt(i);
                     --i;
                 }

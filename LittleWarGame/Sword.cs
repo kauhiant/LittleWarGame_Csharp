@@ -23,8 +23,8 @@ namespace LittleWarGame
             //setAttackDistance(0);
             CDTime.setCoolDownTime(1);
 
-            myPictureBox.Image = myRealStatus[Const.Status.move];
-            myPictureBox.Top = Const.mainLineHeight - Const.warriorHeight;
+            img.Image = myRealStatus[Const.Status.move];
+            img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
     }
 }

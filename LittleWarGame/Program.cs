@@ -18,6 +18,8 @@ namespace LittleWarGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Const.ImageListInit();
+            Const.SoundInit();
             Application.Run(new Form1(level));
             while (isRestart)
             {
