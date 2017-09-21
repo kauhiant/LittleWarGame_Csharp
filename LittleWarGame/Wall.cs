@@ -22,7 +22,7 @@ namespace LittleWarGame
             setPower(0);
             setAttackDistance(-1);
 
-            img.Image = myRealStatus[Const.Status.move];
+            img.Image = myRealStatus[(int)Const.Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
 
         }
@@ -48,7 +48,7 @@ namespace LittleWarGame
                     this.value = target.value;
             }
             
-            changeStatusTo(Const.Status.move);
+            changeStatusTo((int)Const.Status.move);
             img.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
         }

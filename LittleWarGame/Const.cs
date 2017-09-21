@@ -33,35 +33,25 @@ namespace LittleWarGame
         static public int RescueCD = 25;
 
         public enum Warrior_Type { attacker,shielder,helper }
-        public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Wall , Rocket , Rescue}
+        public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Wall , Rocket , Rescue }
+        public enum Status { move, attack }
 
         static public class Sound
         {
             static public SoundPlayer _click;
             static public SoundPlayer _attack;
         }
-        /*
-        static public class Warrior
-        {
-            static public int Castle = 0;
-            static public int Sword = 1;
-            static public int Arrow = 2;
-            static public int Shield = 3;
-            static public int Hatchet = 4;
-            static public int Wall = 5;
-            static public int Rocket = 6;
-            static public int Rescue = 7;
-        }*/
         static public class Part
         {
             static public int A = 0;
             static public int B = 1;
         }
-        static public class Status
+        
+   /*     static public class Status
         {
             static public int move = 0;
             static public int attack = 1;
-        }
+        }*/
         
         static public void SoundInit()
         {

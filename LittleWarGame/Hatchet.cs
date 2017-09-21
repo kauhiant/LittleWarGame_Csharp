@@ -22,7 +22,7 @@ namespace LittleWarGame
             //setAttackDistance(0);
             CDTime.setCoolDownTime(15);
 
-            img.Image = myRealStatus[Const.Status.move];
+            img.Image = myRealStatus[(int)Const.Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
         public override void attackTo(Warriors they)
@@ -32,7 +32,7 @@ namespace LittleWarGame
 
             if (this.distance(they.frontLine()) <= this.attackDistance)
             {
-                img.Image = myRealStatus[Const.Status.attack];
+                img.Image = myRealStatus[(int)Const.Status.attack];
                 Const.Sound._attack.Play();
                 attackGroup(they.frontGroup());
                 CDTime.record();

@@ -24,7 +24,7 @@ namespace LittleWarGame
             //setPower(0);
             setAttackDistance(-1);//can't attack
 
-            img.Image = myRealStatus[Const.Status.move];
+            img.Image = myRealStatus[(int)Const.Status.move];
           //  img.Height = Const.castleHeight;
             img.Top = Const.mainLineHeight - Const.castleHeight;
         }

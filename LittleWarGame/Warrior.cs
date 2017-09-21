@@ -74,7 +74,7 @@ namespace LittleWarGame
 //move
         public virtual void moveTo(Point target)
         {
-            changeStatusTo(Const.Status.move);
+            changeStatusTo((int)Const.Status.move);
 
             if (this.distance(target) <= this.attackDistance || this.speed == 0)   
                 return;//if target in your attack range , you shouldn't move
@@ -116,7 +116,7 @@ namespace LittleWarGame
 
             if (this.distance(they.frontLine()) <= this.attackDistance)
             {
-                changeStatusTo(Const.Status.attack);
+                changeStatusTo((int)Const.Status.attack);
                 they.frontGroup()[0].beAttackFrom(this);
                 Const.Sound._attack.Play();
                 CDTime.record();
