@@ -114,16 +114,16 @@ namespace LittleWarGame
             {
                 switch (each.Type)
                 {
-                    case Const.WarriorType.attacker:
+                    case Const.Warrior_Type.attacker:
                         each.moveTo(enemy.frontLine());
                         each.attackTo(enemy);
                         break;
 
-                    case Const.WarriorType.shielder:
+                    case Const.Warrior_Type.shielder:
                         each.moveTo(enemy.frontLine());
                         break;
 
-                    case Const.WarriorType.helper:
+                    case Const.Warrior_Type.helper:
                         each.moveTo( tmpRescueLine );
                         each.helpTo(this);
                         break;

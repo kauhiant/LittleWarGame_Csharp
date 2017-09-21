@@ -10,7 +10,7 @@ namespace LittleWarGame
     {
         public Rescue()
         {
-            type = Const.WarriorType.helper;
+            type = Const.Warrior_Type.helper;
 
             myStatus = Const.imageList[Const.Warrior.Rescue];
             myRealStatus = myStatus[Const.Part.A];

@@ -34,12 +34,12 @@ namespace LittleWarGame
 
         public enum Warrior_Type { attacker,shielder,helper }
 
-        static public class WarriorType
+      /*  static public class WarriorType
         {
             public const char attacker = 'A';
             public const char shielder = 'B';
             public const char helper = 'C';
-        }
+        }*/
 
         static public class Sound
         {

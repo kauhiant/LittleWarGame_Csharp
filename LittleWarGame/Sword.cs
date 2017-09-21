@@ -11,7 +11,7 @@ namespace LittleWarGame
     {
         public Sword()
         {
-            type = Const.WarriorType.attacker;
+            type = Const.Warrior_Type.attacker;
 
             myStatus = Const.imageList[Const.Warrior.Sword];
             myRealStatus = myStatus[Const.Part.A];

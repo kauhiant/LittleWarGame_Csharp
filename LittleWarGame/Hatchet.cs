@@ -10,7 +10,7 @@ namespace LittleWarGame
     {
         public Hatchet()
         {
-            type = Const.WarriorType.attacker;
+            type = Const.Warrior_Type.attacker;
 
             myStatus = Const.imageList[Const.Warrior.Hatchet];
             myRealStatus = myStatus[Const.Part.A];

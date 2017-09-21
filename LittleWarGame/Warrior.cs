@@ -13,7 +13,7 @@ namespace LittleWarGame
         protected List<List<Image>> myStatus;
         protected List<Image> myRealStatus;
 
-        protected char type;
+        protected Const.Warrior_Type type;
         protected CoolDownTime CDTime;
         protected ValueBar HP;
 
@@ -42,8 +42,8 @@ namespace LittleWarGame
             this.img = new myPictureBox();
         }
 //get functions
-        public char Type { get { return type; } }
-        public bool isShielder() { return type == Const.WarriorType.shielder; }
+        public Const.Warrior_Type Type { get { return type; } }
+        public bool isShielder() { return type == Const.Warrior_Type.shielder; }
         public bool isDead() { return hp == 0; }
 //set functions just be used by subClass constructor 
         protected void setBonus(int val)

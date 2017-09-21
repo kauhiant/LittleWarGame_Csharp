@@ -10,7 +10,7 @@ namespace LittleWarGame
     {
         public Rocket()
         {
-            type = Const.WarriorType.attacker;
+            type = Const.Warrior_Type.attacker;
 
             myStatus = Const.imageList[Const.Warrior.Rocket];
             myRealStatus = myStatus[Const.Part.A];
