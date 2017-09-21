@@ -12,6 +12,27 @@ namespace LittleWarGame
     static class Const
     {
         static public GameTime gameTime = new GameTime();
+        static public List<List<List<Image>>> imageList;
+
+        static public int pictureWidth = 50;
+        static public int mainLineHeight = 100;
+        static public int HPBarHeight = 150;
+
+        static public int warriorHeight = 50;
+        static public int castleHeight = 100;
+
+        static public int AStartPoint = 100;
+        static public int BStartPoint = 600;
+
+        static public int SwordCD = 10;
+        static public int ArrowCD = 15;
+        static public int ShieldCD = 20;
+        static public int RocketCD = 50;
+        static public int HatchetCD = 30;
+        static public int WallCD = 50;
+        static public int RescueCD = 25;
+
+        public enum Warrior_Type { attacker,shielder,helper }
 
         static public class WarriorType
         {
@@ -25,18 +46,7 @@ namespace LittleWarGame
             static public SoundPlayer _click;
             static public SoundPlayer _attack;
         }
-        static public void SoundInit()
-        {
-            try
-            {
-                Sound._click = new SoundPlayer(@"./audio/click.wav");
-                Sound._attack = new SoundPlayer(@"./audio/attack.wav");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "音效資源錯誤");
-            }
-        }
+        
         static public class Warrior
         {
             static public int Castle = 0;
@@ -58,26 +68,19 @@ namespace LittleWarGame
             static public int move = 0;
             static public int attack = 1;
         }
-        static public List< List< List<Image> > > imageList;
-
-        static public int pictureWidth = 50;
-        static public int mainLineHeight = 100;
-        static public int HPBarHeight = 150;
         
-        static public int warriorHeight = 50;
-        static public int castleHeight = 100;
-
-        static public int AStartPoint = 100;
-        static public int BStartPoint = 600;
-
-        static public int SwordCD = 10;
-        static public int ArrowCD = 15;
-        static public int ShieldCD = 20;
-        static public int RocketCD = 50;
-        static public int HatchetCD = 30;
-        static public int WallCD = 50;
-        static public int RescueCD = 25;
-
+        static public void SoundInit()
+        {
+            try
+            {
+                Sound._click = new SoundPlayer(@"./audio/click.wav");
+                Sound._attack = new SoundPlayer(@"./audio/attack.wav");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "音效資源錯誤");
+            }
+        }
         static public void ImageListInit()
         {
             int sizeOfWarriors = 8;

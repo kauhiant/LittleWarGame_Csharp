@@ -64,10 +64,8 @@ namespace LittleWarGame
             this.Text = "Little War Level " + Program.level.ToString();
             myEnergyBar.setLabel(_energyBar);
 
-            _ACount.BackColor = Color.Transparent;
-            _BCount.BackColor = Color.Transparent;
-            _ACount.Left = Const.AStartPoint - Const.pictureWidth;
-            _BCount.Left = Const.BStartPoint;
+            _Status.BackColor = Color.Transparent;
+            _Status.Left = (Const.AStartPoint + Const.BStartPoint) / 2 - (_Status.Width / 2);
 
             _sword.Text += Const.SwordCD.ToString();
             _arrow.Text += Const.ArrowCD.ToString();
@@ -138,11 +136,13 @@ namespace LittleWarGame
             ClearImage();
             mainLine.nextStep();
             UpdateBattleImage();
-            _ACount.Text = (A.size()-1).ToString();
-            _BCount.Text = (B.size()-1).ToString();
+            _Status.Text = (A.size()-1).ToString() + " : " + (B.size()-1).ToString();
 
             if (mainLine.isGameOver())
             {
+                _Status.Text = "Game Over";
+                _Status.Left = (Const.AStartPoint + Const.BStartPoint)/2 - (_Status.Width / 2);
+
                 gameTimer.Enabled = false;
                 _getResouce.Enabled = false;
                 GameHaveWinner = true;
