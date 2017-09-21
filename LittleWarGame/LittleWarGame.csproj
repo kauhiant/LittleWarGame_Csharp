@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameTime.cs" />
     <Compile Include="Hatchet.cs" />
     <Compile Include="myPictureBox.cs" />
     <Compile Include="PlayBoard.cs" />

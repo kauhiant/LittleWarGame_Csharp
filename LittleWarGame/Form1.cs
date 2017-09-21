@@ -37,9 +37,11 @@ namespace LittleWarGame
 
             this.DoubleBuffered = true;//圖形移動不閃爍
             this.Opacity = 0.9;//透明度
-
+            
             InitializeComponent();
             battlePictureInit();
+            this.Width = Const.BStartPoint + 100;
+            pictureBox1.Width = this.Width;
 
             A = new Warriors(new Point(Const.AStartPoint), this);
             B = new Warriors(new Point(Const.BStartPoint), this ,true);
@@ -56,10 +58,16 @@ namespace LittleWarGame
         private void Form1_Load(object sender, EventArgs e)
         {
             
+
             pictureBox1.BackColor = Color.Transparent;
 
             this.Text = "Little War Level " + Program.level.ToString();
             myEnergyBar.setLabel(_energyBar);
+
+            _ACount.BackColor = Color.Transparent;
+            _BCount.BackColor = Color.Transparent;
+            _ACount.Left = Const.AStartPoint - Const.pictureWidth;
+            _BCount.Left = Const.BStartPoint;
 
             _sword.Text += Const.SwordCD.ToString();
             _arrow.Text += Const.ArrowCD.ToString();
@@ -124,10 +132,14 @@ namespace LittleWarGame
         {
             if (GameHaveWinner) return;
 
+            Const.gameTime.clock();
+            Text = Const.gameTime.Value.ToString();
+
             ClearImage();
             mainLine.nextStep();
             UpdateBattleImage();
-            
+            _ACount.Text = (A.size()-1).ToString();
+            _BCount.Text = (B.size()-1).ToString();
 
             if (mainLine.isGameOver())
             {
@@ -225,7 +237,7 @@ namespace LittleWarGame
      //   show Warriors Battle
         private void battlePictureInit()
         {
-            tmpMainBattle = new Bitmap(600,150);
+            tmpMainBattle = new Bitmap(Const.BStartPoint+100 , 150);
             mainBattle = Graphics.FromImage(tmpMainBattle);
         }
         public void ClearImage()
@@ -236,6 +248,28 @@ namespace LittleWarGame
         {
             pictureBox1.Image = tmpMainBattle;
         }
-        
+
+        private void _faster_Click(object sender, EventArgs e)
+        {
+            if(_faster.Text == "普通")
+            {//普通;
+                _faster.Text = "加速";
+                gameTimer.Interval = 50;
+                _getResouce.Interval = 250;
+            }
+            else if(_faster.Text == "加速")
+            {//加速;
+                _faster.Text = "再加速";
+                gameTimer.Interval = 25;
+                _getResouce.Interval = 125;
+            }
+            else
+            {//再加速;
+                _faster.Text = "普通";
+                gameTimer.Interval = 100;
+                _getResouce.Interval = 500;
+            }
+            
+        }
     }
 }

@@ -44,6 +44,9 @@
             this._wall = new System.Windows.Forms.Button();
             this._rescue = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._ACount = new System.Windows.Forms.Label();
+            this._BCount = new System.Windows.Forms.Label();
+            this._faster = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -184,6 +187,36 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // _ACount
+            // 
+            this._ACount.AutoSize = true;
+            this._ACount.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._ACount.Location = new System.Drawing.Point(0, 20);
+            this._ACount.Name = "_ACount";
+            this._ACount.Size = new System.Drawing.Size(31, 35);
+            this._ACount.TabIndex = 11;
+            this._ACount.Text = "0";
+            // 
+            // _BCount
+            // 
+            this._BCount.AutoSize = true;
+            this._BCount.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._BCount.Location = new System.Drawing.Point(462, 20);
+            this._BCount.Name = "_BCount";
+            this._BCount.Size = new System.Drawing.Size(31, 35);
+            this._BCount.TabIndex = 12;
+            this._BCount.Text = "0";
+            // 
+            // _faster
+            // 
+            this._faster.Location = new System.Drawing.Point(286, 175);
+            this._faster.Name = "_faster";
+            this._faster.Size = new System.Drawing.Size(75, 25);
+            this._faster.TabIndex = 13;
+            this._faster.Text = "普通";
+            this._faster.UseVisualStyleBackColor = true;
+            this._faster.Click += new System.EventHandler(this._faster_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -191,6 +224,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(600, 250);
+            this.Controls.Add(this._faster);
+            this.Controls.Add(this._BCount);
+            this.Controls.Add(this._ACount);
             this.Controls.Add(this._rescueLine);
             this.Controls.Add(this._restart);
             this.Controls.Add(this._rescue);
@@ -234,6 +270,9 @@
         private System.Windows.Forms.PictureBox _rescueLine;
         private System.Windows.Forms.Timer _getResouce;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label _ACount;
+        private System.Windows.Forms.Label _BCount;
+        private System.Windows.Forms.Button _faster;
     }
 }
 

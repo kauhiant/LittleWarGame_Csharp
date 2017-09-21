@@ -20,7 +20,7 @@ namespace LittleWarGame
             setHP(150);
             setPower(50);
             //setAttackDistance(0);
-            CDTime.setCoolDownTime(1.5);
+            CDTime.setCoolDownTime(15);
 
             img.Image = myRealStatus[Const.Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;

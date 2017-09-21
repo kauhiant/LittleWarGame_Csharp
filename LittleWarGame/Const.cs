@@ -11,7 +11,7 @@ namespace LittleWarGame
 {
     static class Const
     {
-        
+        static public GameTime gameTime = new GameTime();
 
         static public class WarriorType
         {
@@ -68,7 +68,7 @@ namespace LittleWarGame
         static public int castleHeight = 100;
 
         static public int AStartPoint = 100;
-        static public int BStartPoint = 500;
+        static public int BStartPoint = 600;
 
         static public int SwordCD = 10;
         static public int ArrowCD = 15;

@@ -8,35 +8,35 @@ namespace LittleWarGame
 {
     class CoolDownTime
     {
-        private DateTime last;
-        private TimeSpan ts;
-        private double cdTime;
+        private ulong last;
+        private ulong ts;
+        private uint cdTime;
 
-        public CoolDownTime(double cd = 0)
+        public CoolDownTime(uint cd = 0)
         {
             cdTime = cd;
         }
 
-        public void setCoolDownTime(double cd)
+        public void setCoolDownTime(uint cd)
         {
             this.cdTime = cd;
         }
 
         public void record()
         {
-            last = DateTime.Now;
+            last = Const.gameTime.Value;
         }
 
         public bool isCoolDown()
         {
-            ts = DateTime.Now - last;
-            return ts.TotalSeconds < cdTime;
+            ts = Const.gameTime.Value - last;
+            return ts < cdTime;
         }
 
         public bool isNotCoolDown()
         {
-            ts = DateTime.Now - last;
-            return ts.TotalSeconds >= cdTime;
+            ts = Const.gameTime.Value - last;
+            return ts >= cdTime;
         }
     }
 }
