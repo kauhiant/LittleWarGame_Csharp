@@ -15,7 +15,7 @@ namespace LittleWarGame
         {
             type = Const.Warrior_Type.shielder;
 
-            myStatus = Const.imageList[Const.Warrior.Castle];
+            myStatus = Const.imageList[(int)Const.Warrior.Castle];
             myRealStatus = myStatus[Const.Part.A];
             
             this.level = level;

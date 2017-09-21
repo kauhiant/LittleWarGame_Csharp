@@ -13,7 +13,7 @@ namespace LittleWarGame
         {
             type = Const.Warrior_Type.attacker;
 
-            myStatus = Const.imageList[Const.Warrior.Arrow];
+            myStatus = Const.imageList[(int)Const.Warrior.Arrow];
             myRealStatus = myStatus[Const.Part.A];
 
             setBonus(5);

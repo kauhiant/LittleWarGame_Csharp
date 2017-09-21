@@ -13,7 +13,7 @@ namespace LittleWarGame
         {
             type = Const.Warrior_Type.shielder;
 
-            myStatus = Const.imageList[Const.Warrior.Wall];
+            myStatus = Const.imageList[(int)Const.Warrior.Wall];
             myRealStatus = myStatus[Const.Part.A];
             
             setBonus(15);
