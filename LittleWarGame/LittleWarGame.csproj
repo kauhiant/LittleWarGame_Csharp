@@ -68,6 +68,7 @@
     <Compile Include="Rescue.cs" />
     <Compile Include="Rocket.cs" />
     <Compile Include="Shield.cs" />
+    <Compile Include="SuperRocket.cs" />
     <Compile Include="Sword.cs" />
     <Compile Include="ValueBar.cs" />
     <Compile Include="Wall.cs" />

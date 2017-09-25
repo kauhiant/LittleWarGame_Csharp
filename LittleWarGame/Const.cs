@@ -13,6 +13,7 @@ namespace LittleWarGame
     {
         static public GameTime gameTime = new GameTime();
         static public List<List<List<Image>>> imageList;
+        static public Image background;
 
         static public int pictureWidth = 50;
         static public int mainLineHeight = 100;
@@ -79,6 +80,8 @@ namespace LittleWarGame
 
             try
             {
+                background = Image.FromFile(@"./img/battleField.png");
+
                 imageList[(int)Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L.png"));
                 imageList[(int)Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L1.png"));
                 imageList[(int)Warrior.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L2.png"));

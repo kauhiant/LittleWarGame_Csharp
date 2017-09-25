@@ -57,8 +57,8 @@ namespace LittleWarGame
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            
 
+            this.BackgroundImage = Const.background;
             pictureBox1.BackColor = Color.Transparent;
 
             this.Text = "Little War Level " + Program.level.ToString();
@@ -131,7 +131,7 @@ namespace LittleWarGame
             if (GameHaveWinner) return;
 
             Const.gameTime.clock();
-            Text = Const.gameTime.Value.ToString();
+          //  Text = Const.gameTime.Value.ToString();
 
             ClearImage();
             mainLine.nextStep();
@@ -140,7 +140,11 @@ namespace LittleWarGame
 
             if (mainLine.isGameOver())
             {
-                _Status.Text = "Game Over";
+                if(Player.group.isLose())
+                    _Status.Text = "Game Over";
+                else
+                    _Status.Text = "You Win";
+
                 _Status.Left = (Const.AStartPoint + Const.BStartPoint)/2 - (_Status.Width / 2);
 
                 gameTimer.Enabled = false;
@@ -270,6 +274,11 @@ namespace LittleWarGame
                 _getResouce.Interval = 500;
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Player.group.add(new SuperRocket());
         }
     }
 }
