@@ -279,6 +279,8 @@ namespace LittleWarGame
         private void button1_Click(object sender, EventArgs e)
         {
             Player.group.add(new SuperRocket());
+            Button thisButton = sender as Button;
+            thisButton.Hide();
         }
     }
 }
