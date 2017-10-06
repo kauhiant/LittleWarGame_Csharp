@@ -34,7 +34,7 @@ namespace LittleWarGame
         static public int RescueCD = 25;
 
         public enum Warrior_Type { attacker,shielder,helper }
-        public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Wall , Rocket , Rescue }
+        public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Rocket ,  Wall , Rescue }
         public enum Status { move, attack }
 
 

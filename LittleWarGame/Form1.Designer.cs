@@ -105,9 +105,10 @@
             // 
             // _sword
             // 
+            this._sword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._sword.Location = new System.Drawing.Point(20, 200);
             this._sword.Name = "_sword";
-            this._sword.Size = new System.Drawing.Size(75, 23);
+            this._sword.Size = new System.Drawing.Size(50, 50);
             this._sword.TabIndex = 1;
             this._sword.Text = "劍兵";
             this._sword.UseVisualStyleBackColor = true;
@@ -116,9 +117,10 @@
             // _arrow
             // 
             this._arrow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._arrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._arrow.Location = new System.Drawing.Point(100, 200);
             this._arrow.Name = "_arrow";
-            this._arrow.Size = new System.Drawing.Size(75, 23);
+            this._arrow.Size = new System.Drawing.Size(50, 50);
             this._arrow.TabIndex = 2;
             this._arrow.Text = "弓兵";
             this._arrow.UseVisualStyleBackColor = true;
@@ -127,9 +129,10 @@
             // _shield
             // 
             this._shield.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._shield.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._shield.Location = new System.Drawing.Point(180, 200);
             this._shield.Name = "_shield";
-            this._shield.Size = new System.Drawing.Size(75, 23);
+            this._shield.Size = new System.Drawing.Size(50, 50);
             this._shield.TabIndex = 3;
             this._shield.Text = "盾牌";
             this._shield.UseVisualStyleBackColor = true;
@@ -138,9 +141,10 @@
             // _hatchet
             // 
             this._hatchet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._hatchet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._hatchet.Location = new System.Drawing.Point(260, 200);
             this._hatchet.Name = "_hatchet";
-            this._hatchet.Size = new System.Drawing.Size(75, 23);
+            this._hatchet.Size = new System.Drawing.Size(50, 50);
             this._hatchet.TabIndex = 4;
             this._hatchet.Text = "斧手";
             this._hatchet.UseVisualStyleBackColor = true;
@@ -149,9 +153,10 @@
             // _rocket
             // 
             this._rocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._rocket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._rocket.Location = new System.Drawing.Point(340, 200);
             this._rocket.Name = "_rocket";
-            this._rocket.Size = new System.Drawing.Size(75, 23);
+            this._rocket.Size = new System.Drawing.Size(50, 50);
             this._rocket.TabIndex = 5;
             this._rocket.Text = "火箭";
             this._rocket.UseVisualStyleBackColor = true;
@@ -160,9 +165,10 @@
             // _wall
             // 
             this._wall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._wall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._wall.Location = new System.Drawing.Point(420, 200);
             this._wall.Name = "_wall";
-            this._wall.Size = new System.Drawing.Size(75, 23);
+            this._wall.Size = new System.Drawing.Size(50, 50);
             this._wall.TabIndex = 6;
             this._wall.Text = "鐵壁";
             this._wall.UseVisualStyleBackColor = true;
@@ -171,9 +177,10 @@
             // _rescue
             // 
             this._rescue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._rescue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._rescue.Location = new System.Drawing.Point(500, 200);
             this._rescue.Name = "_rescue";
-            this._rescue.Size = new System.Drawing.Size(75, 23);
+            this._rescue.Size = new System.Drawing.Size(50, 50);
             this._rescue.TabIndex = 7;
             this._rescue.Text = "醫護";
             this._rescue.UseVisualStyleBackColor = true;

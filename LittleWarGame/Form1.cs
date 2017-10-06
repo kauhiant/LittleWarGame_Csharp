@@ -66,7 +66,7 @@ namespace LittleWarGame
 
             _Status.BackColor = Color.Transparent;
             _Status.Left = (Const.AStartPoint + Const.BStartPoint) / 2 - (_Status.Width / 2);
-
+/*
             _sword.Text += Const.SwordCD.ToString();
             _arrow.Text += Const.ArrowCD.ToString();
             _shield.Text += Const.ShieldCD.ToString();
@@ -74,7 +74,7 @@ namespace LittleWarGame
             _rescue.Text += Const.RescueCD.ToString();
             _rocket.Text += Const.RocketCD.ToString();
             _wall.Text += Const.WallCD.ToString();
-
+*/
             _rescueLine.BackColor = Color.Transparent;
 
             _warriorButtonList.Add(_sword);
@@ -85,8 +85,17 @@ namespace LittleWarGame
             _warriorButtonList.Add(_wall);
             _warriorButtonList.Add(_rescue);
 
-            for(int i=Player.Level(); i<_warriorButtonList.Count; ++i)
+            for (int i = 0; i < Player.Level() ; ++i)
+            {
+                _warriorButtonList.ElementAt(i).Text = "";
+                _warriorButtonList.ElementAt(i).BackgroundImage = Const.imageList[i + 1][0][0];
+            }
+
+            for (int i = Player.Level() ; i<_warriorButtonList.Count; ++i)
+            {
                 _warriorButtonList.ElementAt(i).Hide();
+            }
+                
 
             if (Program.level == 7) _restart.Text = "結束";
 
