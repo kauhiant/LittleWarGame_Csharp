@@ -298,20 +298,14 @@ namespace LittleWarGame
             if(_faster.Text == "普通")
             {//普通;
                 _faster.Text = "加速";
-                gameTimer.Interval = 50;
-                _getResouce.Interval = 250;
-            }
-            else if(_faster.Text == "加速")
-            {//加速;
-                _faster.Text = "再加速";
                 gameTimer.Interval = 25;
                 _getResouce.Interval = 125;
             }
             else
             {//再加速;
                 _faster.Text = "普通";
-                gameTimer.Interval = 100;
-                _getResouce.Interval = 500;
+                gameTimer.Interval = 50;
+                _getResouce.Interval = 250;
             }
             
         }

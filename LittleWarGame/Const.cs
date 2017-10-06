@@ -24,7 +24,7 @@ namespace LittleWarGame
 
         static public int AStartPoint = 100;
         static public int BStartPoint = 600;
-
+        /*
         static public int SwordCD = 10;
         static public int ArrowCD = 15;
         static public int ShieldCD = 20;
@@ -32,11 +32,15 @@ namespace LittleWarGame
         static public int HatchetCD = 30;
         static public int WallCD = 50;
         static public int RescueCD = 25;
-
+        */
+        public enum Status { move, attack }
         public enum Warrior_Type { attacker,shielder,helper }
         public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Rocket ,  Wall , Rescue }
-        public enum Status { move, attack }
         static public int[] WarriorEnergy = { 10, 15, 20, 30, 50, 50, 25 };
+        static public int EnergyOf(Warrior index)
+        {
+            return WarriorEnergy[(int)(index)-1];
+        }
 
         static public class Part
         {

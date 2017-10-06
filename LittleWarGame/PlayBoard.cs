@@ -43,10 +43,10 @@ namespace LittleWarGame
         public bool addSword()
         {
             if (level < 1) return false;
-            if (energy.getValue() >= Const.SwordCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Sword))
             {
                 group.add(new Sword());
-                energy.addEnergy(-Const.SwordCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Sword));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -56,10 +56,10 @@ namespace LittleWarGame
         public bool addArrow()
         {
             if (level < 2) return false;
-            if (energy.getValue() >= Const.ArrowCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Arrow))
             {
                 group.add(new Arrow());
-                energy.addEnergy(-Const.ArrowCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Arrow));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -69,10 +69,10 @@ namespace LittleWarGame
         public bool addShield()
         {
             if (level < 3) return false;
-            if (energy.getValue() >= Const.ShieldCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Shield))
             {
                 group.add(new Shield());
-                energy.addEnergy(-Const.ShieldCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Shield));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -82,10 +82,10 @@ namespace LittleWarGame
         public bool addHatchet()
         {
             if (level < 4) return false;
-            if (energy.getValue() >= Const.HatchetCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Hatchet))
             {
                 group.add(new Hatchet());
-                energy.addEnergy(-Const.HatchetCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Hatchet));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -95,10 +95,10 @@ namespace LittleWarGame
         public bool addRocket()
         {
             if (level < 5) return false;
-            if (energy.getValue() >= Const.RocketCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Rocket))
             {
                 group.add(new Rocket());
-                energy.addEnergy(-Const.RocketCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Rocket));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -108,10 +108,10 @@ namespace LittleWarGame
         public bool addWall()
         {
             if (level < 6) return false;
-            if (energy.getValue() >= Const.WallCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Wall))
             {
                 group.add(new Wall());
-                energy.addEnergy(-Const.WallCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Wall));
                 Const.Sound._click.Play();
                 return true;
             }
@@ -121,10 +121,10 @@ namespace LittleWarGame
         public bool addRescue()
         {
             if (level < 7) return false;
-            if (energy.getValue() >= Const.RescueCD)
+            if (energy.getValue() >= Const.EnergyOf(Const.Warrior.Rescue))
             {
                 group.add(new Rescue());
-                energy.addEnergy(-Const.RescueCD);
+                energy.addEnergy(-Const.EnergyOf(Const.Warrior.Rescue));
                 Const.Sound._click.Play();
                 return true;
             }

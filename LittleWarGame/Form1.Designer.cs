@@ -56,7 +56,7 @@
             this._start.Location = new System.Drawing.Point(231, 175);
             this._start.Name = "_start";
             this._start.Size = new System.Drawing.Size(75, 25);
-            this._start.TabIndex = 0;
+            this._start.TabIndex = 11;
             this._start.Text = "開始";
             this._start.UseVisualStyleBackColor = true;
             this._start.Click += new System.EventHandler(this.game_start);
@@ -66,7 +66,7 @@
             this._restart.Location = new System.Drawing.Point(311, 175);
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
-            this._restart.TabIndex = 0;
+            this._restart.TabIndex = 12;
             this._restart.Text = "下一關";
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
@@ -78,16 +78,17 @@
             this._energyBar.Name = "_energyBar";
             this._energyBar.ReadOnly = true;
             this._energyBar.Size = new System.Drawing.Size(200, 22);
-            this._energyBar.TabIndex = 0;
+            this._energyBar.TabIndex = 10;
             this._energyBar.TabStop = false;
             // 
             // gameTimer
             // 
+            this.gameTimer.Interval = 50;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // _getResouce
             // 
-            this._getResouce.Interval = 500;
+            this._getResouce.Interval = 250;
             this._getResouce.Tick += new System.EventHandler(this._getResouce_Tick);
             // 
             // _rescueLine
@@ -109,7 +110,7 @@
             this._sword.Location = new System.Drawing.Point(20, 200);
             this._sword.Name = "_sword";
             this._sword.Size = new System.Drawing.Size(50, 50);
-            this._sword.TabIndex = 1;
+            this._sword.TabIndex = 0;
             this._sword.Text = "劍兵";
             this._sword.UseVisualStyleBackColor = true;
             this._sword.Click += new System.EventHandler(this.addSword);
@@ -121,7 +122,7 @@
             this._arrow.Location = new System.Drawing.Point(100, 200);
             this._arrow.Name = "_arrow";
             this._arrow.Size = new System.Drawing.Size(50, 50);
-            this._arrow.TabIndex = 2;
+            this._arrow.TabIndex = 1;
             this._arrow.Text = "弓兵";
             this._arrow.UseVisualStyleBackColor = true;
             this._arrow.Click += new System.EventHandler(this.addArrow);
@@ -133,7 +134,7 @@
             this._shield.Location = new System.Drawing.Point(180, 200);
             this._shield.Name = "_shield";
             this._shield.Size = new System.Drawing.Size(50, 50);
-            this._shield.TabIndex = 3;
+            this._shield.TabIndex = 2;
             this._shield.Text = "盾牌";
             this._shield.UseVisualStyleBackColor = true;
             this._shield.Click += new System.EventHandler(this.addShield);
@@ -145,7 +146,7 @@
             this._hatchet.Location = new System.Drawing.Point(260, 200);
             this._hatchet.Name = "_hatchet";
             this._hatchet.Size = new System.Drawing.Size(50, 50);
-            this._hatchet.TabIndex = 4;
+            this._hatchet.TabIndex = 3;
             this._hatchet.Text = "斧手";
             this._hatchet.UseVisualStyleBackColor = true;
             this._hatchet.Click += new System.EventHandler(this.addHachet);
@@ -157,7 +158,7 @@
             this._rocket.Location = new System.Drawing.Point(340, 200);
             this._rocket.Name = "_rocket";
             this._rocket.Size = new System.Drawing.Size(50, 50);
-            this._rocket.TabIndex = 5;
+            this._rocket.TabIndex = 4;
             this._rocket.Text = "火箭";
             this._rocket.UseVisualStyleBackColor = true;
             this._rocket.Click += new System.EventHandler(this.addRocket);
@@ -169,7 +170,7 @@
             this._wall.Location = new System.Drawing.Point(420, 200);
             this._wall.Name = "_wall";
             this._wall.Size = new System.Drawing.Size(50, 50);
-            this._wall.TabIndex = 6;
+            this._wall.TabIndex = 5;
             this._wall.Text = "鐵壁";
             this._wall.UseVisualStyleBackColor = true;
             this._wall.Click += new System.EventHandler(this.addWall);
@@ -181,7 +182,7 @@
             this._rescue.Location = new System.Drawing.Point(500, 200);
             this._rescue.Name = "_rescue";
             this._rescue.Size = new System.Drawing.Size(50, 50);
-            this._rescue.TabIndex = 7;
+            this._rescue.TabIndex = 6;
             this._rescue.Text = "醫護";
             this._rescue.UseVisualStyleBackColor = true;
             this._rescue.Click += new System.EventHandler(this.addRescue);
@@ -209,19 +210,20 @@
             this._faster.Location = new System.Drawing.Point(392, 175);
             this._faster.Name = "_faster";
             this._faster.Size = new System.Drawing.Size(75, 25);
-            this._faster.TabIndex = 0;
+            this._faster.TabIndex = 13;
             this._faster.Text = "普通";
             this._faster.UseVisualStyleBackColor = true;
             this._faster.Click += new System.EventHandler(this._faster_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(473, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 14;
             this.button1.Text = "阿硯救我";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
