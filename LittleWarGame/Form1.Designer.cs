@@ -66,7 +66,7 @@
             this._restart.Location = new System.Drawing.Point(311, 175);
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
-            this._restart.TabIndex = 9;
+            this._restart.TabIndex = 0;
             this._restart.Text = "下一關";
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
@@ -105,7 +105,7 @@
             // 
             // _sword
             // 
-            this._sword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._sword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._sword.Location = new System.Drawing.Point(20, 200);
             this._sword.Name = "_sword";
             this._sword.Size = new System.Drawing.Size(50, 50);
@@ -117,7 +117,7 @@
             // _arrow
             // 
             this._arrow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._arrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._arrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._arrow.Location = new System.Drawing.Point(100, 200);
             this._arrow.Name = "_arrow";
             this._arrow.Size = new System.Drawing.Size(50, 50);
@@ -129,7 +129,7 @@
             // _shield
             // 
             this._shield.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._shield.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._shield.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._shield.Location = new System.Drawing.Point(180, 200);
             this._shield.Name = "_shield";
             this._shield.Size = new System.Drawing.Size(50, 50);
@@ -141,7 +141,7 @@
             // _hatchet
             // 
             this._hatchet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._hatchet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._hatchet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._hatchet.Location = new System.Drawing.Point(260, 200);
             this._hatchet.Name = "_hatchet";
             this._hatchet.Size = new System.Drawing.Size(50, 50);
@@ -153,7 +153,7 @@
             // _rocket
             // 
             this._rocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._rocket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._rocket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._rocket.Location = new System.Drawing.Point(340, 200);
             this._rocket.Name = "_rocket";
             this._rocket.Size = new System.Drawing.Size(50, 50);
@@ -165,7 +165,7 @@
             // _wall
             // 
             this._wall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._wall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._wall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._wall.Location = new System.Drawing.Point(420, 200);
             this._wall.Name = "_wall";
             this._wall.Size = new System.Drawing.Size(50, 50);
@@ -177,7 +177,7 @@
             // _rescue
             // 
             this._rescue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._rescue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._rescue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this._rescue.Location = new System.Drawing.Point(500, 200);
             this._rescue.Name = "_rescue";
             this._rescue.Size = new System.Drawing.Size(50, 50);
@@ -209,7 +209,7 @@
             this._faster.Location = new System.Drawing.Point(392, 175);
             this._faster.Name = "_faster";
             this._faster.Size = new System.Drawing.Size(75, 25);
-            this._faster.TabIndex = 13;
+            this._faster.TabIndex = 0;
             this._faster.Text = "普通";
             this._faster.UseVisualStyleBackColor = true;
             this._faster.Click += new System.EventHandler(this._faster_Click);
@@ -219,7 +219,7 @@
             this.button1.Location = new System.Drawing.Point(473, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 14;
+            this.button1.TabIndex = 0;
             this.button1.Text = "阿硯救我";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

@@ -95,13 +95,28 @@ namespace LittleWarGame
             {
                 _warriorButtonList.ElementAt(i).Hide();
             }
-                
-
-            
-
             _restart.Hide();
             Program.isRestart = false;
         }
+//for Create Warrior Button
+        private void fixButtonsLight()
+        {
+            for(int i=0; i<Player.Level(); ++i)
+            {
+                if (Player.getEnergy() < Const.WarriorEnergy[i])
+                    setButtonLight(_warriorButtonList[i], true);
+                else
+                    setButtonLight(_warriorButtonList[i], false);
+            }
+        }
+        private void setButtonLight(Button target , bool light)
+        {
+            if (light)
+                target.Image = Const.mask;
+            else
+                target.Image = null;
+        }
+
 //
 //Game Start AND Timers
 //
@@ -143,6 +158,7 @@ namespace LittleWarGame
                     else if (r < 0.1)
                         aiEnergyBar.addEnergy(4);
                 }
+                fixButtonsLight();
             }
         }
 

@@ -36,7 +36,7 @@ namespace LittleWarGame
         public enum Warrior_Type { attacker,shielder,helper }
         public enum Warrior { Castle , Sword , Arrow , Shield , Hatchet , Rocket ,  Wall , Rescue }
         public enum Status { move, attack }
-
+        static public int[] WarriorEnergy = { 10, 15, 20, 30, 50, 50, 25 };
 
         static public class Part
         {
@@ -49,7 +49,8 @@ namespace LittleWarGame
             static public SoundPlayer _click;
             static public SoundPlayer _attack;
         }
-        
+
+        static public Image mask = Image.FromFile(@"./img/mask.png");
         
         static public void SoundInit()
         {

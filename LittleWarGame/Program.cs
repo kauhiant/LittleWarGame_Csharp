@@ -9,7 +9,7 @@ namespace LittleWarGame
     static class Program
     {
         static public bool isRestart = false;
-        static public int level = 1;
+        static public int level = 7;
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
