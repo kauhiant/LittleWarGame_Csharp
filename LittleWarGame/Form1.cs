@@ -97,7 +97,7 @@ namespace LittleWarGame
             }
                 
 
-            if (Program.level == 7) _restart.Text = "結束";
+            
 
             _restart.Hide();
             Program.isRestart = false;
@@ -107,9 +107,20 @@ namespace LittleWarGame
 //
         private void game_start(object sender, EventArgs e)
         {
-            gameTimer.Enabled = true;
-            _getResouce.Enabled = true;
-            _start.Hide();
+            Button thisButton = sender as Button;
+            if(thisButton.Text == "開始")
+            {
+                gameTimer.Enabled = true;
+                _getResouce.Enabled = true;
+                thisButton.Text = "暫停";
+            }
+            else if(thisButton.Text == "暫停")
+            {
+                gameTimer.Enabled = false;
+                _getResouce.Enabled = false;
+                thisButton.Text = "開始";
+            }
+            
         }
 
         private void _restart_Click(object sender, EventArgs e)
@@ -149,7 +160,7 @@ namespace LittleWarGame
 
             if (mainLine.isGameOver())
             {
-                if(Player.group.isLose())
+                if (Player.group.isLose())
                     _Status.Text = "Game Over";
                 else
                     _Status.Text = "You Win";
@@ -159,8 +170,12 @@ namespace LittleWarGame
                 gameTimer.Enabled = false;
                 _getResouce.Enabled = false;
                 GameHaveWinner = true;
+                if(Player.Level() == 7)_restart.Text = "結束";
                 if (!Player.group.isLose())
+                {
                     _restart.Show();
+                }
+                    
             }
             else
             {

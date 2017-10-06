@@ -53,7 +53,7 @@
             // 
             // _start
             // 
-            this._start.Location = new System.Drawing.Point(125, 175);
+            this._start.Location = new System.Drawing.Point(231, 175);
             this._start.Name = "_start";
             this._start.Size = new System.Drawing.Size(75, 25);
             this._start.TabIndex = 0;
@@ -63,7 +63,7 @@
             // 
             // _restart
             // 
-            this._restart.Location = new System.Drawing.Point(205, 175);
+            this._restart.Location = new System.Drawing.Point(311, 175);
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
             this._restart.TabIndex = 9;
@@ -77,7 +77,7 @@
             this._energyBar.Location = new System.Drawing.Point(20, 175);
             this._energyBar.Name = "_energyBar";
             this._energyBar.ReadOnly = true;
-            this._energyBar.Size = new System.Drawing.Size(75, 22);
+            this._energyBar.Size = new System.Drawing.Size(200, 22);
             this._energyBar.TabIndex = 0;
             this._energyBar.TabStop = false;
             // 
@@ -206,7 +206,7 @@
             // 
             // _faster
             // 
-            this._faster.Location = new System.Drawing.Point(286, 175);
+            this._faster.Location = new System.Drawing.Point(392, 175);
             this._faster.Name = "_faster";
             this._faster.Size = new System.Drawing.Size(75, 25);
             this._faster.TabIndex = 13;
@@ -216,7 +216,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(367, 175);
+            this.button1.Location = new System.Drawing.Point(473, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 14;
