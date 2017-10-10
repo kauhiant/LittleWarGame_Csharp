@@ -50,14 +50,28 @@
     <Compile Include="BattleLine.cs" />
     <Compile Include="Castle.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="CoolDownTime.cs" />
-    <Compile Include="EnergyBar.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ControlForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ControlForm.Designer.cs">
+      <DependentUpon>ControlForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CoolDownTime.cs" />
+    <Compile Include="EnergyBar.cs" />
+    <Compile Include="BattleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BattleForm.Designer.cs">
+      <DependentUpon>BattleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FirstStepPassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FirstStepPassForm.Designer.cs">
+      <DependentUpon>FirstStepPassForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameData.cs" />
+    <Compile Include="GameLevel.cs" />
     <Compile Include="GameTime.cs" />
     <Compile Include="Hatchet.cs" />
     <Compile Include="myPictureBox.cs" />
@@ -68,14 +82,27 @@
     <Compile Include="Rescue.cs" />
     <Compile Include="Rocket.cs" />
     <Compile Include="Shield.cs" />
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SuperRocket.cs" />
     <Compile Include="Sword.cs" />
     <Compile Include="ValueBar.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Warrior.cs" />
+    <Compile Include="WarriorData.cs" />
     <Compile Include="Warriors.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BattleForm.resx">
+      <DependentUpon>BattleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlForm.resx">
+      <DependentUpon>ControlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FirstStepPassForm.resx">
+      <DependentUpon>FirstStepPassForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,6 +114,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

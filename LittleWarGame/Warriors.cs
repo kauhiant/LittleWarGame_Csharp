@@ -16,11 +16,11 @@ namespace LittleWarGame
         private bool Lose;
         private bool Reverse;
 
-        public Form1 mainForm;
+        public BattleForm mainForm;
         
         private List<Warrior> group;
 
-        public Warriors(Point field , Form1 mainForm , bool isReverse=false)
+        public Warriors(Point field , BattleForm mainForm , bool isReverse=false)
         {
             this.Lose = false;
             this.mainForm = mainForm;
@@ -114,16 +114,16 @@ namespace LittleWarGame
             {
                 switch (each.Type)
                 {
-                    case Const.Warrior_Type.attacker:
+                    case Warrior_Type.attacker:
                         each.moveTo(enemy.frontLine());
                         each.attackTo(enemy);
                         break;
 
-                    case Const.Warrior_Type.shielder:
+                    case Warrior_Type.shielder:
                         each.moveTo(enemy.frontLine());
                         break;
 
-                    case Const.Warrior_Type.helper:
+                    case Warrior_Type.helper:
                         each.moveTo( tmpRescueLine );
                         each.helpTo(this);
                         break;

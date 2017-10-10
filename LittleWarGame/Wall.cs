@@ -8,27 +8,28 @@ namespace LittleWarGame
 {
     class Wall:Warrior
     {
-        private int energy = 100;
-        public Wall()
+        private int energy;
+        public Wall(bool isMe)
         {
-            type = Const.Warrior_Type.shielder;
+            type = Warrior_Type.shielder;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Wall];
+            myStatus = Const.imageList[(int)WarriorList.Wall];
             myRealStatus = myStatus[Const.Part.A];
-            
-            setBonus(15);
-            setSpeed(2);
-            setHP(2000);
-            setPower(0);
-            setAttackDistance(-1);
+            if (isMe)
+                setValueFrom(Program.playerData[5]);
+            else
+                setValueFrom(Program.AIData[5]);
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            setBonus(15);
+            energy = this.attackDistance;
+
+            img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
 
         }
         public override void moveTo(Point target)
         {
-            if (this.distance(target) <= this.attackDistance || energy < 0)   //target in your attack range
+            if (this.distance(target) <= 0 || energy <= 0)   //target in your attack range
                 return;
 
             if (target.value < this.value) //target in your left
@@ -48,7 +49,7 @@ namespace LittleWarGame
                     this.value = target.value;
             }
             
-            changeStatusTo((int)Const.Status.move);
+            changeStatusTo((int)Status.move);
             img.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
         }

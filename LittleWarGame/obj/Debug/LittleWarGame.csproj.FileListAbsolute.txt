@@ -2,8 +2,11 @@ d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\Litt
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\LittleWarGame.exe
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\bin\Debug\LittleWarGame.pdb
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.csprojResolveAssemblyReference.cache
-d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.Form1.resources
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.Properties.Resources.resources
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.csproj.GenerateResource.Cache
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.exe
 d:\文件\visual studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.pdb
+D:\文件\Visual Studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.BattleForm.resources
+D:\文件\Visual Studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.StartForm.resources
+D:\文件\Visual Studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.ControlForm.resources
+D:\文件\Visual Studio 2015\Projects\LittleWarGame\LittleWarGame\obj\Debug\LittleWarGame.FirstStepPassForm.resources

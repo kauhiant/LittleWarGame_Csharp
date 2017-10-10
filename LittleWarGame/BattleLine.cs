@@ -31,8 +31,8 @@ namespace LittleWarGame
             this.A = ABoard.group;
             this.B = BBoard.group;
 
-            A.At(0).changeStatusTo((int)Const.Status.move);
-            B.At(0).changeStatusTo((int)Const.Status.move);
+            A.At(0).changeStatusTo((int)Status.move);
+            B.At(0).changeStatusTo((int)Status.move);
 
             A.setEnemy(B);
             B.setEnemy(A);
@@ -62,7 +62,7 @@ namespace LittleWarGame
                 }
             }
         }
-
+        /*
         public void AFieldPushWarrior(Warrior obj)
         {
             if(!haveWinner)
@@ -74,7 +74,7 @@ namespace LittleWarGame
             if (!haveWinner)
                 B.add(obj);
         }
-
+        */
         public bool isGameOver()
         {
             return haveWinner;

@@ -8,8 +8,12 @@ namespace LittleWarGame
 {
     static class Program
     {
-        static public bool isRestart = false;
-        static public int level = 1;
+       // static public BattleForm mainBattle;
+        static public bool isRestart = true;
+        static public bool isBreak = true;
+        static public List<WarriorData> playerData, AIData;
+        static public GameData player;
+        static public ControlForm mainControl;
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
@@ -20,12 +24,30 @@ namespace LittleWarGame
             Application.SetCompatibleTextRenderingDefault(false);
             Const.ImageListInit();
             Const.SoundInit();
-            Application.Run(new Form1(level));
-            while (isRestart)
+            Const.WarriorDataInitial();
+            playerData = new List<WarriorData>();
+            playerData = new List<WarriorData>();
+            AIData = new List<WarriorData>();
+
+            Application.Run(new StartForm());
+            if (!isBreak)
             {
-                ++level;
-                if (level > 7) break;
-                Application.Run(new Form1(level));
+                if (player.level <= 7)
+                    while (isRestart)
+                    {
+                        Application.Run(new BattleForm(player.level));
+                        if (player.level == 8)
+                        {
+                            Application.Run(new FirstStepPassForm());
+                            break;
+                        }
+                    }
+                else
+                {
+                    mainControl = new ControlForm();
+                    mainControl.updata();
+                    Application.Run(mainControl);
+                }
             }
         }
     }

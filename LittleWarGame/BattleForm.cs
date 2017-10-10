@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LittleWarGame
 {
-    public partial class Form1 : Form
+    public partial class BattleForm : Form
     {
         public Graphics mainBattle;
         private Bitmap tmpMainBattle;
@@ -30,7 +30,7 @@ namespace LittleWarGame
 //
 //Initation
 //
-        public Form1(int PlayerLevel)
+        public BattleForm(int PlayerLevel)
         {
             
             rand = new Random();
@@ -61,20 +61,14 @@ namespace LittleWarGame
             this.BackgroundImage = Const.background;
             pictureBox1.BackColor = Color.Transparent;
 
-            this.Text = "Little War Level " + Program.level.ToString();
+            this.Text = "Little War Level " + Program.player.level.ToString();
             myEnergyBar.setLabel(_energyBar);
 
+            _superRocket.Text = "阿硯救我(" + Program.player.superRocket + ")";
+            if (Program.player.superRocket <= 0)
+                _superRocket.Hide();
             _Status.BackColor = Color.Transparent;
             _Status.Left = (Const.AStartPoint + Const.BStartPoint) / 2 - (_Status.Width / 2);
-/*
-            _sword.Text += Const.SwordCD.ToString();
-            _arrow.Text += Const.ArrowCD.ToString();
-            _shield.Text += Const.ShieldCD.ToString();
-            _hatchet.Text += Const.HatchetCD.ToString();
-            _rescue.Text += Const.RescueCD.ToString();
-            _rocket.Text += Const.RocketCD.ToString();
-            _wall.Text += Const.WallCD.ToString();
-*/
             _rescueLine.BackColor = Color.Transparent;
 
             _warriorButtonList.Add(_sword);
@@ -85,23 +79,26 @@ namespace LittleWarGame
             _warriorButtonList.Add(_wall);
             _warriorButtonList.Add(_rescue);
 
-            for (int i = 0; i < Player.Level() ; ++i)
+            for (int i = 0; i < 7; ++i)
             {
                 _warriorButtonList.ElementAt(i).Text = "";
                 _warriorButtonList.ElementAt(i).BackgroundImage = Const.imageList[i + 1][0][0];
             }
-
-            for (int i = Player.Level() ; i<_warriorButtonList.Count; ++i)
+            if (Player.Level() < 8)
             {
-                _warriorButtonList.ElementAt(i).Hide();
+                for (int i = Player.Level(); i < _warriorButtonList.Count; ++i)
+                {
+                    _warriorButtonList.ElementAt(i).Hide();
+                }
             }
+            
             _restart.Hide();
             Program.isRestart = false;
         }
 //for Create Warrior Button
         private void fixButtonsLight()
         {
-            for(int i=0; i<Player.Level(); ++i)
+            for(int i=0; i<7; ++i)
             {
                 if (Player.getEnergy() < Const.WarriorEnergy[i])
                     setButtonLight(_warriorButtonList[i], true);
@@ -140,7 +137,12 @@ namespace LittleWarGame
 
         private void _restart_Click(object sender, EventArgs e)
         {
-            Program.isRestart = true;
+           // Program.isRestart = true;
+            if (Program.player.level > 8)
+            {
+                Program.mainControl.updata();
+                Program.mainControl.Show();
+            }
             this.Close();
         }
 
@@ -150,7 +152,7 @@ namespace LittleWarGame
             {
                 aiEnergyBar.addEnergy(1);
                 myEnergyBar.addEnergy(1);
-                if (Program.level == 7)
+                if (Program.player.level % 7 == 0)
                 {
                     double r = rand.NextDouble();
                     if (r < 0.01)
@@ -167,7 +169,6 @@ namespace LittleWarGame
             if (GameHaveWinner) return;
 
             Const.gameTime.clock();
-          //  Text = Const.gameTime.Value.ToString();
 
             ClearImage();
             mainLine.nextStep();
@@ -179,19 +180,25 @@ namespace LittleWarGame
                 if (Player.group.isLose())
                     _Status.Text = "Game Over";
                 else
+                {
                     _Status.Text = "You Win";
+                    Program.isRestart = true;
+                    playerWin();
+                }
+                if (Program.player.level < 9)
+                    Program.player.saveToFile(@"./log/testData.txt");
 
                 _Status.Left = (Const.AStartPoint + Const.BStartPoint)/2 - (_Status.Width / 2);
 
                 gameTimer.Enabled = false;
                 _getResouce.Enabled = false;
                 GameHaveWinner = true;
-                if(Player.Level() == 7)_restart.Text = "結束";
-                if (!Player.group.isLose())
+                
+                if (Player.group.isLose() || Player.Level() >= 7)
                 {
-                    _restart.Show();
+                    _restart.Text = "結束";
                 }
-                    
+                _restart.Show();
             }
             else
             {
@@ -204,43 +211,43 @@ namespace LittleWarGame
         private void addSword(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addSword();
+                Player.addSword(true);
         }
 
         private void addArrow(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addArrow();
+                Player.addArrow(true);
         }
 
         private void addShield(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addShield();
+                Player.addShield(true);
         }
 
         private void addRocket(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addRocket();
+                Player.addRocket(true);
         }
 
         private void addHachet(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addHatchet();
+                Player.addHatchet(true);
         }
 
         private void addWall(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addWall();
+                Player.addWall(true);
         }
 
         private void addRescue(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addRescue();
+                Player.addRescue(true);
         }
 //
 //move RescueLine      
@@ -307,14 +314,40 @@ namespace LittleWarGame
                 gameTimer.Interval = 50;
                 _getResouce.Interval = 250;
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Player.group.add(new SuperRocket());
-            Button thisButton = sender as Button;
-            thisButton.Hide();
+            Program.player.useSuperRocket();
+            _superRocket.Text = "阿硯救我(" + Program.player.superRocket + ")";
+
+            if (Program.player.superRocket <= 0)
+                _superRocket.Hide();
+        }
+
+        private void playerWin()
+        {
+            Program.player.getCoin(Player.getEnergy());
+
+            if (Program.player.level <= 7)
+            {
+                Program.player.SuperRocketInit();
+            }
+
+            if(Program.player.level < this.AI.Level())
+            {
+                Program.player.levelUp();
+            }
+        }
+
+        private void BattleForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Program.player.level > 7 && Program.mainControl != null)
+            {
+                Program.mainControl.updata();
+                Program.mainControl.Show();
+            }
         }
     }
 }

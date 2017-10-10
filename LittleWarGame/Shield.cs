@@ -8,20 +8,20 @@ namespace LittleWarGame
 {
     class Shield:Warrior
     {
-        public Shield()
+        public Shield(bool isMe)
         {
-            type = Const.Warrior_Type.shielder;
+            type = Warrior_Type.shielder;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Shield];
+            myStatus = Const.imageList[(int)WarriorList.Shield];
             myRealStatus = myStatus[Const.Part.A];
-            
-            setBonus(5);
-            setSpeed(1);
-            setHP(500);
-            setPower(5);
-            setAttackDistance(-1);
+            if (isMe)
+                setValueFrom(Program.playerData[2]);
+            else
+                setValueFrom(Program.AIData[2]);
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            setBonus(5);
+
+            img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
 

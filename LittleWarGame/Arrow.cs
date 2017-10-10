@@ -9,21 +9,22 @@ namespace LittleWarGame
 {
     class Arrow:Warrior
     {
-        public Arrow()
+        public Arrow(bool isMe)
         {
-            type = Const.Warrior_Type.attacker;
+            type = Warrior_Type.attacker;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Arrow];
+            myStatus = Const.imageList[(int)WarriorList.Arrow];
             myRealStatus = myStatus[Const.Part.A];
+            if (isMe)
+                setValueFrom(Program.playerData[1]);
+            else
+                setValueFrom(Program.AIData[1]);
 
             setBonus(5);
-            setSpeed(1);
-            setHP(50);
-            setPower(10);
-            setAttackDistance(100);
+            
             CDTime.setCoolDownTime(15);
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
     }

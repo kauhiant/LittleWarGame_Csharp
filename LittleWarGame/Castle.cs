@@ -13,18 +13,17 @@ namespace LittleWarGame
 
         public Castle(int level)
         {
-            type = Const.Warrior_Type.shielder;
+            type = Warrior_Type.shielder;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Castle];
+            myStatus = Const.imageList[(int)WarriorList.Castle];
             myRealStatus = myStatus[Const.Part.A];
             
             this.level = level;
             //setSpeed(0);
             setHP(1000 * level);
             //setPower(0);
-            setAttackDistance(-1);//can't attack
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            img.Image = myRealStatus[(int)Status.move];
           //  img.Height = Const.castleHeight;
             img.Top = Const.mainLineHeight - Const.castleHeight;
         }

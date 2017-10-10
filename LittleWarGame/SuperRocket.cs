@@ -10,9 +10,9 @@ namespace LittleWarGame
     {
         public SuperRocket()
         {
-            type = Const.Warrior_Type.attacker;
+            type = Warrior_Type.attacker;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Rocket];
+            myStatus = Const.imageList[(int)WarriorList.Rocket];
             myRealStatus = myStatus[Const.Part.A];
 
             setBonus(25);
@@ -21,7 +21,7 @@ namespace LittleWarGame
             setPower(1000);
             setAttackDistance(0);
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
 

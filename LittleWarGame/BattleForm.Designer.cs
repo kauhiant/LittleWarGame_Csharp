@@ -1,6 +1,6 @@
 ﻿namespace LittleWarGame
 {
-    partial class Form1
+    partial class BattleForm
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BattleForm));
             this._start = new System.Windows.Forms.Button();
             this._restart = new System.Windows.Forms.Button();
             this._energyBar = new System.Windows.Forms.TextBox();
@@ -46,7 +46,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._Status = new System.Windows.Forms.Label();
             this._faster = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this._superRocket = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -215,24 +215,24 @@
             this._faster.UseVisualStyleBackColor = true;
             this._faster.Click += new System.EventHandler(this._faster_Click);
             // 
-            // button1
+            // _superRocket
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(473, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "阿硯救我";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this._superRocket.BackColor = System.Drawing.SystemColors.Control;
+            this._superRocket.Location = new System.Drawing.Point(473, 175);
+            this._superRocket.Name = "_superRocket";
+            this._superRocket.Size = new System.Drawing.Size(75, 25);
+            this._superRocket.TabIndex = 14;
+            this._superRocket.Text = "阿硯救我";
+            this._superRocket.UseVisualStyleBackColor = false;
+            this._superRocket.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // BattleForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 250);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this._superRocket);
             this.Controls.Add(this._faster);
             this.Controls.Add(this._Status);
             this.Controls.Add(this._rescueLine);
@@ -250,9 +250,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "BattleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Little War Game";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BattleForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -281,7 +282,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label _Status;
         private System.Windows.Forms.Button _faster;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _superRocket;
     }
 }
 

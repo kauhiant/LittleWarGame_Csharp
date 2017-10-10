@@ -8,21 +8,21 @@ namespace LittleWarGame
 {
     class Hatchet:Warrior
     {
-        public Hatchet()
+        public Hatchet(bool isMe)
         {
-            type = Const.Warrior_Type.attacker;
+            type = Warrior_Type.attacker;
 
-            myStatus = Const.imageList[(int)Const.Warrior.Hatchet];
+            myStatus = Const.imageList[(int)WarriorList.Hatchet];
             myRealStatus = myStatus[Const.Part.A];
+            if (isMe)
+                setValueFrom(Program.playerData[3]);
+            else
+                setValueFrom(Program.AIData[3]);
 
             setBonus(10);
-            setSpeed(2);
-            setHP(150);
-            setPower(50);
-            //setAttackDistance(0);
             CDTime.setCoolDownTime(15);
 
-            img.Image = myRealStatus[(int)Const.Status.move];
+            img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
         }
         public override void attackTo(Warriors they)
@@ -32,7 +32,7 @@ namespace LittleWarGame
 
             if (this.distance(they.frontLine()) <= this.attackDistance)
             {
-                img.Image = myRealStatus[(int)Const.Status.attack];
+                img.Image = myRealStatus[(int)Status.attack];
                 Const.Sound._attack.Play();
                 attackGroup(they.frontGroup());
                 CDTime.record();

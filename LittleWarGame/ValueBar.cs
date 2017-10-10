@@ -13,12 +13,12 @@ namespace LittleWarGame
         private int value;
         private System.Windows.Forms.PictureBox bar;
 
-        public ValueBar(int maxValue , int value)
+        public ValueBar(int maxValue)
         {
             if (value > maxValue) value = maxValue;
 
             this.maxValue = maxValue;
-            this.value = value;
+            this.value = maxValue;
 
             this.bar = new System.Windows.Forms.PictureBox();
             this.bar.BackColor = Color.Green;
@@ -32,6 +32,7 @@ namespace LittleWarGame
         public System.Windows.Forms.PictureBox getBarPictureBox() { return bar; }
 
         public bool isZero() { return value == 0; }
+        public bool isFull() { return value == maxValue; }
         public void setTop(int val) {   this.bar.Top = val; }
         public void fixPositionLeft(int val) {   this.bar.Left = val;  }
         public void reset() { value = 0; }
