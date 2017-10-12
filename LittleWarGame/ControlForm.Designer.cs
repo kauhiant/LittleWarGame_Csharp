@@ -966,6 +966,7 @@
             this.Name = "ControlForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "小小戰爭";
+            this.Load += new System.EventHandler(this.ControlForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._warrior1)).EndInit();
             this._panel1.ResumeLayout(false);
             this._panel1.PerformLayout();

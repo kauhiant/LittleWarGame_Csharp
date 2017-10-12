@@ -40,6 +40,7 @@
             this.label1.Size = new System.Drawing.Size(253, 84);
             this.label1.TabIndex = 0;
             this.label1.Text = "恭喜你突破第7關\r\n接下來你每打贏一場都會獲得Coin\r\nCoin可以讓你升級兵種\r\n協助你順利突破30關\r\n";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FirstStepPassForm
             // 

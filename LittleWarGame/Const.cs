@@ -24,6 +24,8 @@ namespace LittleWarGame
         static public GameTime gameTime = new GameTime();
         static public List<List<List<Image>>> imageList;
         static public Image background;
+        static public Image mask;
+        static public Icon icon;
 
         static public int pictureWidth = 50;
         static public int mainLineHeight = 100;
@@ -53,8 +55,6 @@ namespace LittleWarGame
             static public SoundPlayer _click;
             static public SoundPlayer _attack;
         }
-
-        static public Image mask = Image.FromFile(@"./img/mask.png");
         
         static public void SoundInit()
         {
@@ -86,6 +86,8 @@ namespace LittleWarGame
             try
             {
                 background = Image.FromFile(@"./img/battleField.png");
+                mask = Image.FromFile(@"./img/mask.png");
+                icon = Icon.ExtractAssociatedIcon(@"./img/LittleWar.ico");
 
                 imageList[(int)WarriorList.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L.png"));
                 imageList[(int)WarriorList.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L1.png"));

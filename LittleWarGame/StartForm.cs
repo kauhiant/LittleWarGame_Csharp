@@ -17,6 +17,12 @@ namespace LittleWarGame
             InitializeComponent();
         }
 
+        private void StartForm_Load(object sender, EventArgs e)
+        {
+            this.BackgroundImage = Const.background;
+            this.Icon = Const.icon;
+        }
+
         private void _startNewGame_Click(object sender, EventArgs e)
         {
             Program.isBreak = false;
@@ -41,5 +47,6 @@ namespace LittleWarGame
             FirstStepPassForm tmp = new FirstStepPassForm(true);
             tmp.Show();
         }
+
     }
 }

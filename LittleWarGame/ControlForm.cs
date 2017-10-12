@@ -267,5 +267,10 @@ namespace LittleWarGame
             levelstr = levelstr.Split(' ').ElementAt(1);
             level = int.Parse(levelstr);
         }
+
+        private void ControlForm_Load(object sender, EventArgs e)
+        {
+            this.Icon = Const.icon;
+        }
     }
 }

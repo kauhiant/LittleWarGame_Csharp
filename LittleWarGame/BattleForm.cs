@@ -60,6 +60,7 @@ namespace LittleWarGame
         {
 
             this.BackgroundImage = Const.background;
+            this.Icon = Const.icon;
             pictureBox1.BackColor = Color.Transparent;
 
             this.Text = "Little War Level " + Program.player.level.ToString();
