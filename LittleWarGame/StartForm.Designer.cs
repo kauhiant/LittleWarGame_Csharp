@@ -65,6 +65,7 @@
             this._about.TabIndex = 2;
             this._about.Text = "關於";
             this._about.UseVisualStyleBackColor = true;
+            this._about.Click += new System.EventHandler(this._about_Click);
             // 
             // StartForm
             // 

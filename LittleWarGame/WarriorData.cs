@@ -35,7 +35,8 @@ namespace LittleWarGame
 
         public int addHpFrom(WarriorData refobj , int coin)
         {
-            if (coin < level * 10) return coin;
+            if (refobj.hp == 0) return 0;
+            if (coin < level * 10) return -level * 10;
 
             this.hp += refobj.hp;
             coin = level * 10;
@@ -45,7 +46,8 @@ namespace LittleWarGame
 
         public int addSpeedFrom(WarriorData refobj, int coin)
         {
-            if (coin < level * 20) return coin;
+            if (refobj.speed == 0) return 0;
+            if (coin < level * 20) return -level * 20;
 
             this.speed += refobj.speed;
             coin = level * 20;
@@ -55,7 +57,8 @@ namespace LittleWarGame
 
         public int addPowerFrom(WarriorData refobj, int coin)
         {
-            if (coin < level * 20) return coin;
+            if (refobj.power == 0) return 0;
+            if (coin < level * 20) return -level * 20;
 
             this.power += refobj.power;
             coin = level * 20;
@@ -65,7 +68,8 @@ namespace LittleWarGame
 
         public int addDistanceFrom(WarriorData refobj, int coin)
         {
-            if (coin < level * 20) return coin;
+            if (refobj.distance == 0) return 0;
+            if (coin < level * 20) return -level * 20;
 
             this.distance += refobj.distance;
             coin = level * 20;

@@ -15,11 +15,8 @@ namespace LittleWarGame
             myStatus = Const.imageList[(int)WarriorList.Rocket];
             myRealStatus = myStatus[Const.Part.A];
 
-            setBonus(25);
-            setSpeed(50);
-            setHP(100);
-            setPower(1000);
-            setAttackDistance(0);
+            setBonus(0);
+            setValueFrom(Program.playerData[4]);
 
             img.Image = myRealStatus[(int)Status.move];
             img.Top = Const.mainLineHeight - Const.warriorHeight;
@@ -27,30 +24,48 @@ namespace LittleWarGame
 
         public override void attackTo(Warriors they)
         {
-            if (they.size() == 0)
-                return;
-
-            if(they.size() == 1)
+            if (they.size() <= 1)
             {
                 this.beKill();
+                return;
             }
-                
 
-            if (this.distance(they.frontLine()) <= this.attackDistance)
+            if (this.distance(they.frontLine()) <= 0)
             {
                 for (int i = 0; i < they.size(); ++i)
                 {
-                    if (they.At(i) is Castle)
-                        continue;
-
-                    if (distance(they.At(i)) < 50)
+                    if (distance(they.At(i)) < this.attackDistance)
                         they.At(i).beAttackFrom(this);
                 }
                 Const.Sound._attack.Play();
-                    
-                this.setBonus(0);
             }
         }
 
+        public override void moveTo(Point target)
+        {
+            changeStatusTo((int)Status.move);
+
+            if (this.distance(target) <= 0 || this.speed == 0)
+                return;//if target in your attack range , you shouldn't move
+
+            if (target.value < this.value) //target in your left
+            {
+                this.value -= speed;    //move to left
+
+                if (target.value > this.value) //when you move too over to left of target
+                    this.value = target.value;
+            }
+            else if (target.value > this.value)    //target in your right
+            {
+                this.value += speed;    //move to right
+
+                if (target.value < this.value) //when you move too over to right of target
+                    this.value = target.value;
+            }
+
+            //change your picture status and move it
+            img.Left = value - leftFix;
+            HP.fixPositionLeft(value - leftFix);
+        }
     }
 }

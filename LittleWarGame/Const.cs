@@ -155,12 +155,12 @@ namespace LittleWarGame
             InitData.Add(new WarriorData(100, 3, 20, 50));
 
             UpRefDat = new List<WarriorData>();
-            UpRefDat.Add(new WarriorData(10, 2, 1, 0));
-            UpRefDat.Add(new WarriorData(5, 1, 1, 0));
-            UpRefDat.Add(new WarriorData(50, 1, 1, 0));
+            UpRefDat.Add(new WarriorData(10, 2, 2, 0));
+            UpRefDat.Add(new WarriorData(5, 1, 3, 5));
+            UpRefDat.Add(new WarriorData(50, 1, 3, 0));
             UpRefDat.Add(new WarriorData(10, 1, 5, 0));
-            UpRefDat.Add(new WarriorData(50, 5, 500, 10));
-            UpRefDat.Add(new WarriorData(500, 1, 0, 10));
+            UpRefDat.Add(new WarriorData(50, 5, 100, 10));
+            UpRefDat.Add(new WarriorData(250, 1, 0, 10));
             UpRefDat.Add(new WarriorData(10, 1, 10, 10));
         }
     }

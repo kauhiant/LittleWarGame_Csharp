@@ -47,6 +47,7 @@
             this._Status = new System.Windows.Forms.Label();
             this._faster = new System.Windows.Forms.Button();
             this._superRocket = new System.Windows.Forms.Button();
+            this._auto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._rescueLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
             this._restart.TabIndex = 12;
-            this._restart.Text = "下一關";
+            this._restart.Text = "繼續";
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
             // 
@@ -218,7 +219,7 @@
             // _superRocket
             // 
             this._superRocket.BackColor = System.Drawing.SystemColors.Control;
-            this._superRocket.Location = new System.Drawing.Point(473, 175);
+            this._superRocket.Location = new System.Drawing.Point(554, 175);
             this._superRocket.Name = "_superRocket";
             this._superRocket.Size = new System.Drawing.Size(75, 25);
             this._superRocket.TabIndex = 14;
@@ -226,12 +227,23 @@
             this._superRocket.UseVisualStyleBackColor = false;
             this._superRocket.Click += new System.EventHandler(this.button1_Click);
             // 
+            // _auto
+            // 
+            this._auto.Location = new System.Drawing.Point(473, 175);
+            this._auto.Name = "_auto";
+            this._auto.Size = new System.Drawing.Size(75, 25);
+            this._auto.TabIndex = 15;
+            this._auto.Text = "手動";
+            this._auto.UseVisualStyleBackColor = true;
+            this._auto.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // BattleForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 250);
+            this.ClientSize = new System.Drawing.Size(684, 250);
+            this.Controls.Add(this._auto);
             this.Controls.Add(this._superRocket);
             this.Controls.Add(this._faster);
             this.Controls.Add(this._Status);
@@ -283,6 +295,7 @@
         private System.Windows.Forms.Label _Status;
         private System.Windows.Forms.Button _faster;
         private System.Windows.Forms.Button _superRocket;
+        private System.Windows.Forms.Button _auto;
     }
 }
 

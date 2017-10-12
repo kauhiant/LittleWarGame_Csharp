@@ -13,6 +13,7 @@ namespace LittleWarGame
         static public bool isBreak = true;
         static public List<WarriorData> playerData, AIData;
         static public GameData player;
+        static public GameLevel AI;
         static public ControlForm mainControl;
         /// <summary>
         /// 應用程式的主要進入點。
@@ -26,19 +27,19 @@ namespace LittleWarGame
             Const.SoundInit();
             Const.WarriorDataInitial();
             playerData = new List<WarriorData>();
-            playerData = new List<WarriorData>();
             AIData = new List<WarriorData>();
 
             Application.Run(new StartForm());
             if (!isBreak)
             {
-                if (player.level <= 7)
+                if (player.level < 8)
                     while (isRestart)
                     {
                         Application.Run(new BattleForm(player.level));
                         if (player.level == 8)
                         {
                             Application.Run(new FirstStepPassForm());
+                            player.saveToFile(@"./log/P0.txt");
                             break;
                         }
                     }

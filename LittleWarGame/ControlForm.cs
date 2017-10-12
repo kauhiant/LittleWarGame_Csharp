@@ -60,7 +60,6 @@ namespace LittleWarGame
                 this.speed = new ItemPair(ItemPair.key.speed);
                 this.power = new ItemPair(ItemPair.key.power);
                 this.distance = new ItemPair(ItemPair.key.distance);
-                
             }
 
             public void update()
@@ -94,11 +93,14 @@ namespace LittleWarGame
             return null;
         }
 
+        private Queue<string> message;
         private List<WarriorPanel> warriorsPanels;
         public ControlForm()
         {
             InitializeComponent();
+            this.message = new Queue<string>();
             warriorsPanels = new List<WarriorPanel>();
+
             warriorsPanels.Add(new WarriorPanel(_warrior1, WarriorList.Sword));
             warriorsPanels.Add(new WarriorPanel(_warrior2, WarriorList.Arrow));
             warriorsPanels.Add(new WarriorPanel(_warrior3, WarriorList.Shield));
@@ -147,7 +149,7 @@ namespace LittleWarGame
                 warriorsPanels[i].show.Image = Const.imageList[i + 1][0][0];
             }
 
-
+            _selectLevel.Text = "Level " + (Program.player.level + 1);
         }
         
         public void updata()
@@ -157,6 +159,29 @@ namespace LittleWarGame
                 warriorsPanels[i].update();
             }
             _coin.Text = "Coin:" + Program.player.coin;
+            _superRocket.Text = "求救次數:" + Program.player.superRocket;
+            this.Text = "小小戰爭 Level " + Program.player.level;
+            _message.Text = "";
+            _selectLevel.Text = "Level " + (Program.player.level + 1);
+            message.Clear();
+        }
+
+        private void showMessage()
+        {
+            _message.Text = "";
+            if (message.Count > 5)
+            {
+                for(int i =message.Count - 5; i > 0; i--)
+                {
+                    message.Dequeue();
+                }
+            }
+
+            for (int i = 0; i < message.Count; ++i)
+            {
+                _message.Text += message.ElementAt(i) + Environment.NewLine;
+            }
+
         }
 
         private void change(object sender, EventArgs e)
@@ -164,39 +189,83 @@ namespace LittleWarGame
             Button tmp = sender as Button;
             ItemPair obj = findButtonIndex(tmp);
             WarriorList warr = findWarriorFromItem(obj);
+            int errValue = 0;
 
             switch (obj.item)
             {
                 case ItemPair.key.hp:
-                    Program.player.UpHp(warr);
+                    errValue = Program.player.UpHp(warr);
                     break;
                 case ItemPair.key.speed:
-                    Program.player.UpSpeed(warr);
+                    errValue = Program.player.UpSpeed(warr);
                     break;
                 case ItemPair.key.power:
-                    Program.player.UpPower(warr);
+                    errValue = Program.player.UpPower(warr);
                     break;
                 case ItemPair.key.distance:
-                    Program.player.UpDistance(warr);
+                    errValue = Program.player.UpDistance(warr);
                     break;
             }
-            _coin.Text = "Coin:" + Program.player.coin;
-            warriorsPanels[(int)warr - 1].update();
-            this.Text = warr.ToString() + obj.title+' '+Program.player.coin;
 
+            if(errValue > 0)
+            {
+                _coin.Text = "Coin:" + Program.player.coin;
+                warriorsPanels[(int)warr - 1].update();
+              //  message
+                message.Enqueue("消耗了 "+errValue+" Coin");
+            }
+            else if(errValue < 0)
+            {
+                message.Enqueue("你的錢不夠，需要"+(-errValue).ToString()+"Coin");
+            }
+            else
+            {
+                message.Enqueue("這項不能升級");
+            }
+            showMessage();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int level = 8;
-            BattleForm tmp = new BattleForm(level);
-            this.Hide();
-            tmp.Show();
+            if (Program.player.level >= level - 1)
+            {
+                Program.AI.set(Program.AIData, level);
+                BattleForm tmp = new BattleForm(level);
+                this.Hide();
+                tmp.Show();
+            }
+            else
+            {
+                message.Enqueue("你的等級不夠");
+            }
+            showMessage();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.player.saveToFile(@"./log/testData.txt");
+            Program.player.saveToFile(@"./log/P0.txt");
+        }
+
+        private void _buySR_Click(object sender, EventArgs e)
+        {
+            if (Program.player.buySuperRocket())
+            {
+                _superRocket.Text = "求救次數:"+Program.player.superRocket;
+                _coin.Text = "Coin:" + Program.player.coin;
+                message.Enqueue("消耗了 500 Coin");
+            }
+            else
+            {
+                message.Enqueue ("你的錢不夠，需要500Coin");
+            }
+            showMessage();
+        }
+        private int level;
+        private void _selectLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string levelstr = _selectLevel.Text;
+            levelstr = levelstr.Split(' ').ElementAt(1);
+            level = int.Parse(levelstr);
         }
     }
 }

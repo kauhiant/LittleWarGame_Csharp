@@ -24,7 +24,7 @@ namespace LittleWarGame
             this.level = level;
             this.group.add(new Castle(this.level));
 
-            this.fixValue = group.isReverse() ? 10 : -10;
+            this.fixValue = group.isReverse() ? 1 : -1;
             this.rand = new Random();
 
             direct = rand.Next(0, level);
@@ -142,7 +142,12 @@ namespace LittleWarGame
             if (this.group.At(0).hp < 1000 || this.group.frontGroup()[0] is Rescue)
                 this.fixRescueLine(this.group.getBaseLine().value);
             else
-                this.fixRescueLine(this.group.frontLine().value + fixValue);
+            {
+                if(fixValue<0)
+                    this.fixRescueLine(this.group.frontLine().value + Program.playerData[6].distance * fixValue);
+                else
+                    this.fixRescueLine(this.group.frontLine().value + Program.AIData[6].distance * fixValue);
+            }
         }
 
         private bool isCreate = false;

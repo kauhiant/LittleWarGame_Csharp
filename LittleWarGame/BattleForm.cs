@@ -16,6 +16,7 @@ namespace LittleWarGame
         private Bitmap tmpMainBattle;
 
         private Random rand;
+        private bool isAuto = false;
 
         private List<Button> _warriorButtonList;
 
@@ -47,7 +48,7 @@ namespace LittleWarGame
             B = new Warriors(new Point(Const.BStartPoint), this ,true);
             myEnergyBar = new EnergyBar(10);
             aiEnergyBar = new EnergyBar(10);
-            AI = new PlayBoard(aiEnergyBar, B, PlayerLevel+1);
+            AI = new PlayBoard(aiEnergyBar, B, PlayerLevel);
             Player = new PlayBoard(myEnergyBar, A, PlayerLevel);
 
             mainLine = new BattleLine(AI,Player);
@@ -185,8 +186,8 @@ namespace LittleWarGame
                     Program.isRestart = true;
                     playerWin();
                 }
-                if (Program.player.level < 9)
-                    Program.player.saveToFile(@"./log/testData.txt");
+                if (Program.player.level < 8)
+                    Program.player.saveToFile(@"./log/P0.txt");
 
                 _Status.Left = (Const.AStartPoint + Const.BStartPoint)/2 - (_Status.Width / 2);
 
@@ -203,6 +204,7 @@ namespace LittleWarGame
             else
             {
                 AI.auto();
+                if (isAuto) Player.auto();
             }
         }
 //
@@ -316,6 +318,20 @@ namespace LittleWarGame
             }
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (_auto.Text == "手動")
+            {//普通;
+                _auto.Text = "自動";
+                isAuto = true;
+            }
+            else
+            {//再加速;
+                _auto.Text = "手動";
+                isAuto = false;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Player.group.add(new SuperRocket());
@@ -335,7 +351,7 @@ namespace LittleWarGame
                 Program.player.SuperRocketInit();
             }
 
-            if(Program.player.level < this.AI.Level())
+            if(Program.player.level <= this.AI.Level())
             {
                 Program.player.levelUp();
             }
@@ -349,5 +365,7 @@ namespace LittleWarGame
                 Program.mainControl.Show();
             }
         }
+
+        
     }
 }

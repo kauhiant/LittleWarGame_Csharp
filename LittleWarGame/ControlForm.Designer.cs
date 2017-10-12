@@ -103,6 +103,11 @@
             this.label211 = new System.Windows.Forms.Label();
             this.button221 = new System.Windows.Forms.Button();
             this._coin = new System.Windows.Forms.Label();
+            this._superRocket = new System.Windows.Forms.Label();
+            this._buySR = new System.Windows.Forms.Button();
+            this._selectLevel = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this._message = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._warrior1)).BeginInit();
             this._panel1.SuspendLayout();
             this._warriorUpPanel.SuspendLayout();
@@ -865,11 +870,94 @@
             this._coin.TabIndex = 11;
             this._coin.Text = "Coin";
             // 
+            // _superRocket
+            // 
+            this._superRocket.AutoSize = true;
+            this._superRocket.Location = new System.Drawing.Point(144, 17);
+            this._superRocket.Name = "_superRocket";
+            this._superRocket.Size = new System.Drawing.Size(65, 12);
+            this._superRocket.TabIndex = 15;
+            this._superRocket.Text = "SuperRocket";
+            // 
+            // _buySR
+            // 
+            this._buySR.Location = new System.Drawing.Point(269, 12);
+            this._buySR.Name = "_buySR";
+            this._buySR.Size = new System.Drawing.Size(23, 23);
+            this._buySR.TabIndex = 11;
+            this._buySR.Text = "+";
+            this._buySR.UseVisualStyleBackColor = true;
+            this._buySR.Click += new System.EventHandler(this._buySR_Click);
+            // 
+            // _selectLevel
+            // 
+            this._selectLevel.FormattingEnabled = true;
+            this._selectLevel.Items.AddRange(new object[] {
+            "Level 1",
+            "Level 2",
+            "Level 3",
+            "Level 4",
+            "Level 5",
+            "Level 6",
+            "Level 7",
+            "Level 8",
+            "Level 9",
+            "Level 10",
+            "Level 11",
+            "Level 12",
+            "Level 13",
+            "Level 14",
+            "Level 15",
+            "Level 16",
+            "Level 17",
+            "Level 18",
+            "Level 19",
+            "Level 20",
+            "Level 21",
+            "Level 22",
+            "Level 23",
+            "Level 24",
+            "Level 25",
+            "Level 26",
+            "Level 27",
+            "Level 28",
+            "Level 29",
+            "Level 30"});
+            this._selectLevel.Location = new System.Drawing.Point(320, 58);
+            this._selectLevel.Name = "_selectLevel";
+            this._selectLevel.Size = new System.Drawing.Size(206, 20);
+            this._selectLevel.TabIndex = 16;
+            this._selectLevel.SelectedIndexChanged += new System.EventHandler(this._selectLevel_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(318, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "選擇關卡";
+            // 
+            // _message
+            // 
+            this._message.Location = new System.Drawing.Point(320, 201);
+            this._message.Multiline = true;
+            this._message.Name = "_message";
+            this._message.ReadOnly = true;
+            this._message.Size = new System.Drawing.Size(208, 105);
+            this._message.TabIndex = 18;
+            this._message.TabStop = false;
+            // 
             // ControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 311);
+            this.ClientSize = new System.Drawing.Size(538, 311);
+            this.Controls.Add(this._message);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this._selectLevel);
+            this.Controls.Add(this._buySR);
+            this.Controls.Add(this._superRocket);
             this.Controls.Add(this._coin);
             this.Controls.Add(this._warriorUpPanel);
             this.Controls.Add(this.button2);
@@ -981,5 +1069,10 @@
         private System.Windows.Forms.Label label211;
         private System.Windows.Forms.Button button221;
         private System.Windows.Forms.Label _coin;
+        private System.Windows.Forms.Label _superRocket;
+        private System.Windows.Forms.Button _buySR;
+        private System.Windows.Forms.ComboBox _selectLevel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox _message;
     }
 }

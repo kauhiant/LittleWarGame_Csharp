@@ -78,52 +78,53 @@ namespace LittleWarGame
             return true;
         }
 
-        public bool UpHp(WarriorList warrior)
+        public int UpHp(WarriorList warrior)
         {
             int index = (int)warrior - 1;
             int pay = this.warriors[index].addHpFrom(Const.UpRefDat[index] , coin);
-            if (pay <= coin)
+
+            if (pay > 0)
             {
                 this.coin -= pay;
-                return true;
+                return pay;
             }
-            return false;
+            return pay;
         }
 
-        public bool UpSpeed(WarriorList warrior)
+        public int UpSpeed(WarriorList warrior)
         {
             int index = (int)warrior - 1;
             int pay = this.warriors[index].addSpeedFrom(Const.UpRefDat[index], coin);
-            if (pay <= coin)
+            if (pay > 0)
             {
                 this.coin -= pay;
-                return true;
+                return pay;
             }
-            return false;
+            return pay;
         }
 
-        public bool UpPower(WarriorList warrior)
+        public int UpPower(WarriorList warrior)
         {
             int index = (int)warrior - 1;
             int pay = this.warriors[index].addPowerFrom(Const.UpRefDat[index], coin);
-            if (pay <= coin)
+            if (pay > 0)
             {
                 this.coin -= pay;
-                return true;
+                return pay;
             }
-            return false;
+            return pay;
         }
 
-        public bool UpDistance(WarriorList warrior)
+        public int UpDistance(WarriorList warrior)
         {
             int index = (int)warrior - 1;
             int pay = this.warriors[index].addDistanceFrom(Const.UpRefDat[index], coin);
-            if (pay <= coin)
+            if (pay > 0)
             {
                 this.coin -= pay;
-                return true;
+                return pay;
             }
-            return false;
+            return pay;
         }
     }
 }

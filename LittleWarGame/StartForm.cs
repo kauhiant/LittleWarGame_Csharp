@@ -21,18 +21,25 @@ namespace LittleWarGame
         {
             Program.isBreak = false;
             Program.player = new GameData(Program.playerData , "new game");
-            GameLevel tmp = new GameLevel(Program.AIData, @"./log/testData2.txt");
-            Const.BStartPoint = Const.AStartPoint + tmp.mapLengh;
+            Program.AI = new GameLevel(Program.AIData, @"./log/M7.txt");
+            Const.BStartPoint = Const.AStartPoint + Program.AI.mapLengh;
             this.Close();
         }
 
         private void _loadGame_Click(object sender, EventArgs e)
         {
             Program.isBreak = false;
-            Program.player = new GameData(Program.playerData, @"./log/testData.txt");
-            GameLevel tmp = new GameLevel(Program.AIData, @"./log/testData2.txt");
-            Const.BStartPoint = Const.AStartPoint + tmp.mapLengh;
+            Program.player = new GameData(Program.playerData, @"./log/P0.txt");
+            Program.AI = new GameLevel(Program.AIData, @"./log/M7.txt");
+            Program.AI.set(Program.AIData, Program.player.level);
+            Const.BStartPoint = Const.AStartPoint + Program.AI.mapLengh;
             this.Close();
+        }
+
+        private void _about_Click(object sender, EventArgs e)
+        {
+            FirstStepPassForm tmp = new FirstStepPassForm(true);
+            tmp.Show();
         }
     }
 }
