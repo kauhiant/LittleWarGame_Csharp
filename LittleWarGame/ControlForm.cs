@@ -145,11 +145,9 @@ namespace LittleWarGame
             warriorsPanels[6].distance.bind(label741, button741);
 
             for (int i = 0; i < 7; i++)
-            {
                 warriorsPanels[i].show.Image = Const.imageList[i + 1][0][0];
-            }
-
-            _selectLevel.Text = "Level " + (Program.player.level + 1);
+             
+            updata();
         }
         
         public void updata()
@@ -162,8 +160,10 @@ namespace LittleWarGame
             _superRocket.Text = "求救次數:" + Program.player.superRocket;
             this.Text = "小小戰爭 Level " + Program.player.level;
             _message.Text = "";
-            _selectLevel.Text = "Level " + (Program.player.level + 1);
-            message.Clear();
+            if(Program.player.level < 30)
+                _selectLevel.Text = "Level " + (Program.player.level + 1);
+            // message.Clear();
+            showMessage();
         }
 
         private void showMessage()
@@ -172,15 +172,12 @@ namespace LittleWarGame
             if (message.Count > 5)
             {
                 for(int i =message.Count - 5; i > 0; i--)
-                {
                     message.Dequeue();
-                }
             }
 
             for (int i = 0; i < message.Count; ++i)
-            {
                 _message.Text += message.ElementAt(i) + Environment.NewLine;
-            }
+            
 
         }
 
@@ -229,8 +226,8 @@ namespace LittleWarGame
         {
             if (Program.player.level >= level - 1)
             {
-                Program.AI.set(Program.AIData, level);
-                BattleForm tmp = new BattleForm(level);
+                Program.AI.set(level);
+                BattleForm tmp = new BattleForm();
                 this.Hide();
                 tmp.Show();
             }
@@ -244,6 +241,8 @@ namespace LittleWarGame
         private void button1_Click(object sender, EventArgs e)
         {
             Program.player.saveToFile(@"./log/P0.txt");
+            message.Enqueue("已存檔");
+            showMessage();
         }
 
         private void _buySR_Click(object sender, EventArgs e)
@@ -266,11 +265,21 @@ namespace LittleWarGame
             string levelstr = _selectLevel.Text;
             levelstr = levelstr.Split(' ').ElementAt(1);
             level = int.Parse(levelstr);
+            if (level > 30) level = 30;
         }
 
         private void ControlForm_Load(object sender, EventArgs e)
         {
             this.Icon = Const.icon;
+        }
+
+        public void playerGetBonus(int refValue = 0)
+        {
+            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 5);
+            if (getCoins < 0) getCoins = 0;
+            Program.player.getCoin(getCoins);
+            message.Enqueue("獲得 " + getCoins + "Coin");
+            showMessage();
         }
     }
 }

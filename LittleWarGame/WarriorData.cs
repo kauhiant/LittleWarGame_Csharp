@@ -76,5 +76,13 @@ namespace LittleWarGame
             ++level;
             return coin;
         }
+
+        public void set(int hp, int speed, int power, int distance)
+        {
+            this.hp = hp;
+            this.speed = speed;
+            this.power = power;
+            this.distance = distance;
+        }
     }
 }

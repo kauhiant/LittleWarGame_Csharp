@@ -31,7 +31,7 @@ namespace LittleWarGame
 //
 //Initation
 //
-        public BattleForm(int PlayerLevel)
+        public BattleForm()
         {
             
             rand = new Random();
@@ -48,8 +48,8 @@ namespace LittleWarGame
             B = new Warriors(new Point(Const.BStartPoint), this ,true);
             myEnergyBar = new EnergyBar(10);
             aiEnergyBar = new EnergyBar(10);
-            AI = new PlayBoard(aiEnergyBar, B, PlayerLevel);
-            Player = new PlayBoard(myEnergyBar, A, PlayerLevel);
+            AI = new PlayBoard(aiEnergyBar, B, Program.AI.level);
+            Player = new PlayBoard(myEnergyBar, A, Program.player.level);
 
             mainLine = new BattleLine(AI,Player);
             
@@ -63,7 +63,7 @@ namespace LittleWarGame
             this.Icon = Const.icon;
             pictureBox1.BackColor = Color.Transparent;
 
-            this.Text = "Little War Level " + Program.player.level.ToString();
+            this.Text = "Little War Level " + Program.AI.level.ToString();
             myEnergyBar.setLabel(_energyBar);
 
             _superRocket.Text = "阿硯救我(" + Program.player.superRocket + ")";
@@ -345,7 +345,7 @@ namespace LittleWarGame
 
         private void playerWin()
         {
-            Program.player.getCoin(Player.getEnergy());
+            Program.mainControl.playerGetBonus(Player.getEnergy());
 
             if (Program.player.level <= 7)
             {

@@ -31,24 +31,23 @@ namespace LittleWarGame
             }
         }
 
-        public void set(List<WarriorData> warriorsData, int level)
+        public void set(int level)
         {
-            if (level < 7) level = 7;
-            string fileRoute = @"./log/M" + level + ".txt";
+            if (level > 30) level = 30;
+            int tmpLevel = (level < 7) ? 7 : level;
+            string fileRoute = @"./log/M" + tmpLevel + ".txt";
             string[] allLine = File.ReadAllLines(fileRoute);
-
             string[] head = allLine[0].Split(' ');
-            this.level = int.Parse(head[0]);
+            this.level = level;
             this.mapLengh = int.Parse(head[1]);
             Const.BStartPoint = Const.AStartPoint + this.mapLengh;
 
-            warriors = warriorsData;
+           // warriors = warriorsData;
             for (int i = 1; i < 8; ++i)
             {
                 string[] each = allLine[i].Split(' ');
-                warriors.Add(new WarriorData
-                    (int.Parse(each[0]), int.Parse(each[1]), int.Parse(each[2]), int.Parse(each[3]))
-                );
+                warriors[i - 1].set
+                    (int.Parse(each[0]), int.Parse(each[1]), int.Parse(each[2]), int.Parse(each[3]));
             }
         }
 

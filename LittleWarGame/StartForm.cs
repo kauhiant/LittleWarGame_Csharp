@@ -37,7 +37,6 @@ namespace LittleWarGame
             Program.isBreak = false;
             Program.player = new GameData(Program.playerData, @"./log/P0.txt");
             Program.AI = new GameLevel(Program.AIData, @"./log/M7.txt");
-            Program.AI.set(Program.AIData, Program.player.level);
             Const.BStartPoint = Const.AStartPoint + Program.AI.mapLengh;
             this.Close();
         }

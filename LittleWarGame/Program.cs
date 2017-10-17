@@ -35,7 +35,7 @@ namespace LittleWarGame
                 if (player.level < 8)
                     while (isRestart)
                     {
-                        Application.Run(new BattleForm(player.level));
+                        Application.Run(new BattleForm());
                         if (player.level == 8)
                         {
                             Application.Run(new FirstStepPassForm());

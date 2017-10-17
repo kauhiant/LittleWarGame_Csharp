@@ -58,7 +58,7 @@ namespace LittleWarGame
             File.WriteAllLines(fileRoute , allLine);
         }
 
-        public void levelUp() { this.level++; }
+        public void levelUp() { this.level++;if (this.level > 30) this.level = 30; }
         public void getCoin(int value) { this.coin += value; }
         public void getSuperRocket() { this.superRocket++; }
         public void SuperRocketInit() { this.superRocket = 1; }
