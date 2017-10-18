@@ -345,11 +345,12 @@ namespace LittleWarGame
 
         private void playerWin()
         {
-            Program.mainControl.playerGetBonus(Player.getEnergy());
+            Program.player.playerGetBonus(Player.getEnergy());
 
             if (Program.player.level <= 7)
             {
                 Program.player.SuperRocketInit();
+                Program.AI.level += 1;
             }
 
             if(Program.player.level <= this.AI.Level())

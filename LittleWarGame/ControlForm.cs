@@ -161,7 +161,7 @@ namespace LittleWarGame
             this.Text = "小小戰爭 Level " + Program.player.level;
             _message.Text = "";
             if(Program.player.level < 30)
-                _selectLevel.Text = "Level " + (Program.player.level + 1);
+                _selectLevel.Text = "Level " + (Program.player.level);
             // message.Clear();
             showMessage();
         }
@@ -273,13 +273,6 @@ namespace LittleWarGame
             this.Icon = Const.icon;
         }
 
-        public void playerGetBonus(int refValue = 0)
-        {
-            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 5);
-            if (getCoins < 0) getCoins = 0;
-            Program.player.getCoin(getCoins);
-            message.Enqueue("獲得 " + getCoins + "Coin");
-            showMessage();
-        }
+        
     }
 }

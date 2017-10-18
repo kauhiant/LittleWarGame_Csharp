@@ -126,5 +126,12 @@ namespace LittleWarGame
             }
             return pay;
         }
+
+        public void playerGetBonus(int refValue = 0)
+        {
+            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 5);
+            if (getCoins < 0) getCoins = 0;
+            Program.player.getCoin(getCoins);
+        }
     }
 }
