@@ -93,7 +93,7 @@ namespace LittleWarGame
             return null;
         }
 
-        private Queue<string> message;
+        public Queue<string> message;
         private List<WarriorPanel> warriorsPanels;
         public ControlForm()
         {
@@ -161,7 +161,7 @@ namespace LittleWarGame
             this.Text = "小小戰爭 Level " + Program.player.level;
             _message.Text = "";
             if(Program.player.level < 30)
-                _selectLevel.Text = "Level " + (Program.player.level);
+                _selectLevel.Text = "Level " + (Program.player.level + 1);
             // message.Clear();
             showMessage();
         }
@@ -272,7 +272,5 @@ namespace LittleWarGame
         {
             this.Icon = Const.icon;
         }
-
-        
     }
 }

@@ -68,7 +68,7 @@
             this._restart.Name = "_restart";
             this._restart.Size = new System.Drawing.Size(75, 25);
             this._restart.TabIndex = 12;
-            this._restart.Text = "繼續";
+            this._restart.Text = "結束";
             this._restart.UseVisualStyleBackColor = true;
             this._restart.Click += new System.EventHandler(this._restart_Click);
             // 

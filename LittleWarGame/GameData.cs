@@ -57,11 +57,19 @@ namespace LittleWarGame
             }
             File.WriteAllLines(fileRoute , allLine);
         }
-
-        public void levelUp() { this.level++;if (this.level > 30) this.level = 30; }
+        
         public void getCoin(int value) { this.coin += value; }
         public void getSuperRocket() { this.superRocket++; }
         public void SuperRocketInit() { this.superRocket = 1; }
+
+        public void levelUp()
+        {
+            if (this.level < 30)
+            {
+                playerGetBonus(100,"升級獎勵");
+                this.level++;
+            }
+        }
 
         public bool useSuperRocket()
         {
@@ -127,11 +135,13 @@ namespace LittleWarGame
             return pay;
         }
 
-        public void playerGetBonus(int refValue = 0)
+        public void playerGetBonus(int refValue = 0, string message="")
         {
-            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 5);
+            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 9);
             if (getCoins < 0) getCoins = 0;
             Program.player.getCoin(getCoins);
+            if(Program.mainControl != null)
+                Program.mainControl.message.Enqueue("獲得 " + getCoins + " coin "+message);
         }
     }
 }

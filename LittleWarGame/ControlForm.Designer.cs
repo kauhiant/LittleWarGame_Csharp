@@ -108,6 +108,7 @@
             this._selectLevel = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this._message = new System.Windows.Forms.TextBox();
+            this._mouseMessage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._warrior1)).BeginInit();
             this._panel1.SuspendLayout();
             this._warriorUpPanel.SuspendLayout();
@@ -940,19 +941,31 @@
             // 
             // _message
             // 
-            this._message.Location = new System.Drawing.Point(320, 201);
+            this._message.Location = new System.Drawing.Point(320, 232);
             this._message.Multiline = true;
             this._message.Name = "_message";
             this._message.ReadOnly = true;
-            this._message.Size = new System.Drawing.Size(208, 105);
+            this._message.Size = new System.Drawing.Size(200, 70);
             this._message.TabIndex = 18;
             this._message.TabStop = false;
+            // 
+            // _mouseMessage
+            // 
+            this._mouseMessage.Location = new System.Drawing.Point(320, 121);
+            this._mouseMessage.Multiline = true;
+            this._mouseMessage.Name = "_mouseMessage";
+            this._mouseMessage.ReadOnly = true;
+            this._mouseMessage.Size = new System.Drawing.Size(200, 70);
+            this._mouseMessage.TabIndex = 19;
+            this._mouseMessage.TabStop = false;
+            this._mouseMessage.Visible = false;
             // 
             // ControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 311);
+            this.Controls.Add(this._mouseMessage);
             this.Controls.Add(this._message);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._selectLevel);
@@ -1075,5 +1088,6 @@
         private System.Windows.Forms.ComboBox _selectLevel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox _message;
+        private System.Windows.Forms.TextBox _mouseMessage;
     }
 }

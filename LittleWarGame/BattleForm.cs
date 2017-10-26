@@ -134,12 +134,10 @@ namespace LittleWarGame
                 _getResouce.Enabled = false;
                 thisButton.Text = "開始";
             }
-            
         }
 
         private void _restart_Click(object sender, EventArgs e)
         {
-           // Program.isRestart = true;
             if (Program.player.level > 8)
             {
                 Program.mainControl.updata();
@@ -175,32 +173,13 @@ namespace LittleWarGame
             ClearImage();
             mainLine.nextStep();
             UpdateBattleImage();
+
             _Status.Text = (A.size()-1).ToString() + " : " + (B.size()-1).ToString();
+            _Status.Left = (Const.AStartPoint + Const.BStartPoint) / 2 - (_Status.Width / 2);
 
             if (mainLine.isGameOver())
             {
-                if (Player.group.isLose())
-                    _Status.Text = "Game Over";
-                else
-                {
-                    _Status.Text = "You Win";
-                    Program.isRestart = true;
-                    playerWin();
-                }
-                if (Program.player.level < 8)
-                    Program.player.saveToFile(@"./log/P0.txt");
-
-                _Status.Left = (Const.AStartPoint + Const.BStartPoint)/2 - (_Status.Width / 2);
-
-                gameTimer.Enabled = false;
-                _getResouce.Enabled = false;
-                GameHaveWinner = true;
-                
-                if (Player.group.isLose() || Player.Level() >= 7)
-                {
-                    _restart.Text = "結束";
-                }
-                _restart.Show();
+                gameOver();
             }
             else
             {
@@ -345,15 +324,17 @@ namespace LittleWarGame
 
         private void playerWin()
         {
-            Program.player.playerGetBonus(Player.getEnergy());
+            _Status.Text = "You Win";
+            Program.isRestart = true;
+            Program.player.playerGetBonus(Player.getEnergy() + (Player.group.At(0).hp / 100));
 
-            if (Program.player.level <= 7)
+            if (Program.player.level < 8)
             {
-                Program.player.SuperRocketInit();
+                Program.player.levelUp();
                 Program.AI.level += 1;
             }
 
-            if(Program.player.level <= this.AI.Level())
+            if (Program.player.level < this.AI.Level())
             {
                 Program.player.levelUp();
             }
@@ -368,6 +349,27 @@ namespace LittleWarGame
             }
         }
 
-        
+        private void gameOver()
+        {
+            gameTimer.Enabled = false;
+            _getResouce.Enabled = false;
+            GameHaveWinner = true;
+
+            if (Player.group.isLose())
+                _Status.Text = "Game Over";
+            else
+                playerWin();
+
+            if (Program.player.level < 8)
+            {
+                Program.player.saveToFile(@"./log/P0.txt");
+                Program.player.SuperRocketInit();
+            }
+            
+            if (Player.group.isLose() || Player.Level() > 7)
+                _restart.Text = "結束";
+            
+            _restart.Show();
+        }
     }
 }
