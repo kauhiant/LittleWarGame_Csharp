@@ -49,7 +49,7 @@ namespace LittleWarGame
             myEnergyBar = new EnergyBar(10);
             aiEnergyBar = new EnergyBar(10);
             AI = new PlayBoard(aiEnergyBar, B, Program.AI.level);
-            Player = new PlayBoard(myEnergyBar, A, Program.player.level);
+            Player = new PlayBoard(myEnergyBar, A, Program.player.level,true);
 
             mainLine = new BattleLine(AI,Player);
             
@@ -193,43 +193,43 @@ namespace LittleWarGame
         private void addSword(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addSword(true);
+                Player.addSword();
         }
 
         private void addArrow(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addArrow(true);
+                Player.addArrow();
         }
 
         private void addShield(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addShield(true);
+                Player.addShield();
         }
 
         private void addRocket(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addRocket(true);
+                Player.addRocket();
         }
 
         private void addHachet(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addHatchet(true);
+                Player.addHatchet();
         }
 
         private void addWall(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addWall(true);
+                Player.addWall();
         }
 
         private void addRescue(object sender, EventArgs e)
         {
             if (!GameHaveWinner)
-                Player.addRescue(true);
+                Player.addRescue();
         }
 //
 //move RescueLine      

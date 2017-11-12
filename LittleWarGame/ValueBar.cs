@@ -9,8 +9,8 @@ namespace LittleWarGame
 {
     class ValueBar
     {
-        private int maxValue;
-        private int value;
+        public int maxValue { get; private set;  }
+        public int value { get; private set; }
         private System.Windows.Forms.PictureBox bar;
 
         public ValueBar(int maxValue)
@@ -33,6 +33,7 @@ namespace LittleWarGame
 
         public bool isZero() { return value == 0; }
         public bool isFull() { return value == maxValue; }
+        
         public void setTop(int val) {   this.bar.Top = val; }
         public void fixPositionLeft(int val) {   this.bar.Left = val;  }
         public void reset() { value = 0; }

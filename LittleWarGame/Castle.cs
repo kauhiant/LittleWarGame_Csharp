@@ -30,13 +30,14 @@ namespace LittleWarGame
 
         public override void moveTo(Point target)
         {
-            if (this.hp < 800)
+            
+            if (this.HP.value < this.HP.maxValue*0.4)
             {
-                if (this.hp > 600)
+                if (this.HP.value > this.HP.maxValue * 0.3)
                     changeStatusTo(1);
-                else if (this.hp > 400)
+                else if (this.HP.value > this.HP.maxValue * 0.2)
                     changeStatusTo(2);
-                else if (this.hp > 200)
+                else if (this.HP.value > this.HP.maxValue * 0.1)
                     changeStatusTo(3);
                 else
                     changeStatusTo(4);

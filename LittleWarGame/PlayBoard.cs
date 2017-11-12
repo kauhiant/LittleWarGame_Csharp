@@ -11,14 +11,16 @@ namespace LittleWarGame
         private int fixValue;
         private Random rand;
 
+        private bool isMe;
         private int level;
 
         public EnergyBar energy;
         public Warriors group;
         public BattleLine mainLine;
 
-        public PlayBoard(EnergyBar energy , Warriors group,int level)
+        public PlayBoard(EnergyBar energy , Warriors group, int level, bool isMe=false)
         {
+            this.isMe = isMe;
             this.energy = energy;
             this.group = group;
             this.level = level;
@@ -40,7 +42,7 @@ namespace LittleWarGame
         }
 
 
-        public bool addSword(bool isMe)
+        public bool addSword()
         {
             if (level < 1) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Sword))
@@ -53,7 +55,7 @@ namespace LittleWarGame
             return false;    
         }
 
-        public bool addArrow(bool isMe)
+        public bool addArrow()
         {
             if (level < 2) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Arrow))
@@ -66,7 +68,7 @@ namespace LittleWarGame
             return false;
         }
 
-        public bool addShield(bool isMe)
+        public bool addShield()
         {
             if (level < 3) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Shield))
@@ -79,7 +81,7 @@ namespace LittleWarGame
             return false;
         }
 
-        public bool addHatchet(bool isMe)
+        public bool addHatchet()
         {
             if (level < 4) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Hatchet))
@@ -92,7 +94,7 @@ namespace LittleWarGame
             return false;
         }
 
-        public bool addRocket(bool isMe)
+        public bool addRocket()
         {
             if (level < 5) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Rocket))
@@ -105,7 +107,7 @@ namespace LittleWarGame
             return false;
         }
 
-        public bool addWall(bool isMe)
+        public bool addWall()
         {
             if (level < 6) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Wall))
@@ -118,7 +120,7 @@ namespace LittleWarGame
             return false;
         }
 
-        public bool addRescue(bool isMe)
+        public bool addRescue()
         {
             if (level < 7) return false;
             if (energy.getValue() >= Const.EnergyOf(WarriorList.Rescue))
@@ -160,25 +162,25 @@ namespace LittleWarGame
             switch (direct)
             {
                 case 0:
-                    isCreate = addSword(false);
+                    isCreate = addSword();
                     break;
                 case 1:
-                    isCreate = addArrow(false);
+                    isCreate = addArrow();
                     break;
                 case 2:
-                    isCreate = addShield(false);
+                    isCreate = addShield();
                     break;
                 case 3:
-                    isCreate = addHatchet(false);
+                    isCreate = addHatchet();
                     break;
                 case 4:
-                    isCreate = addRocket(false);
+                    isCreate = addRocket();
                     break;
                 case 5:
-                    isCreate = addWall(false);
+                    isCreate = addWall();
                     break;
                 case 6:
-                    isCreate = addRescue(false);
+                    isCreate = addRescue();
                     break;
                 default:
                     isCreate = true;
