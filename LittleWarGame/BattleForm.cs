@@ -17,6 +17,7 @@ namespace LittleWarGame
 
         private Random rand;
         private bool isAuto = false;
+        private Button select = null;
 
         private List<Button> _warriorButtonList;
 
@@ -97,7 +98,7 @@ namespace LittleWarGame
             _restart.Hide();
             Program.isRestart = false;
         }
-//for Create Warrior Button
+//for Warrior Button
         private void fixButtonsLight()
         {
             for(int i=0; i<7; ++i)
@@ -108,6 +109,7 @@ namespace LittleWarGame
                     setButtonLight(_warriorButtonList[i], false);
             }
         }
+
         private void setButtonLight(Button target , bool light)
         {
             if (light)
@@ -116,6 +118,52 @@ namespace LittleWarGame
                 target.Image = null;
         }
 
+        private int buttonIndex(Button target)
+        {
+            for(int i = 0; i < _warriorButtonList.Count; ++i)
+            {
+                if (target == _warriorButtonList[i])
+                    return i;
+            }
+            return _warriorButtonList.Count;
+        }
+
+        private WarriorT buttonWarrior(Button target)
+        {
+            int index = buttonIndex(target);
+            switch (index)
+            {
+                case 0:
+                    return WarriorT.Sword;
+                case 1:
+                    return WarriorT.Arrow;
+                case 2:
+                    return WarriorT.Shield;
+                case 3:
+                    return WarriorT.Hachet;
+                case 4:
+                    return WarriorT.Rocket;
+                case 5:
+                    return WarriorT.Wall;
+                case 6:
+                    return WarriorT.Rescue;
+            }
+            return WarriorT.Default;
+        }
+
+        private void buttonSelect(Button button)
+        {
+            if(select != null)
+                select.FlatStyle = FlatStyle.Standard;
+
+            if (select == button)
+                select = null;
+            else
+                select = button;
+
+            if (select != null)
+                select.FlatStyle = FlatStyle.Flat;
+        }
 //
 //Game Start AND Timers
 //
@@ -186,7 +234,7 @@ namespace LittleWarGame
                 AI.auto();
                 if (isAuto)
                 {
-                    Player.auto();
+                    Player.auto(buttonWarrior(select));
                     if(!mouseDown)
                         _rescueLine.Left = Player.group.rescueLine.value - 20;
                 }
@@ -195,47 +243,48 @@ namespace LittleWarGame
 //
 //Add-Warrior Buttons
 //
-        private void addSword(object sender, EventArgs e)
+        private void addWarrior(object sender, MouseEventArgs e)
         {
-            if (!GameHaveWinner)
-                Player.addSword();
-        }
+            if (GameHaveWinner) return;
 
-        private void addArrow(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addArrow();
-        }
+            var button = sender as Button;
+            var mouse = (MouseEventArgs)e;
+            int index =  buttonIndex(button);
 
-        private void addShield(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addShield();
-        }
+            Console.WriteLine(mouse.Button);
+            if(mouse.Button == MouseButtons.Right)
+            {
+                buttonSelect(button);
+                return;
+            }
 
-        private void addRocket(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addRocket();
+            switch (index)
+            {
+                case 0:
+                    Player.addSword();
+                    break;
+                case 1:
+                    Player.addArrow();
+                    break;
+                case 2:
+                    Player.addShield();
+                    break;
+                case 3:
+                    Player.addHatchet();
+                    break;
+                case 4:
+                    Player.addRocket();
+                    break;
+                case 5:
+                    Player.addWall();
+                    break;
+                case 6:
+                    Player.addRescue();
+                    break;
+            }
         }
-
-        private void addHachet(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addHatchet();
-        }
-
-        private void addWall(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addWall();
-        }
-
-        private void addRescue(object sender, EventArgs e)
-        {
-            if (!GameHaveWinner)
-                Player.addRescue();
-        }
+        
+        
 //
 //move RescueLine      
 //
@@ -376,5 +425,6 @@ namespace LittleWarGame
             
             _restart.Show();
         }
+        
     }
 }

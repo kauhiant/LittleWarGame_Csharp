@@ -132,11 +132,46 @@ namespace LittleWarGame
             }
             return false;
         }
+
+        private void addWarrior(WarriorT wType = WarriorT.Default)
+        {
+            switch (wType)
+            {
+                case WarriorT.Sword:
+                    isCreate = addSword();
+                    break;
+                case WarriorT.Arrow:
+                    isCreate = addArrow();
+                    break;
+                case WarriorT.Shield:
+                    isCreate = addShield();
+                    break;
+                case WarriorT.Hachet:
+                    isCreate = addHatchet();
+                    break;
+                case WarriorT.Rocket:
+                    isCreate = addRocket();
+                    break;
+                case WarriorT.Wall:
+                    isCreate = addWall();
+                    break;
+                case WarriorT.Rescue:
+                    isCreate = addRescue();
+                    break;
+                default:
+                    isCreate = true;
+                    break;
+            }
+        }
+
 //AI
-        public void auto()
+        private bool isCreate = false;
+        private int direct;
+
+        public void auto(WarriorT wType=WarriorT.Default)
         {
             autoFixLine();
-            autoAddWarrior();
+            autoAddWarrior(wType);
         }
 
         private void autoFixLine()
@@ -151,14 +186,18 @@ namespace LittleWarGame
                     this.fixRescueLine(this.group.frontLine().value + Program.AIData[6].distance * fixValue);
             }
         }
-
-        private bool isCreate = false;
-        private int direct;
-
-        private void autoAddWarrior()
+        
+        private void autoAddWarrior(WarriorT wType = WarriorT.Default)
         {
+            if(wType != WarriorT.Default)
+            {
+                addWarrior(wType);
+                return;
+            }
+
             if (isCreate)
                 direct = rand.Next(0, level);
+
             switch (direct)
             {
                 case 0:

@@ -8,6 +8,8 @@ using System.Media;
 
 namespace LittleWarGame
 {
+    public enum WarriorT {Default=0, Sword=1,Arrow,Shield,Hachet,Rocket,Wall,Rescue}
+
     class Warrior:Point
     {
         protected List<List<Image>> myStatus;

@@ -25,6 +25,7 @@ namespace LittleWarGame
         static public List<List<List<Image>>> imageList;
         static public Image background;
         static public Image mask;
+        static public Image select;
         static public Icon icon;
 
         static public int pictureWidth = 50;
@@ -68,6 +69,8 @@ namespace LittleWarGame
                 MessageBox.Show(e.ToString(), "音效資源錯誤");
             }
         }
+        
+
         static public void ImageListInit()
         {
             int sizeOfWarriors = 8;
@@ -87,6 +90,7 @@ namespace LittleWarGame
             {
                 background = Image.FromFile(@"./img/battleField.png");
                 mask = Image.FromFile(@"./img/mask.png");
+                select = Image.FromFile(@"./img/Select.png");
                 icon = Icon.ExtractAssociatedIcon(@"./img/LittleWar.ico");
 
                 imageList[(int)WarriorList.Castle][Part.A].Add(Image.FromFile(@"./img/castle-L.png"));

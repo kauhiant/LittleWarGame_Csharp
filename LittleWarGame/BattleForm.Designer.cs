@@ -107,86 +107,101 @@
             // 
             // _sword
             // 
+            this._sword.BackColor = System.Drawing.SystemColors.Control;
             this._sword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._sword.Location = new System.Drawing.Point(20, 200);
+            this._sword.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._sword.FlatAppearance.BorderSize = 3;
+            this._sword.Location = new System.Drawing.Point(21, 200);
             this._sword.Name = "_sword";
             this._sword.Size = new System.Drawing.Size(50, 50);
             this._sword.TabIndex = 0;
             this._sword.Text = "劍兵";
-            this._sword.UseVisualStyleBackColor = true;
-            this._sword.Click += new System.EventHandler(this.addSword);
+            this._sword.UseVisualStyleBackColor = false;
+            this._sword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _arrow
             // 
             this._arrow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._arrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._arrow.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._arrow.FlatAppearance.BorderSize = 3;
             this._arrow.Location = new System.Drawing.Point(100, 200);
             this._arrow.Name = "_arrow";
             this._arrow.Size = new System.Drawing.Size(50, 50);
             this._arrow.TabIndex = 1;
             this._arrow.Text = "弓兵";
             this._arrow.UseVisualStyleBackColor = true;
-            this._arrow.Click += new System.EventHandler(this.addArrow);
+            this._arrow.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _shield
             // 
             this._shield.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._shield.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._shield.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._shield.FlatAppearance.BorderSize = 3;
             this._shield.Location = new System.Drawing.Point(180, 200);
             this._shield.Name = "_shield";
             this._shield.Size = new System.Drawing.Size(50, 50);
             this._shield.TabIndex = 2;
             this._shield.Text = "盾牌";
             this._shield.UseVisualStyleBackColor = true;
-            this._shield.Click += new System.EventHandler(this.addShield);
+            this._shield.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _hatchet
             // 
             this._hatchet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._hatchet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._hatchet.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._hatchet.FlatAppearance.BorderSize = 3;
             this._hatchet.Location = new System.Drawing.Point(260, 200);
             this._hatchet.Name = "_hatchet";
             this._hatchet.Size = new System.Drawing.Size(50, 50);
             this._hatchet.TabIndex = 3;
             this._hatchet.Text = "斧手";
             this._hatchet.UseVisualStyleBackColor = true;
-            this._hatchet.Click += new System.EventHandler(this.addHachet);
+            this._hatchet.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _rocket
             // 
             this._rocket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._rocket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._rocket.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._rocket.FlatAppearance.BorderSize = 3;
             this._rocket.Location = new System.Drawing.Point(340, 200);
             this._rocket.Name = "_rocket";
             this._rocket.Size = new System.Drawing.Size(50, 50);
             this._rocket.TabIndex = 4;
             this._rocket.Text = "火箭";
             this._rocket.UseVisualStyleBackColor = true;
-            this._rocket.Click += new System.EventHandler(this.addRocket);
+            this._rocket.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _wall
             // 
             this._wall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._wall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._wall.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._wall.FlatAppearance.BorderSize = 3;
             this._wall.Location = new System.Drawing.Point(420, 200);
             this._wall.Name = "_wall";
             this._wall.Size = new System.Drawing.Size(50, 50);
             this._wall.TabIndex = 5;
             this._wall.Text = "鐵壁";
             this._wall.UseVisualStyleBackColor = true;
-            this._wall.Click += new System.EventHandler(this.addWall);
+            this._wall.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // _rescue
             // 
             this._rescue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._rescue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._rescue.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this._rescue.FlatAppearance.BorderSize = 3;
             this._rescue.Location = new System.Drawing.Point(500, 200);
             this._rescue.Name = "_rescue";
             this._rescue.Size = new System.Drawing.Size(50, 50);
             this._rescue.TabIndex = 6;
             this._rescue.Text = "醫護";
             this._rescue.UseVisualStyleBackColor = true;
-            this._rescue.Click += new System.EventHandler(this.addRescue);
+            this._rescue.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addWarrior);
             // 
             // pictureBox1
             // 
