@@ -67,5 +67,10 @@ namespace LittleWarGame
             img.Left = value - leftFix;
             HP.fixPositionLeft(value - leftFix);
         }
+
+        public override void beAttackFrom(Warrior other)
+        {
+            return;
+        }
     }
 }
