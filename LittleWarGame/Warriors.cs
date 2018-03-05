@@ -10,7 +10,7 @@ namespace LittleWarGame
     {
         private Warriors enemy;
         
-        private Point rescueLine;
+        public Point rescueLine;
         private Point baseLine;   //start point of this group
         
         private bool Lose;

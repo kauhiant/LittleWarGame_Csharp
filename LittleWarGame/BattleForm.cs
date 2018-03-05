@@ -184,7 +184,12 @@ namespace LittleWarGame
             else
             {
                 AI.auto();
-                if (isAuto) Player.auto();
+                if (isAuto)
+                {
+                    Player.auto();
+                    if(!mouseDown)
+                        _rescueLine.Left = Player.group.rescueLine.value - 20;
+                }
             }
         }
 //
