@@ -132,7 +132,6 @@ namespace LittleWarGame
             {
                 changeStatusTo((int)Status.attack);
                 they.frontGroup()[0].beAttackFrom(this);
-                Const.Sound._attack.Play();
                 CDTime.record();
             }
         }

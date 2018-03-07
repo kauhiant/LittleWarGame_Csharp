@@ -49,7 +49,6 @@ namespace LittleWarGame
             {
                 group.add(new Sword(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Sword));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;    
@@ -62,7 +61,6 @@ namespace LittleWarGame
             {
                 group.add(new Arrow(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Arrow));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -75,7 +73,6 @@ namespace LittleWarGame
             {
                 group.add(new Shield(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Shield));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -88,7 +85,6 @@ namespace LittleWarGame
             {
                 group.add(new Hatchet(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Hatchet));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -101,7 +97,6 @@ namespace LittleWarGame
             {
                 group.add(new Rocket(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Rocket));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -114,7 +109,6 @@ namespace LittleWarGame
             {
                 group.add(new Wall(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Wall));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;
@@ -127,7 +121,6 @@ namespace LittleWarGame
             {
                 group.add(new Rescue(isMe));
                 energy.addEnergy(-Const.EnergyOf(WarriorList.Rescue));
-                Const.Sound._click.Play();
                 return true;
             }
             return false;

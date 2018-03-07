@@ -53,22 +53,24 @@ namespace LittleWarGame
 
         static public class Sound
         {
-            static public SoundPlayer _click;
-            static public SoundPlayer _attack;
+            static private SoundPlayer _click;
+            static private SoundPlayer _attack;
+
+            static public void SoundInit()
+            {
+                try
+                {
+                    Sound._click = new SoundPlayer(@"./audio/click.wav");
+                    Sound._attack = new SoundPlayer(@"./audio/attack.wav");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString(), "音效資源錯誤");
+                }
+            }
         }
         
-        static public void SoundInit()
-        {
-            try
-            {
-                Sound._click = new SoundPlayer(@"./audio/click.wav");
-                Sound._attack = new SoundPlayer(@"./audio/attack.wav");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "音效資源錯誤");
-            }
-        }
+        
         
 
         static public void ImageListInit()

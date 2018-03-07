@@ -87,12 +87,18 @@ namespace LittleWarGame
                 _warriorButtonList.ElementAt(i).Text = "";
                 _warriorButtonList.ElementAt(i).BackgroundImage = Const.imageList[i + 1][0][0];
             }
+
             if (Player.Level() < 8)
             {
                 for (int i = Player.Level(); i < _warriorButtonList.Count; ++i)
                 {
                     _warriorButtonList.ElementAt(i).Hide();
                 }
+            }
+            else
+            {
+                int payCoin = Math.Abs(Player.Level() - AI.Level())*10 + 50;
+                Program.player.playerChangeCoin("出征費用",payCoin);
             }
             
             _restart.Hide();
@@ -380,7 +386,7 @@ namespace LittleWarGame
         {
             _Status.Text = "You Win";
             Program.isRestart = true;
-            Program.player.playerGetBonus(Player.getEnergy() + (Player.group.At(0).hp / 100));
+            Program.player.playerChangeCoin("獲得",(Program.AI.level + 5) * (Program.AI.level + 5));
 
             if (Program.player.level < 8)
             {
@@ -392,6 +398,12 @@ namespace LittleWarGame
             {
                 Program.player.levelUp();
             }
+        }
+
+        private void playerLose()
+        {
+            _Status.Text = "You Lose";
+            Program.player.playerChangeCoin("賠償", (Program.AI.level + 5) * (Program.player.level + 5) * -2);
         }
 
         private void BattleForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -410,7 +422,7 @@ namespace LittleWarGame
             GameHaveWinner = true;
 
             if (Player.group.isLose())
-                _Status.Text = "Game Over";
+                playerLose();
             else
                 playerWin();
 

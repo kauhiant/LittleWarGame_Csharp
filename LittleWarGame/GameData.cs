@@ -59,6 +59,7 @@ namespace LittleWarGame
         }
         
         public void getCoin(int value) { this.coin += value; }
+        public void payCoin(int value) { this.coin -= value; if (coin < 0) coin = 0; }
         public void getSuperRocket() { this.superRocket++; }
         public void SuperRocketInit() { this.superRocket = 1; }
 
@@ -66,7 +67,7 @@ namespace LittleWarGame
         {
             if (this.level < 30)
             {
-                playerGetBonus(100,"升級獎勵");
+                playerChangeCoin("獲得", this.level * 10 + 100, "升級獎勵");
                 this.level++;
             }
         }
@@ -134,14 +135,13 @@ namespace LittleWarGame
             }
             return pay;
         }
+        
 
-        public void playerGetBonus(int refValue = 0, string message="")
+        public void playerChangeCoin(string title,int coin = 0, string message = "")
         {
-            int getCoins = refValue / 10 * (Program.AI.level - Program.player.level + 9);
-            if (getCoins < 0) getCoins = 0;
-            Program.player.getCoin(getCoins);
-            if(Program.mainControl != null)
-                Program.mainControl.message.Enqueue("獲得 " + getCoins + " coin "+message);
+            Program.player.getCoin(coin);
+            if (Program.mainControl != null)
+                Program.mainControl.message.Enqueue(title + " " + coin + " coin " + message);
         }
     }
 }

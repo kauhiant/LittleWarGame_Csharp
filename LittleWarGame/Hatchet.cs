@@ -33,7 +33,6 @@ namespace LittleWarGame
             if (this.distance(they.frontLine()) <= this.attackDistance)
             {
                 img.Image = myRealStatus[(int)Status.attack];
-                Const.Sound._attack.Play();
                 attackGroup(they.frontGroup());
                 CDTime.record();
             }

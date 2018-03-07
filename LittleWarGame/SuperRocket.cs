@@ -37,7 +37,6 @@ namespace LittleWarGame
                     if (distance(they.At(i)) < this.attackDistance)
                         they.At(i).beAttackFrom(this);
                 }
-                Const.Sound._attack.Play();
             }
         }
 

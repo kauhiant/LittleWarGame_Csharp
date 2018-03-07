@@ -52,6 +52,7 @@ namespace LittleWarGame
             public ItemPair speed;
             public ItemPair power;
             public ItemPair distance;
+
             public WarriorPanel(PictureBox show,WarriorList warrior)
             {
                 this.show = show;
@@ -70,6 +71,7 @@ namespace LittleWarGame
                 this.distance.text.Text = this.distance.title + Program.playerData[(int)warrior - 1].distance.ToString();
             }
         }
+
         private WarriorList findWarriorFromItem(ItemPair obj)
         {
             foreach(WarriorPanel each in warriorsPanels)
@@ -81,6 +83,7 @@ namespace LittleWarGame
             }
             return WarriorList.Castle;
         }
+
         private ItemPair findButtonIndex(Button obj)
         {
             foreach(WarriorPanel each in warriorsPanels)
@@ -94,7 +97,9 @@ namespace LittleWarGame
         }
 
         public Queue<string> message;
+
         private List<WarriorPanel> warriorsPanels;
+
         public ControlForm()
         {
             InitializeComponent();
@@ -224,7 +229,7 @@ namespace LittleWarGame
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (Program.player.level >= level - 1)
+            if (level - Program.player.level <= 5)
             {
                 Program.AI.set(level);
                 BattleForm tmp = new BattleForm();
@@ -259,7 +264,9 @@ namespace LittleWarGame
             }
             showMessage();
         }
+
         private int level;
+
         private void _selectLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             string levelstr = _selectLevel.Text;

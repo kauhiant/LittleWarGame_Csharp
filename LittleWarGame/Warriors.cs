@@ -68,8 +68,10 @@ namespace LittleWarGame
         public void setRescueLine(Point value)
         {
             //need to fix range
-            if (value.inRange(enemy.baseLine , this.baseLine) )
+            if (value.inRange(enemy.baseLine, this.baseLine))
                 this.rescueLine = value;
+            else
+                this.rescueLine = this.baseLine;
         }
         
         //最前線

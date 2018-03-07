@@ -24,7 +24,6 @@ namespace LittleWarGame
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Const.ImageListInit();
-            Const.SoundInit();
             Const.WarriorDataInitial();
             playerData = new List<WarriorData>();
             AIData = new List<WarriorData>();
